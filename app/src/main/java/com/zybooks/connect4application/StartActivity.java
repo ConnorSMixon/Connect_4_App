@@ -1,40 +1,56 @@
 package com.zybooks.connect4application;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.Random;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 
 public class StartActivity extends AppCompatActivity{
 
     private int pieceID;
-    static boolean active = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.black));
+        }
+
+        Intent intent = new Intent(this, BackgroundSoundService.class);
+        startService(intent);
+
+        createPieceAnimation(pieceID);
+    }
+
+    public void createPieceAnimation(int pieceID) {
+
         Random randPiece = new Random();
         int piece = randPiece.nextInt(2)+1;
 
-        if (piece == 1) {
-            pieceID = R.id.red_piece;
+        switch (piece) {
+            case 1:
+                pieceID = R.drawable.red_piece;
+                break;
+            case 2:
+                pieceID = R.drawable.yellow_piece;
+                break;
         }
-        else {
-            pieceID = R.id.yellow_piece;
-        }
 
-        pieceAnimation(pieceID);
-
-    }
-
-    public void pieceAnimation(int pieceID) {
         ImageView imageView = (ImageView) findViewById(pieceID);
+
+        imageView.setVisibility(imageView.VISIBLE);
 
         float bottomOfScreen = getResources().getDisplayMetrics()
                 .heightPixels - (imageView.getHeight() * 4);
@@ -43,6 +59,13 @@ public class StartActivity extends AppCompatActivity{
         imageView.animate()
                 .translationY(bottomOfScreen)
                 .setInterpolator(new AccelerateInterpolator())
-                .setDuration(20000);
+                .setDuration(10000);
+    }
+
+    // Activity Methods
+
+    public void onPlayClick(View view) {
+        Intent play = new Intent(this, GameActivity.class);
+        startActivity(play);
     }
 }
