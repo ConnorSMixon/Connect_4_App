@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/app_icon.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/connect_4_logo.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/gradient_background.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/help_button.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/ic_app_icon.xml" value="0.19322916666666667" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.31666666666666665" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/ic_untitled_drawing.xml" value="0.2638888888888889" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/play_button.xml" value="0.2916666666666667" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/red_piece.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/round_button.xml" value="0.2916666666666667" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/settings_button.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/win_red.xml" value="0.325" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/win_yellow.xml" value="0.325" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/yellow_piece.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/font/title_font.xml" value="0.33611111111111114" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_game.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_start.xml" value="0.28250591016548465" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
