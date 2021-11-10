@@ -31,7 +31,6 @@ public class StartActivity extends AppCompatActivity{
         Intent intent = new Intent(this, BackgroundSoundService.class);
         startService(intent);
 
-        createPieceAnimation(pieceID);
     }
 
     public void createPieceAnimation(int pieceID) {
