@@ -1,25 +1,31 @@
 package com.zybooks.connect4application;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Build;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 
+import info.overrideandroid.connect4.R;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity implements GameMenuController.MenuControllerListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        MenuView menuView = findViewById(R.id.menuView);
+        GameMenuController gameMenuController = new GameMenuController(this, menuView);
+        menuView.setListeners(gameMenuController);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            Window window = this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.black));
-        }
+
+    }
+
+    @Override
+    public void onPlay(@NonNull GameRules gameRules) {
+        Intent gamePlayIntent = new Intent(this,GamePlayActivity.class);
+        gamePlayIntent.putExtras(gameRules.exportTo(new Bundle()));
+        startActivity(gamePlayIntent);
     }
 }
