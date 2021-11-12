@@ -3,6 +3,6 @@
     <color name="blue">#62929E</color>
     <color name="black">#393D3F</color>
     <color name="white">#FDFDFF</color>
-    <color name="secondary_player">#FFD918</color>
-    <color name="primary_player">#FF000B</color>
+    <color name="secondary_player">#bf9000</color>
+    <color name="primary_player">#990000</color>
 </resources>
