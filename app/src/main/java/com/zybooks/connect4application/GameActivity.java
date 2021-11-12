@@ -37,27 +37,19 @@ public class GameActivity extends AppCompatActivity {
         board = new Board(NUM_COLS, NUM_ROWS);
         boardView = findViewById(R.id.game_board);
         buildCells();
-        boardView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_POINTER_UP:
-                    case MotionEvent.ACTION_UP: {
-                        int col = colAtX(motionEvent.getX());
-                        if (col != -1)
-                            drop(col);
-                    }
+        boardView.setOnTouchListener((view, motionEvent) -> {
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_POINTER_UP:
+                case MotionEvent.ACTION_UP: {
+                    int col = colAtX(motionEvent.getX());
+                    if (col != -1)
+                        drop(col);
                 }
-                return true;
             }
+            return true;
         });
-        Button resetButton = (Button) findViewById(R.id.reset_button);
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                reset();
-            }
-        });
+        Button resetButton = findViewById(R.id.reset_button);
+        resetButton.setOnClickListener(view -> reset());
         viewHolder = new ViewHolder();
         viewHolder.turnIndicatorImageView = (ImageView) findViewById(R.id.turn_indicator_image_view);
         viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
