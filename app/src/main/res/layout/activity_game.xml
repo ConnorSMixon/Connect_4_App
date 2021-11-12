@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:background="@drawable/gradient_background">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Reset"
+        android:fontFamily="@font/title_font"
+        android:id="@+id/reset_button"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/turn_indicator"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:layout_alignParentLeft="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/title_font"
+            android:text="Turn:"/>
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/turn_indicator_image_view"
+            android:src="@drawable/red_piece"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/turn_indicator"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:id="@+id/winner_text"
+        android:textSize="40sp"
+        android:fontFamily="@font/title_font"
+        android:gravity="center_horizontal"
+        android:text="Winner!"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/game_board"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/winner_text"
+        android:clipChildren="false"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        tools:context=".GameActivity">
+
+        <include layout="@layout/board_row" />
+
+        <include layout="@layout/board_row" />
+
+        <include layout="@layout/board_row" />
+
+        <include layout="@layout/board_row" />
+
+        <include layout="@layout/board_row" />
+
+        <include layout="@layout/board_row" />
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/game_board_front"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:clipChildren="false"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        tools:context=".GameActivity">
+
+        <include layout="@layout/front_board_row" />
+
+        <include layout="@layout/front_board_row" />
+
+        <include layout="@layout/front_board_row" />
+
+        <include layout="@layout/front_board_row" />
+
+        <include layout="@layout/front_board_row" />
+
+        <include layout="@layout/front_board_row" />
+    </LinearLayout>
+</RelativeLayout>

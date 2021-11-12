@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="game_board" type="id" />
+    <item name="reset_button" type="id" />
+    <item name="turn_indicator_image_view" type="id" />
+    <item name="winner_text" type="id" />
+    <item name="action_settings" type="id" />
+</resources>
