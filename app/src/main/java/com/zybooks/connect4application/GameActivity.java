@@ -134,11 +134,11 @@ public class GameActivity extends AppCompatActivity {
     private int resourceForTurn() {
         switch (board.turn) {
             case FIRST:
-                return R.drawable.red;
+                return R.drawable.red_piece;
             case SECOND:
-                return R.drawable.yellow;
+                return R.drawable.yellow_piece;
         }
-        return R.drawable.red;
+        return R.drawable.red_piece;
     }
 
     private void reset() {

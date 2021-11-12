@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/board_bg"
-    android:clipChildren="false">
+    android:clipChildren="false"
+    android:background="@drawable/gradient_background">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,8 +29,9 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:id="@+id/turn_indicator_image_view"
-            android:src="@drawable/red"/>
+            android:src="@drawable/red_piece"/>
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,46 +45,62 @@
         android:textSize="40sp"
         android:gravity="center_horizontal"
         android:text="Winner!"/>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/game_board"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:orientation="vertical"
-        android:id="@+id/game_board"
+        android:layout_below="@+id/winner_text"
         android:clipChildren="false"
         android:gravity="bottom"
-        android:layout_below="@+id/winner_text"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
         tools:context=".GameActivity">
+
         <include layout="@layout/board_row" />
+
         <include layout="@layout/board_row" />
+
         <include layout="@layout/board_row" />
+
         <include layout="@layout/board_row" />
+
         <include layout="@layout/board_row" />
+
         <include layout="@layout/board_row" />
     </LinearLayout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/game_board_front"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:orientation="vertical"
-        android:clipChildren="false"
         android:background="@android:color/transparent"
+        android:clipChildren="false"
         android:gravity="bottom"
-        android:id="@+id/game_board_front"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
         tools:context=".GameActivity">
+
         <include layout="@layout/front_board_row" />
+
         <include layout="@layout/front_board_row" />
+
         <include layout="@layout/front_board_row" />
+
         <include layout="@layout/front_board_row" />
+
         <include layout="@layout/front_board_row" />
+
         <include layout="@layout/front_board_row" />
     </LinearLayout>
 </RelativeLayout>

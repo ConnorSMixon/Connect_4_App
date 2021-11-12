@@ -20,8 +20,7 @@ public class BackgroundSoundService extends Service {
         mediaPlayer.setVolume(100, 100);
     }
     public int onStartCommand(Intent intent, int flags, int startId) {
-        mediaPlayer.start();
-        return startId;
+        mediaPlayer.start();        return startId;
     }
     @Override
     public void onDestroy() {
