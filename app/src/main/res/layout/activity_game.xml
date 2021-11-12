@@ -5,13 +5,13 @@
     android:background="@drawable/gradient_background">
 
     <Button
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:text="Reset"
-        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/title_font"
         android:id="@+id/reset_button"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:paddingRight="5dp"
             android:textSize="18sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/title_font"
             android:text="Turn:"/>
         <ImageView
             android:layout_width="24dp"
@@ -44,8 +44,8 @@
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
         android:id="@+id/winner_text"
-        android:textStyle="bold"
         android:textSize="40sp"
+        android:fontFamily="@font/title_font"
         android:gravity="center_horizontal"
         android:text="Winner!"/>
 
@@ -78,8 +78,7 @@
         <include layout="@layout/board_row" />
     </LinearLayout>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/game_board_front"
         android:layout_width="match_parent"
