@@ -39,4 +39,9 @@ public class StartActivity extends AppCompatActivity{
         Intent play = new Intent(this, GameActivity.class);
         startActivity(play);
     }
-}
+    public void onHelpClick(View view) {
+        Intent help = new Intent(this, HelpActivity.class);
+        startActivity(help);
+    }
+    }
+

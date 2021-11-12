@@ -27,4 +27,6 @@
     <string name="difficulty">DIFFICULTY</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="question_mark">\?</string>
+    <string name="help">Confused How To Play?</string>
 </resources>

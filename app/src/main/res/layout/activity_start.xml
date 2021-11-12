@@ -43,7 +43,9 @@
         android:layout_height="90dp"
         android:background="@drawable/help_button"
         app:layout_constraintTop_toBottomOf="@id/play_button"
-        app:layout_constraintStart_toEndOf="@id/play_button"/>
+        app:layout_constraintStart_toEndOf="@id/play_button"
+        android:onClick="onHelpClick"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

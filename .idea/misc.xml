@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Connor Mixon/AndroidStudioProjects/Connect_4_Ap/app/src/main/res/font/title_font.xml" value="0.11851851851851852" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/connect_4_logo.xml" value="0.2203125" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/ic_question_mark_button.xml" value="0.2203125" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/font/title_font.xml" value="0.234375" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_game.xml" value="0.1068840579710145" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_help.xml" value="0.2" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_main.xml" value="0.12635869565217392" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_start.xml" value="0.1068840579710145" />
       </map>
     </option>
   </component>
