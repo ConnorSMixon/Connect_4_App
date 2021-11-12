@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Connect 4 Application</string>
+    <string name="help_instructions">Try to get 4 game pieces in a row! They can be horizontal, vertical, or diagonally 4 in a row to win!
+    Play with two people, each player picks their color and then you can play! </string>
+    <string name="confused">Confused Image</string>
+<string name="help_prompt">Confused? Click here -></string>
+
 </resources>
