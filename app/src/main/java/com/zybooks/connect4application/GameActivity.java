@@ -120,7 +120,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void win() {
-        int color = board.turn == Board.Turn.FIRST ? getResources().getColor(R.color.primary_player) : getResources().getColor(R.color.secondary_player);
+        int color = board.turn == Board.Turn.FIRST ? getResources().getColor(R.color.primary_player)
+                : getResources().getColor(R.color.secondary_player);
         viewHolder.winnerText.setTextColor(color);
         viewHolder.winnerText.setVisibility(View.VISIBLE);
     }
