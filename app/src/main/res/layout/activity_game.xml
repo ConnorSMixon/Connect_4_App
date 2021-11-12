@@ -3,11 +3,14 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:background="@drawable/gradient_background">
+
     <Button
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:text="Reset"
+        android:backgroundTint="@color/blue"
         android:id="@+id/reset_button"/>
     <LinearLayout
         android:layout_width="wrap_content"

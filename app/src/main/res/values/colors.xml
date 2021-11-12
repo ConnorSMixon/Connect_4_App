@@ -6,4 +6,8 @@
     <color name="board_bg">#4A90E2</color>
     <color name="secondary_player">#FFD918</color>
     <color name="primary_player">#FF000B</color>
+    <style name="Button.Color" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@android:color/holo_red_dark</item>
+    </style>
+
 </resources>
