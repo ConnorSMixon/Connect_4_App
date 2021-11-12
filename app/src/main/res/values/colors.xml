@@ -3,4 +3,7 @@
     <color name="blue">#62929E</color>
     <color name="black">#393D3F</color>
     <color name="white">#FDFDFF</color>
+    <color name="board_bg">#4A90E2</color>
+    <color name="secondary_player">#FFD918</color>
+    <color name="primary_player">#FF000B</color>
 </resources>
