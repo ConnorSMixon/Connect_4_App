@@ -49,15 +49,13 @@
         android:gravity="center_horizontal"
         android:text="Winner!"/>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/game_board"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/winner_text"
         android:clipChildren="false"
-        android:gravity="bottom"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
@@ -65,28 +63,27 @@
         android:paddingBottom="16dp"
         tools:context=".GameActivity">
 
-        <include layout="@layout/board_row" />
+        <include layout="@layout/piece_row" />
 
-        <include layout="@layout/board_row" />
+        <include layout="@layout/piece_row" />
 
-        <include layout="@layout/board_row" />
+        <include layout="@layout/piece_row" />
 
-        <include layout="@layout/board_row" />
+        <include layout="@layout/piece_row" />
 
-        <include layout="@layout/board_row" />
+        <include layout="@layout/piece_row" />
 
-        <include layout="@layout/board_row" />
+        <include layout="@layout/piece_row" />
     </LinearLayout>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/game_board_front"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:clipChildren="false"
-        android:gravity="bottom"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
@@ -94,16 +91,16 @@
         android:paddingBottom="16dp"
         tools:context=".GameActivity">
 
-        <include layout="@layout/front_board_row" />
+        <include layout="@layout/top_board_row" />
 
-        <include layout="@layout/front_board_row" />
+        <include layout="@layout/middle_board_row" />
 
-        <include layout="@layout/front_board_row" />
+        <include layout="@layout/middle_board_row" />
 
-        <include layout="@layout/front_board_row" />
+        <include layout="@layout/middle_board_row" />
 
-        <include layout="@layout/front_board_row" />
+        <include layout="@layout/middle_board_row" />
 
-        <include layout="@layout/front_board_row" />
+        <include layout="@layout/bottom_board_row" />
     </LinearLayout>
 </RelativeLayout>

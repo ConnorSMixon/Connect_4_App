@@ -6,7 +6,7 @@ public class Cell {
 
     public Cell() {
         empty = true;
-    }
+}
 
     public void setPlayer(Board.Turn player) {
         this.player = player;
