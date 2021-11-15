@@ -8,5 +8,7 @@
     <color name="red">#F00</color>
     <color name="orange">#F80</color>
     <color name="teal">#40FFFF</color>
+    <color name="green">#FF51AB2A</color>
+    <color name="purple">#FF4E29AA</color>
 
 </resources>
