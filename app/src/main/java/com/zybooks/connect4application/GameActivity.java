@@ -135,11 +135,11 @@ public class GameActivity extends AppCompatActivity {
     private int resourceForTurn() {
         switch (board.turn) {
             case FIRST:
-                return R.drawable.piece_one;
+                return R.drawable.piece_red;
             case SECOND:
-                return R.drawable.piece_two;
+                return R.drawable.piece_yellow;
         }
-        return R.drawable.piece_one;
+        return R.drawable.piece_red;
     }
 
     private void resourceForIndicator() {
