@@ -23,6 +23,8 @@ public class GameActivity extends AppCompatActivity {
     private ViewHolder viewHolder;
     private final int NUM_ROWS = 6;
     private final int NUM_COLS = 7;
+    private int piece_one;
+    private int piece_two;
 
     private static class ViewHolder {
         public TextView winnerText;
@@ -135,11 +137,11 @@ public class GameActivity extends AppCompatActivity {
     private int resourceForTurn() {
         switch (board.turn) {
             case FIRST:
-                return R.drawable.piece_one;
+                return R.drawable.piece_red;
             case SECOND:
-                return R.drawable.piece_two;
+                return R.drawable.piece_yellow;
         }
-        return R.drawable.piece_one;
+        return R.drawable.piece_red;
     }
 
     private void resourceForIndicator() {
@@ -163,6 +165,4 @@ public class GameActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }
