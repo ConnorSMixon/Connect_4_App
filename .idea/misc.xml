@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Hyper/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_bottom_left.xml" value="0.10092592592592593" />
+        <entry key="..\:/Users/Hyper/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/gradient_background.xml" value="0.10092592592592593" />
+        <entry key="..\:/Users/Hyper/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/play_button.xml" value="0.10092592592592593" />
+        <entry key="..\:/Users/Hyper/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/red_piece.xml" value="0.10092592592592593" />
         <entry key="..\:/Users/Hyper/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/settings_button.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/Hyper/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_game.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Hyper/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_options.xml" value="0.2015625" />

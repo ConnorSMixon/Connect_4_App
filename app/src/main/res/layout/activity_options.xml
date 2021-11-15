@@ -8,52 +8,61 @@
     tools:context=".OptionsActivity"
     android:background="@drawable/gradient_background">
 
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:gravity="center"
+        android:text="@string/choose_color"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/radio_red"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_constraintTop_toTopOf="parent"
+        android:background="@color/red"
+        android:onClick="onColorSelected"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <Button
+        android:id="@+id/radio_orange"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_constraintTop_toTopOf="parent"
+        android:background="@color/orange"
+        android:onClick="onColorSelected"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="90dp" />
+
+    <Button
+        android:id="@+id/radio_yellow"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/teal"
+        android:onClick="onColorSelected"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="140dp" />
+
+    <Button
+        android:id="@+id/radio_green"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red"
+        android:onClick="onColorSelected"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="190dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="vertical">
-
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:textSize="30sp"
-    android:gravity="center"
-    android:layout_margin="20dp"
-    android:text="@string/choose_color" />
-
-<RadioGroup
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <RadioButton android:id="@+id/radio_red"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/red"
-        android:onClick="onColorSelected" />
-
-    <RadioButton android:id="@+id/radio_orange"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/orange"
-        android:onClick="onColorSelected"/>
-
-    <RadioButton android:id="@+id/radio_yellow"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/yellow"
-        android:onClick="onColorSelected" />
-
-    <RadioButton android:id="@+id/radio_green"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/red"
-        android:onClick="onColorSelected" />
-</RadioGroup>
-
-</LinearLayout>
