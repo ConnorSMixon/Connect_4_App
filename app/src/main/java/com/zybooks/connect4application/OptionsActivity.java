@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class OptionsActivity extends AppCompatActivity {
 
+    public static final String EXTRA_COLOR = "boobs";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +29,23 @@ public class OptionsActivity extends AppCompatActivity {
     }
 
     public void onColorSelected(View view) {
-        int colorId = R.drawable.piece_red;
+        int piece1 = 0;
         if (view.getId() == R.id.radio_red) {
-            colorId = R.color.red;
+            piece1 = R.drawable.piece_red;
         } else if (view.getId() == R.id.radio_orange) {
-            colorId = R.color.orange;
+            piece1= R.drawable.piece_orange;
         } else if (view.getId() == R.id.radio_green) {
-            colorId = R.color.teal;
+            piece1 = R.drawable.piece_green;
+        }  else if (view.getId() == R.id.radio_purple) {
+            piece1 = R.drawable.piece_purple;
+        }  else if (view.getId() == R.id.radio_yellow) {
+        piece1 = R.drawable.piece_yellow;
+        }  else if (view.getId() == R.id.radio_blue) {
+        piece1 = R.drawable.piece_blue;
         }
+
         Intent intent = new Intent();
+        intent.putExtra(EXTRA_COLOR, piece1);
         setResult(RESULT_OK, intent);
         finish();
 
