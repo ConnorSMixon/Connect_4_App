@@ -7,6 +7,5 @@
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="android:navigationBarColor">@color/white</item>
-
     </style>
 </resources>
