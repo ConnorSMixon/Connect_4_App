@@ -2,8 +2,5 @@
     <string name="app_name">Connect 4</string>
     <string name="question">"?"</string>
     <string name="action_settings">Settings</string>
-    <string name="reset">reset</string>
-    <string name="winner_message">Winner!</string>
-    <string name="player_1">Player 1</string>
-    <string name="player_2">Player 2</string>
+    <string name="choose_color">Choose Color</string>
 </resources>
