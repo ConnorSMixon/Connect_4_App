@@ -1,9 +1,12 @@
 package com.zybooks.connect4application;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +25,23 @@ public class OptionsActivity extends AppCompatActivity {
             window.setStatusBarColor(this.getResources().getColor(R.color.black));
         }
 
+    }
+    public void onColorSelected(View view) {
+        int colorId = R.color.blue
+        if(view.getId() == R.id.radio_red) {
+            colorId = R.color.black;
+        }
+        else if (view.getId() == R.id.radio_orange) {
+            colorId = R.color.white;
+        }
+        else if (view.getId() == R.id.radio_green) {
+            colorId = R.color.teal;
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(EXTRA_COLOR, colorId);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 }
