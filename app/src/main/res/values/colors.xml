@@ -5,4 +5,6 @@
     <color name="white">#FDFDFF</color>
     <color name="secondary_player">#bf9000</color>
     <color name="primary_player">#990000</color>
+    <color name="colorAccent">#00BCD4</color>
+    <color name="transparent">#0000</color>
 </resources>

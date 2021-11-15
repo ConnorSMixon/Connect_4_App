@@ -5,11 +5,21 @@
       <map>
         <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/connect_4_logo.xml" value="0.2203125" />
         <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/ic_question_mark_button.xml" value="0.2203125" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/red_piece.xml" value="0.2203125" />
         <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/font/title_font.xml" value="0.234375" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_dont_need_info.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_game.xml" value="0.1068840579710145" />
-        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_help.xml" value="0.2" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_help.xml" value="0.25" />
         <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_main.xml" value="0.12635869565217392" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_need_info.xml" value="0.1" />
         <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_start.xml" value="0.1068840579710145" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/board_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/fragment_help.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/fragment_no_help.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/help_fragment_quesiton.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/help_fragment_question.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/help_fragment_question_correct.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Cal/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/help_fragment_question_incorrect.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

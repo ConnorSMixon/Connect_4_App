@@ -8,7 +8,8 @@
     android:background="@drawable/gradient_background"
     >
 
-<TextView
+
+    <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/help"
@@ -22,11 +23,11 @@
     app:layout_constraintTop_toTopOf="parent"
     />
 
-    <ImageButton
-        android:id="@+id/questionMarkButton"
-        android:name="questionMarkButton"
+    <ImageView
+        android:id="@+id/questionMarkImage"
+        android:name="questionMarkImage"
         android:layout_width="600dp"
-        android:layout_height="600dp"
+        android:layout_height="500dp"
         android:layout_marginTop="112dp"
         android:background="@drawable/ic_question_mark_button"
         app:layout_constraintBaseline_toBottomOf="parent"
@@ -34,6 +35,36 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/help_fragment_more_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:text="I Need More Information"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/questionMarkImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        android:onClick="onNeedHelpClick"
+         />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:text="I Don't Need Help!"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="640dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/help_fragment_more_information"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="onNeedNoHelpClick"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

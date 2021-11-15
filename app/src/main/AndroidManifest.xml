@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Connect4Application">
         <activity
+            android:name=".DontNeedInfo"
+            android:exported="true" />
+        <activity
+            android:name=".NeedInfo"
+            android:exported="true" />
+        <activity
             android:name=".StartActivity"
             android:exported="true">
             <intent-filter>
@@ -20,13 +26,12 @@
         </activity>
         <activity
             android:name=".GameActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".HelpActivity"
-            android:exported="true">
-        </activity>
-        <service android:name=".BackgroundSoundService"/>
+            android:exported="true" />
+
+        <service android:name=".BackgroundSoundService" />
     </application>
 
 </manifest>
