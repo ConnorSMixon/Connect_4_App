@@ -35,4 +35,10 @@ public class StartActivity extends AppCompatActivity{
         Intent play = new Intent(this, GameActivity.class);
         startActivity(play);
     }
+
+    public void onOptionsClick(View view) {
+
+        Intent play = new Intent(this, OptionsActivity.class);
+        startActivity(play);
+    }
 }

@@ -23,6 +23,8 @@ public class GameActivity extends AppCompatActivity {
     private ViewHolder viewHolder;
     private final int NUM_ROWS = 6;
     private final int NUM_COLS = 7;
+    private int piece_one;
+    private int piece_two;
 
     private static class ViewHolder {
         public TextView winnerText;
@@ -163,6 +165,4 @@ public class GameActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }

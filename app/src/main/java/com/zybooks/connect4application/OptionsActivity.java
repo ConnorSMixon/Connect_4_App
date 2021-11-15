@@ -27,7 +27,7 @@ public class OptionsActivity extends AppCompatActivity {
     }
 
     public void onColorSelected(View view) {
-        int colorId = R.drawable.red_piece;
+        int colorId = R.drawable.piece_red;
         if (view.getId() == R.id.radio_red) {
             colorId = R.color.red;
         } else if (view.getId() == R.id.radio_orange) {
