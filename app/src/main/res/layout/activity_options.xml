@@ -37,26 +37,42 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
 
-        android:background="@color/orange"
+        android:backgroundTint="@color/orange"
         android:onClick="onColorSelected"
         tools:ignore="MissingConstraints"
         app:layout_constraintTop_toBottomOf="@id/radio_red"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/radio_yellow"
+        android:id="@+id/radio_green"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/teal"
+        android:backgroundTint="@color/green"
         android:onClick="onColorSelected"
         app:layout_constraintTop_toBottomOf="@id/radio_orange"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/radio_green"
+        android:id="@+id/radio_purple"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/red"
+        android:backgroundTint="@color/purple"
+        android:onClick="onColorSelected"
+        app:layout_constraintTop_toBottomOf="@id/radio_green"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <Button
+        android:id="@+id/radio_yellow"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/secondary_player"
+        android:onClick="onColorSelected"
+        app:layout_constraintTop_toBottomOf="@id/radio_purple"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <Button
+        android:id="@+id/radio_blue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/teal"
         android:onClick="onColorSelected"
         app:layout_constraintTop_toBottomOf="@id/radio_yellow"
         app:layout_constraintLeft_toLeftOf="parent" />
