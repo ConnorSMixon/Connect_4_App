@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-
 public class StartActivity extends AppCompatActivity{
 
     @Override
@@ -17,6 +16,7 @@ public class StartActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        // change notification bar color
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -24,13 +24,14 @@ public class StartActivity extends AppCompatActivity{
             window.setStatusBarColor(this.getResources().getColor(R.color.black));
         }
 
+        // play background music
         Intent intent = new Intent(this, BackgroundSoundService.class);
         startService(intent);
-
     }
 
-    // Activity Methods
+    // activity methods
     public void onPlayClick(View view) {
+
         Intent play = new Intent(this, GameActivity.class);
         startActivity(play);
     }

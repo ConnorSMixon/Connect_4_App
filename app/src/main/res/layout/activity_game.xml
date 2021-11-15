@@ -5,55 +5,38 @@
     android:background="@drawable/gradient_background">
 
     <Button
+        android:id="@+id/reset_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="Reset"
-        android:fontFamily="@font/title_font"
-        android:id="@+id/reset_button"/>
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/chopsic"
+        android:text="@string/reset" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/turn_indicator"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:layout_alignParentLeft="true">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="5dp"
-            android:textSize="18sp"
-            android:fontFamily="@font/title_font"
-            android:text="Turn:"/>
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:id="@+id/turn_indicator_image_view"
-            android:src="@drawable/red_piece"/>
-    </LinearLayout>
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/arrow_back" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/turn_indicator"
+        android:layout_below="@+id/reset_button"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
         android:id="@+id/winner_text"
         android:textSize="40sp"
-        android:fontFamily="@font/title_font"
+        android:fontFamily="@font/chopsic"
         android:gravity="center_horizontal"
-        android:text="Winner!"/>
+        android:text="@string/winner_message"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/game_board"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:layout_below="@+id/reset_button"
         android:clipChildren="false"
         android:gravity="center"
         android:orientation="vertical"
@@ -81,6 +64,7 @@
         android:id="@+id/game_board_front"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/reset_button"
         android:background="@android:color/transparent"
         android:clipChildren="false"
         android:gravity="center"
@@ -103,4 +87,65 @@
 
         <include layout="@layout/bottom_board_row" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/indicator_divider"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/indicator_piece1"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/piece_one" />
+
+    <ImageView
+        android:id="@+id/turn_indicator_image_view1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/indicator_piece1"
+        android:layout_alignLeft="@id/indicator_piece1"
+        android:layout_alignRight="@id/indicator_piece1"
+        android:src="@drawable/arrow_indicator" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/indicator_divider"
+        android:fontFamily="@font/chopsic"
+        android:text="@string/player_1"
+        android:textColor="@color/black"
+        android:textSize="25sp"/>
+
+    <ImageView
+        android:id="@+id/turn_indicator_image_view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/indicator_piece2"
+        android:layout_alignLeft="@id/indicator_piece2"
+        android:layout_alignRight="@id/indicator_piece2"
+        android:src="@drawable/arrow_indicator" />
+
+    <ImageView
+        android:id="@+id/indicator_piece2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/piece_one" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/indicator_divider"
+        android:fontFamily="@font/chopsic"
+        android:text="@string/player_2"
+        android:textColor="@color/black"
+        android:textSize="25sp"/>
+
 </RelativeLayout>
