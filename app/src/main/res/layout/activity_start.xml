@@ -53,6 +53,7 @@
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:background="@drawable/settings_button"
+        android:onClick="onSettingsClick"
         app:layout_constraintEnd_toStartOf="@+id/play_button"
         app:layout_constraintTop_toBottomOf="@+id/play_button"/>
 
