@@ -1,5 +1,6 @@
 package com.zybooks.connect4application;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +27,7 @@ public class OptionsActivity extends AppCompatActivity {
     }
 
     public void onColorSelected(View view) {
-        int colorId = R.color.secondary_player;
+        int colorId = R.drawable.red_piece;
         if (view.getId() == R.id.radio_red) {
             colorId = R.color.red;
         } else if (view.getId() == R.id.radio_orange) {
@@ -34,7 +35,9 @@ public class OptionsActivity extends AppCompatActivity {
         } else if (view.getId() == R.id.radio_green) {
             colorId = R.color.teal;
         }
-
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+        finish();
 
     }
 }
