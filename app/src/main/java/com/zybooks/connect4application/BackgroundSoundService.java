@@ -28,7 +28,4 @@ public class BackgroundSoundService extends Service {
         mediaPlayer.stop();
         mediaPlayer.release();
     }
-    @Override
-    public void onLowMemory() {
-    }
 }
