@@ -4,7 +4,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.ImageView;
 
 public class Settings {
     public static String PIECE_1_DATA = "key1";
