@@ -110,6 +110,7 @@
         android:layout_height="25dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
         android:src="@drawable/piece_red" />
 
     <TextView
@@ -142,6 +143,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
         android:src="@drawable/piece_red" />
 
     <TextView

@@ -34,12 +34,7 @@ public class OptionsActivity extends AppCompatActivity {
         circulatingImage();
 
         // change color of notification bar
-        if (Build.VERSION.SDK_INT >= 21) {
-            Window window = this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.theme2_black));
-        }
+        Miscellaneous.notificationBarColor(this);
     }
 
     public void circulatingImage(){
@@ -47,6 +42,7 @@ public class OptionsActivity extends AppCompatActivity {
             count1 ++;
 
             imageResource1 = countToImageResource(count1);
+            count1 = countReset(count1);
 
             Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource1);
             imageView1.setImageDrawable(drawable);
@@ -58,6 +54,7 @@ public class OptionsActivity extends AppCompatActivity {
             count2 ++;
 
             imageResource2 = countToImageResource(count2);
+            count2 = countReset(count2);
 
             Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource2);
             imageView2.setImageDrawable(drawable);
@@ -87,6 +84,13 @@ public class OptionsActivity extends AppCompatActivity {
             default:
                 return R.drawable.piece_red;
         }
+    }
+
+    private int countReset(int count) {
+        if (count == 6) {
+            count = 0;
+        }
+        return count;
     }
 
     public int imageResourceToCount(int pieceData) {
