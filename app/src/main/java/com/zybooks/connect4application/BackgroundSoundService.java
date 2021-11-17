@@ -23,6 +23,10 @@ public class BackgroundSoundService extends Service {
         mediaPlayer.start();
         return startId;
     }
+
+    public void onPause() {
+        mediaPlayer.pause();
+    }
     @Override
     public void onDestroy() {
         mediaPlayer.stop();
