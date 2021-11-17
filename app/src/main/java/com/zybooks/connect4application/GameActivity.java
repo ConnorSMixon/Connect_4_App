@@ -21,7 +21,7 @@ public class GameActivity extends AppCompatActivity {
     private Board board;
     private ViewHolder viewHolder;
     private final int NUM_ROWS = 6, NUM_COLS = 7;
-    private int piece1, piece2;
+    private int piece1, piece2, textColor1, textColor2;
 
     private static class ViewHolder {
         public TextView winnerText;
@@ -34,10 +34,12 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        // set piece color according to sharedPreference from OptionsActivity
-
+        // set piece color and text color according to sharedPreference from OptionsActivity
         piece1 = Settings.loadData(OptionsActivity.viewKey1, OptionsActivity.imageResource1, this);
         piece2 = Settings.loadData(OptionsActivity.viewKey2, OptionsActivity.imageResource2, this);
+
+        textColor1 = imageResourceToColor(piece1);
+        textColor2 = imageResourceToColor(piece2);
 
         // create board
         board = new Board(NUM_COLS, NUM_ROWS);
@@ -117,8 +119,9 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void win() {
-        int color = board.turn == Board.Turn.FIRST ? getResources().getColor(R.color.red)
-                : getResources().getColor(R.color.red);
+        int color = board.turn == Board.Turn.FIRST ? getResources().getColor(textColor1) :
+                getResources().getColor(textColor2);
+
         viewHolder.winnerText.setTextColor(color);
         viewHolder.winnerText.setVisibility(View.VISIBLE);
     }
@@ -167,6 +170,24 @@ public class GameActivity extends AppCompatActivity {
             for (int c = 0; c < NUM_COLS; c++) {
                 cells[r][c].setImageResource(android.R.color.transparent);
             }
+        }
+    }
+
+    private int imageResourceToColor(int piece) {
+        switch (piece) {
+            case R.drawable.piece_yellow:
+                return R.color.yellow;
+            case R.drawable.piece_orange:
+                return R.color.orange;
+            case R.drawable.piece_green:
+                return R.color.green;
+            case R.drawable.piece_blue:
+                return R.color.blue;
+            case R.drawable.piece_purple:
+                return R.color.purple;
+            case R.drawable.piece_red:
+            default:
+                return R.color.red;
         }
     }
 }

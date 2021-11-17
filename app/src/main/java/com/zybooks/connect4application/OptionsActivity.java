@@ -14,7 +14,7 @@ public class OptionsActivity extends AppCompatActivity {
 
     public static int imageResource1, imageResource2, count1, count2;
     public static String viewKey1 = "key1", viewKey2 = "key2";
-    private int pieceData1, pieceData2;
+    public static int pieceData1, pieceData2;
     private ImageView imageView1, imageView2;
 
     @Override
@@ -104,24 +104,6 @@ public class OptionsActivity extends AppCompatActivity {
             case R.drawable.piece_red:
             default:
                 return 0;
-        }
-    }
-
-    public static int imageResourceToColor(int pieceData) {
-        switch (pieceData) {
-            case R.drawable.piece_yellow:
-                return R.color.yellow;
-            case R.drawable.piece_orange:
-                return R.color.orange;
-            case R.drawable.piece_green:
-                return R.color.green;
-            case R.drawable.piece_blue:
-                return R.color.blue;
-            case R.drawable.piece_purple:
-                return R.color.purple;
-            case R.drawable.piece_red:
-            default:
-                return R.color.red;
         }
     }
 }
