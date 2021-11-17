@@ -24,6 +24,11 @@
             android:exported="true"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".OptionsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
         <service android:name=".BackgroundSoundService"/>
     </application>
 

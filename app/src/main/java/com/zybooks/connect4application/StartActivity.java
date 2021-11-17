@@ -13,16 +13,12 @@ public class StartActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
         // change notification bar color
-        if (Build.VERSION.SDK_INT >= 21) {
-            Window window = this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.black));
-        }
+        Miscellaneous.notificationBarColor(this);
 
         // play background music
         Intent intent = new Intent(this, BackgroundSoundService.class);
@@ -34,5 +30,30 @@ public class StartActivity extends AppCompatActivity{
 
         Intent play = new Intent(this, GameActivity.class);
         startActivity(play);
+    }
+
+    public void onOptionsClick(View view) {
+
+        Intent options = new Intent(this, OptionsActivity.class);
+        startActivity(options);
+    }
+    int isPaused = 0;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isPaused ++;
+
+        BackgroundSoundService.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isPaused ++;
+
+        if (isPaused > 1) {
+            BackgroundSoundService.onResume();
+        }
     }
 }

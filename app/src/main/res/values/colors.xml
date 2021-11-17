@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     // theme colors
-    <color name="blue">#62929E</color>
-    <color name="black">#393D3F</color>
-    <color name="white">#FDFDFF</color>
+    <color name="theme1.blue">#62929E</color>
+    <color name="theme2.black">#393D3F</color>
+    <color name="theme3.white">#FDFDFF</color>
 
-    //message colors
-    <color name="secondary_player">#FFFFC002</color>
-    <color name="primary_player">#FFDB0000</color>
-
-    // piece gradient colors
-    <color name="primary_red">#FFDB0000</color>
-    <color name="secondary_red">#FF540303</color>
-
-    <color name="primary_yellow">#FFFFC002</color>
-    <color name="secondary_yellow">#FF795B04</color>
+    // piece colors
+    <color name="red">#FF980202</color>
+    <color name="orange">#FFB26008</color>
+    <color name="yellow">#FFBC8E03</color>
+    <color name="green">#FF39751F</color>
+    <color name="blue">#FF215ABC</color>
+    <color name="purple">#FF361E74</color>
 
 </resources>
