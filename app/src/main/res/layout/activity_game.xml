@@ -116,11 +116,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:autoSizeTextType="uniform"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
         android:layout_toLeftOf="@id/indicator_divider"
         android:layout_toRightOf="@id/indicator_piece1"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/chopsic"
         android:text="@string/player_1"
         android:textAlignment="center"

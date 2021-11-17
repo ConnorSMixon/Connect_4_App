@@ -7,10 +7,11 @@ import android.content.SharedPreferences;
 import android.widget.ImageView;
 
 public class Settings {
+    public static String PIECE_1_DATA = "key1";
+    public static String PIECE_2_DATA = "key2";
+    public static String SHARED_PREFS = "connect_4_app_shared_prefs";
 
-    public static String SHARED_PREFS;
-    
-    public static void saveIntData(String string, int value, Context context) {
+    public static void saveGamePiece(String string, int value, Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -19,12 +20,8 @@ public class Settings {
         editor.apply();
     }
 
-    public static int loadData(String string, int value, Context context) {
+    public static int loadGamePiece(String string, Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        return sharedPreferences.getInt(string, value);
-    }
-
-    public static void updateViews(ImageView imageView, int data) {
-        imageView.setImageResource(data);
+        return sharedPreferences.getInt(string, R.drawable.piece_red);
     }
 }

@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.zybooks.connect4application.utils.GamePieceHelper;
 
 
 public class GameActivity extends AppCompatActivity {
@@ -32,11 +36,11 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         // set piece color and text color according to sharedPreference from OptionsActivity
-        piece1 = Settings.loadData(OptionsActivity.viewKey1, OptionsActivity.imageResource1, this);
-        piece2 = Settings.loadData(OptionsActivity.viewKey2, OptionsActivity.imageResource2, this);
+        piece1 = Settings.loadGamePiece(Settings.PIECE_1_DATA, this);
+        piece2 = Settings.loadGamePiece(Settings.PIECE_2_DATA, this);
 
-        textColor1 = imageResourceToColor(piece1);
-        textColor2 = imageResourceToColor(piece2);
+        textColor1 = GamePieceHelper.imageResourceToColor(piece1);
+        textColor2 = GamePieceHelper.imageResourceToColor(piece2);
 
         // create board
         board = new Board(NUM_COLS, NUM_ROWS);
@@ -71,9 +75,11 @@ public class GameActivity extends AppCompatActivity {
         viewHolder.winnerText = (TextView) findViewById(R.id.winner_text);
         viewHolder.winnerText.setVisibility(View.GONE);
 
-        // miscellaneous tasks
         // change color or notification bar
-        Miscellaneous.notificationBarColor(this);
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.theme2_black));
     }
 
     private void buildCells() {
@@ -133,7 +139,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private int resourceForPiece() {
-        if (board.turn == board.turn.FIRST) {
+        if (board.turn == Board.Turn.FIRST) {
             return piece1;
         } else {
             return piece2;
@@ -146,7 +152,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void visibilityForTurnIndicator() {
-        if (board.turn == board.turn.FIRST) {
+        if (board.turn == Board.Turn.FIRST) {
             viewHolder.arrowTurnIndicatorImageView1.setVisibility(View.VISIBLE);
             viewHolder.arrowTurnIndicatorImageView2.setVisibility(View.INVISIBLE);
         } else {
@@ -163,24 +169,6 @@ public class GameActivity extends AppCompatActivity {
             for (int c = 0; c < NUM_COLS; c++) {
                 cells[r][c].setImageResource(android.R.color.transparent);
             }
-        }
-    }
-
-    private int imageResourceToColor(int piece) {
-        switch (piece) {
-            case R.drawable.piece_yellow:
-                return R.color.yellow;
-            case R.drawable.piece_orange:
-                return R.color.orange;
-            case R.drawable.piece_green:
-                return R.color.green;
-            case R.drawable.piece_blue:
-                return R.color.blue;
-            case R.drawable.piece_purple:
-                return R.color.purple;
-            case R.drawable.piece_red:
-            default:
-                return R.color.red;
         }
     }
 }
