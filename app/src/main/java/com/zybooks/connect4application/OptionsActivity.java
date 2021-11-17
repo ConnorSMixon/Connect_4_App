@@ -50,7 +50,7 @@ public class OptionsActivity extends AppCompatActivity {
             // increment count
             count1 ++;
             // check if we need to reset the count.
-            if(count1 >= GamePieceHelper.numberOfGamePieces() - 1) {
+            if(count1 >= GamePieceHelper.numberOfGamePieces()) {
                 count1 = 0;
             }
 
@@ -63,7 +63,7 @@ public class OptionsActivity extends AppCompatActivity {
         imageView2.setOnClickListener(view -> {
             int imageResource = GamePieceHelper.countToImageResource(count2);
             count2 ++;
-            if(count2 >= GamePieceHelper.numberOfGamePieces() - 1) {
+            if(count2 >= GamePieceHelper.numberOfGamePieces()) {
                 count2 = 0;
             }
             Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
