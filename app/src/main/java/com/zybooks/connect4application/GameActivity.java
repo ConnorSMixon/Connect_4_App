@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,12 +21,15 @@ public class GameActivity extends AppCompatActivity {
     private View boardView;
     private Board board;
     private ViewHolder viewHolder;
-    private static int NUM_ROWS = 6;
-    private static int NUM_COLS = 7;
+    private final int NUM_ROWS = 6;
+    private final int NUM_COLS = 7;
+    private int piece_one;
+    private int piece_two;
 
-    private class ViewHolder {
+    private static class ViewHolder {
         public TextView winnerText;
-        public ImageView turnIndicatorImageView;
+        public ImageView turnIndicatorImageView1;
+        public ImageView turnIndicatorImageView2;
     }
 
     @Override
@@ -51,8 +53,9 @@ public class GameActivity extends AppCompatActivity {
         Button resetButton = findViewById(R.id.reset_button);
         resetButton.setOnClickListener(view -> reset());
         viewHolder = new ViewHolder();
-        viewHolder.turnIndicatorImageView = (ImageView) findViewById(R.id.turn_indicator_image_view);
-        viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
+        viewHolder.turnIndicatorImageView1 = (ImageView) findViewById(R.id.turn_indicator_image_view1);
+        viewHolder.turnIndicatorImageView2 = (ImageView) findViewById(R.id.turn_indicator_image_view2);
+        resourceForIndicator();
         viewHolder.winnerText = (TextView) findViewById(R.id.winner_text);
         viewHolder.winnerText.setVisibility(View.GONE);
 
@@ -62,14 +65,6 @@ public class GameActivity extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.black));
         }
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.game, menu);
-        return true;
     }
 
     @Override
@@ -120,14 +115,15 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void win() {
-        int color = board.turn == Board.Turn.FIRST ? getResources().getColor(R.color.primary_player) : getResources().getColor(R.color.secondary_player);
+        int color = board.turn == Board.Turn.FIRST ? getResources().getColor(R.color.primary_player)
+                : getResources().getColor(R.color.secondary_player);
         viewHolder.winnerText.setTextColor(color);
         viewHolder.winnerText.setVisibility(View.VISIBLE);
     }
 
     private void changeTurn() {
         board.toggleTurn();
-        viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
+        resourceForIndicator();
     }
 
     private int colAtX(float x) {
@@ -141,17 +137,28 @@ public class GameActivity extends AppCompatActivity {
     private int resourceForTurn() {
         switch (board.turn) {
             case FIRST:
-                return R.drawable.red_piece;
+                return R.drawable.piece_red;
             case SECOND:
-                return R.drawable.yellow_piece;
+                return R.drawable.piece_yellow;
         }
-        return R.drawable.red_piece;
+        return R.drawable.piece_red;
+    }
+
+    private void resourceForIndicator() {
+        if(board.turn == board.turn.FIRST) {
+            viewHolder.turnIndicatorImageView1.setVisibility(View.VISIBLE);
+            viewHolder.turnIndicatorImageView2.setVisibility(View.INVISIBLE);
+        }
+        else {
+            viewHolder.turnIndicatorImageView2.setVisibility(View.VISIBLE);
+            viewHolder.turnIndicatorImageView1.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void reset() {
         board.reset();
         viewHolder.winnerText.setVisibility(View.GONE);
-        viewHolder.turnIndicatorImageView.setImageResource(resourceForTurn());
+        resourceForIndicator();
         for (int r = 0; r < NUM_ROWS; r++) {
             for (int c = 0; c < NUM_COLS; c++) {
                 cells[r][c].setImageResource(android.R.color.transparent);

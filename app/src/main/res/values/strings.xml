@@ -29,4 +29,11 @@
     <string name="yes">Yes</string>
     <string name="question_mark">\?</string>
     <string name="help">Confused How To Play?</string>
+    <string name="question">"?"</string>
+    <string name="reset">reset</string>
+    <string name="winner_message">winner!</string>
+    <string name="player_1">Player 1</string>
+    <string name="player_2">Player 2</string>
+    <string name="action_settings">Settings</string>
+    <string name="choose_color">Choose Color</string>
 </resources>

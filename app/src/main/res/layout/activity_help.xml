@@ -27,11 +27,11 @@
         android:id="@+id/questionMarkImage"
         android:name="questionMarkImage"
         android:layout_width="600dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="112dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="136dp"
         android:background="@drawable/ic_question_mark_button"
         app:layout_constraintBaseline_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,31 +40,26 @@
         android:id="@+id/help_fragment_more_information"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="@color/transparent"
+        android:onClick="onNeedHelpClick"
         android:text="I Need More Information"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@id/questionMarkImage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints"
-        android:onClick="onNeedHelpClick"
-         />
+        tools:layout_editor_absoluteX="dp" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/transparent"
-        android:text="I Don't Need Help!"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="640dp"
-        tools:ignore="MissingConstraints"
-        app:layout_constraintTop_toBottomOf="@id/help_fragment_more_information"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:onClick="onNeedNoHelpClick"
+        android:text="I Don't Need Help!"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/help_fragment_more_information"
+        tools:layout_editor_absoluteX="0dp"
         />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
