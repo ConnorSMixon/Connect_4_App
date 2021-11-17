@@ -75,17 +75,17 @@
         android:paddingBottom="16dp"
         tools:context=".GameActivity">
 
-        <include layout="@layout/top_board_row" />
+        <include layout="@layout/row_board_top" />
 
-        <include layout="@layout/middle_board_row" />
+        <include layout="@layout/row_board_middle" />
 
-        <include layout="@layout/middle_board_row" />
+        <include layout="@layout/row_board_middle" />
 
-        <include layout="@layout/middle_board_row" />
+        <include layout="@layout/row_board_middle" />
 
-        <include layout="@layout/middle_board_row" />
+        <include layout="@layout/row_board_middle" />
 
-        <include layout="@layout/bottom_board_row" />
+        <include layout="@layout/row_board_bottom" />
     </LinearLayout>
 
     <ImageView
@@ -123,7 +123,7 @@
         android:fontFamily="@font/chopsic"
         android:text="@string/player_1"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/theme2.black"
         android:textSize="25sp" />
 
     <ImageView
@@ -147,15 +147,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:autoSizeTextType="uniform"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
         android:layout_toLeftOf="@+id/indicator_piece2"
         android:layout_toRightOf="@id/indicator_divider"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/chopsic"
         android:text="@string/player_2"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/theme2.black"
         android:textSize="25sp" />
 
 </RelativeLayout>

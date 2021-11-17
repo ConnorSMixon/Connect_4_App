@@ -9,73 +9,52 @@
     android:background="@drawable/gradient_background">
 
     <TextView
-        android:id="@+id/choose_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        android:gravity="center"
-        android:text="@string/choose_color"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/radio_red"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="8dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/chopsic"
+        android:text="@string/player_1"
+        app:layout_constraintBottom_toTopOf="@+id/piece1_selector"
+        app:layout_constraintEnd_toEndOf="@+id/piece1_selector"
+        app:layout_constraintStart_toStartOf="@+id/piece1_selector" />
+
+    <ImageView
+        android:id="@+id/piece1_selector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/piece_red"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintWidth_percent=".25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias=".9"
+        app:layout_constraintHorizontal_bias=".2"/>
 
-    <Button
-        android:id="@+id/radio_red"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/red"
-        android:onClick="onColorSelected"
-        app:layout_constraintTop_toBottomOf="@id/choose_color"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player_2"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/chopsic"
+        app:layout_constraintLeft_toLeftOf="@id/piece2_selector"
+        app:layout_constraintRight_toRightOf="@id/piece2_selector"
+        app:layout_constraintBottom_toTopOf="@id/piece2_selector"/>
 
-    <Button
-        android:id="@+id/radio_orange"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-
-        android:backgroundTint="@color/orange"
-        android:onClick="onColorSelected"
-        tools:ignore="MissingConstraints"
-        app:layout_constraintTop_toBottomOf="@id/radio_red"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <Button
-        android:id="@+id/radio_green"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/green"
-        android:onClick="onColorSelected"
-        app:layout_constraintTop_toBottomOf="@id/radio_orange"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <Button
-        android:id="@+id/radio_purple"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/purple"
-        android:onClick="onColorSelected"
-        app:layout_constraintTop_toBottomOf="@id/radio_green"
-        app:layout_constraintLeft_toLeftOf="parent" />
-    <Button
-        android:id="@+id/radio_yellow"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/secondary_player"
-        android:onClick="onColorSelected"
-        app:layout_constraintTop_toBottomOf="@id/radio_purple"
-        app:layout_constraintLeft_toLeftOf="parent" />
-    <Button
-        android:id="@+id/radio_blue"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/teal"
-        android:onClick="onColorSelected"
-        app:layout_constraintTop_toBottomOf="@id/radio_yellow"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    <ImageView
+        android:id="@+id/piece2_selector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/piece_yellow"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintWidth_percent=".25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias=".9"
+        app:layout_constraintHorizontal_bias=".8"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
