@@ -49,30 +49,13 @@ public class GamePieceHelper {
     }
 
     public static int checkForDuplicates(int count1, int count2) {
-        if (count1 == indexLogicForDuplicateCheck(count2) && count1 == 5) {
-            count1 = 1;
-        } else if (count1 == indexLogicForDuplicateCheck(count2)) {
-            count1 = count1 + 2;
-        } else if (count1 != indexLogicForDuplicateCheck(count2)){
-            count1++;
+        if (count1 == count2) {
+            if (count1 == 5) {
+                count1 = 0;
+            } else {
+                count1++;
+            }
         }
         return count1;
-    }
-
-    public static int indexLogicForDuplicateCheck(int count) {
-        if (count == 0) {
-            count = 5;
-        } else if (count == 1) {
-            count = 0;
-        } else if (count == 2) {
-            count = 1;
-        } else if (count == 3) {
-            count = 2;
-        } else if (count == 4) {
-            count = 3;
-        } else if (count == 5) {
-            count = 4;
-        }
-        return count;
     }
 }

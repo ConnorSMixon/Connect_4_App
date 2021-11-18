@@ -45,12 +45,15 @@ public class OptionsActivity extends AppCompatActivity {
 
     public void circulatingImage(){
         imageView1.setOnClickListener(view -> {
-            // get the resource
-            count1 ++;
             // increment count
-            if(count1 == GamePieceHelper.numberOfGamePieces()) {
+            count1 ++;
+            // check if reset is needed
+            if (count1 == GamePieceHelper.numberOfGamePieces()) {
                 count1 = 0;
             }
+            // check for duplicates and resolve if needed
+            count1 = GamePieceHelper.checkForDuplicates(count1, count2);
+            // get the resource
             int imageResource = GamePieceHelper.countToImageResource(count1);
             // check if we need to reset the count.
 
@@ -63,10 +66,11 @@ public class OptionsActivity extends AppCompatActivity {
 
         imageView2.setOnClickListener(view -> {
             count2 ++;
-            int imageResource = GamePieceHelper.countToImageResource(count2);
             if(count2 == GamePieceHelper.numberOfGamePieces()) {
                 count2 = 0;
             }
+            count2 = GamePieceHelper.checkForDuplicates(count2, count1);
+            int imageResource = GamePieceHelper.countToImageResource(count2);
             Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
             imageView2.setImageDrawable(drawable);
 
