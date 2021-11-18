@@ -20,8 +20,8 @@ public class Settings {
         editor.apply();
     }
 
-    public static int loadInt(String string, Context context) {
+    public static int loadInt(String string, int defaultPiece, Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        return sharedPreferences.getInt(string, R.drawable.piece_red);
+        return sharedPreferences.getInt(string, defaultPiece);
     }
 }

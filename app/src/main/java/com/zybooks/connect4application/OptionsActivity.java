@@ -2,8 +2,6 @@ package com.zybooks.connect4application;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,8 +24,8 @@ public class OptionsActivity extends AppCompatActivity {
         imageView1 = findViewById(R.id.piece1_selector);
         imageView2 = findViewById(R.id.piece2_selector);
 
-        pieceData1 = Settings.loadInt(Settings.PIECE_1_DATA, this);
-        pieceData2 = Settings.loadInt(Settings.PIECE_2_DATA, this);
+        pieceData1 = Settings.loadInt(Settings.PIECE_1_DATA, R.drawable.piece_red, this);
+        pieceData2 = Settings.loadInt(Settings.PIECE_2_DATA, R.drawable.piece_yellow, this);
 
         imageView1.setImageResource(pieceData1);
         imageView2.setImageResource(pieceData2);

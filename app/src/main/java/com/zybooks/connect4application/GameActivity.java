@@ -34,8 +34,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         // set piece color and text color according to sharedPreference from OptionsActivity
-        piece1 = Settings.loadInt(Settings.PIECE_1_DATA, this);
-        piece2 = Settings.loadInt(Settings.PIECE_2_DATA, this);
+        piece1 = Settings.loadInt(Settings.PIECE_1_DATA, R.drawable.piece_red, this);
+        piece2 = Settings.loadInt(Settings.PIECE_2_DATA, R.drawable.piece_yellow, this);
 
         textColor1 = GamePieceHelper.imageResourceToColor(piece1);
         textColor2 = GamePieceHelper.imageResourceToColor(piece2);
