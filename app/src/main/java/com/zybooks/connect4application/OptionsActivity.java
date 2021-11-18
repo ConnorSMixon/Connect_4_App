@@ -37,6 +37,10 @@ public class OptionsActivity extends AppCompatActivity {
 
         // change color of notification bar
         Miscellaneous.setNotificationBarColor(this);
+
+        // on click listener for up button
+        ImageView upButton = findViewById(R.id.activityOptionsBackArrow);
+        Miscellaneous.previousActivity(upButton, this);
     }
 
     public void circulatingImage(){

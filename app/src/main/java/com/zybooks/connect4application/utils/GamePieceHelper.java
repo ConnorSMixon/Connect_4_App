@@ -44,7 +44,7 @@ public class GamePieceHelper {
     }
 
     public static @ColorRes int imageResourceToColor(@DrawableRes int imageResource) {
-        int index = imageResourceToCount(imageResource) - 1;
+        int index = imageResourceToCount(imageResource);
         return GAME_PIECE_COLORS[index];
     }
 
