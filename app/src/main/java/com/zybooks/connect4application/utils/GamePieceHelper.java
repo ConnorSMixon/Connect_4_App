@@ -5,6 +5,8 @@ import androidx.annotation.DrawableRes;
 
 import com.zybooks.connect4application.R;
 
+import java.lang.reflect.Array;
+
 public class GamePieceHelper {
 
     public static int[] GAME_PIECE_DRAWABLES = {
@@ -44,8 +46,35 @@ public class GamePieceHelper {
     }
 
     public static @ColorRes int imageResourceToColor(@DrawableRes int imageResource) {
-        int index = imageResourceToCount(imageResource);
+        int index = imageResourceToCount(imageResource) - 1;
         return GAME_PIECE_COLORS[index];
     }
-}
 
+    public static int checkForDuplicates(int count1, int count2) {
+        if (count1 == indexLogicForCount(count2) && count1 == 5) {
+            count1 = 1;
+        } else if (count1 == indexLogicForCount(count2)) {
+            count1 = count1 + 2;
+        } else if (count1 != indexLogicForCount(count2)){
+            count1++;
+        }
+        return count1;
+    }
+
+    public static int indexLogicForCount(int count) {
+        if (count == 0) {
+            count = 5;
+        } else if (count == 1) {
+            count = 0;
+        } else if (count == 2) {
+            count = 1;
+        } else if (count == 3) {
+            count = 2;
+        } else if (count == 4) {
+            count = 3;
+        } else if (count == 5) {
+            count = 4;
+        }
+        return count;
+    }
+}

@@ -26,8 +26,8 @@ public class OptionsActivity extends AppCompatActivity {
         imageView1 = findViewById(R.id.piece1_selector);
         imageView2 = findViewById(R.id.piece2_selector);
 
-        int pieceData1 = Settings.loadGamePiece(Settings.PIECE_1_DATA, this);
-        int pieceData2 = Settings.loadGamePiece(Settings.PIECE_2_DATA, this);
+        pieceData1 = Settings.loadInt(Settings.PIECE_1_DATA, this);
+        pieceData2 = Settings.loadInt(Settings.PIECE_2_DATA, this);
 
         imageView1.setImageResource(pieceData1);
         imageView2.setImageResource(pieceData2);
@@ -41,31 +41,31 @@ public class OptionsActivity extends AppCompatActivity {
 
     public void circulatingImage(){
         imageView1.setOnClickListener(view -> {
+            // increment count and check for duplicate pieces
+            count1 = GamePieceHelper.checkForDuplicates(count1, count2);
             // get the resource
             int imageResource = GamePieceHelper.countToImageResource(count1);
-            // increment count
-            count1 ++;
             // check if we need to reset the count.
-            if(count1 >= GamePieceHelper.numberOfGamePieces() - 1) {
+            if(count1 > GamePieceHelper.numberOfGamePieces() - 1) {
                 count1 = 0;
             }
 
             Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
             imageView1.setImageDrawable(drawable);
 
-            Settings.saveGamePiece(Settings.PIECE_1_DATA, imageResource, this);
+            Settings.saveInt(Settings.PIECE_1_DATA, imageResource, this);
         });
 
         imageView2.setOnClickListener(view -> {
+            count2 = GamePieceHelper.checkForDuplicates(count2, count1);
             int imageResource = GamePieceHelper.countToImageResource(count2);
-            count2 ++;
-            if(count2 >= GamePieceHelper.numberOfGamePieces() - 1) {
+            if(count2 > GamePieceHelper.numberOfGamePieces() - 1) {
                 count2 = 0;
             }
             Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
             imageView2.setImageDrawable(drawable);
 
-            Settings.saveGamePiece(Settings.PIECE_2_DATA, imageResource, this);
+            Settings.saveInt(Settings.PIECE_2_DATA, imageResource, this);
         });
     }
 
@@ -74,6 +74,3 @@ public class OptionsActivity extends AppCompatActivity {
         count2 = GamePieceHelper.imageResourceToCount(pieceData2);
     }
 }
-
-
-
