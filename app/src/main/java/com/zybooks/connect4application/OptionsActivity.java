@@ -2,6 +2,8 @@ package com.zybooks.connect4application;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,22 +37,19 @@ public class OptionsActivity extends AppCompatActivity {
 
         // change color of notification bar
         Miscellaneous.setNotificationBarColor(this);
-
-        // on click listener for up button
-        ImageView upButton = findViewById(R.id.activityOptionsBackArrow);
-        Miscellaneous.previousActivity(upButton,this);
     }
 
     public void circulatingImage(){
         imageView1.setOnClickListener(view -> {
-            // increment count and check for duplicate pieces
-            count1 = GamePieceHelper.checkForDuplicates(count1, count2);
             // get the resource
-            int imageResource = GamePieceHelper.countToImageResource(count1);
-            // check if we need to reset the count.
-            if(count1 > GamePieceHelper.numberOfGamePieces() - 1) {
+            count1 ++;
+            // increment count
+            if(count1 == GamePieceHelper.numberOfGamePieces()) {
                 count1 = 0;
             }
+            int imageResource = GamePieceHelper.countToImageResource(count1);
+            // check if we need to reset the count.
+
 
             Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
             imageView1.setImageDrawable(drawable);
@@ -59,9 +58,9 @@ public class OptionsActivity extends AppCompatActivity {
         });
 
         imageView2.setOnClickListener(view -> {
-            count2 = GamePieceHelper.checkForDuplicates(count2, count1);
+            count2 ++;
             int imageResource = GamePieceHelper.countToImageResource(count2);
-            if(count2 > GamePieceHelper.numberOfGamePieces() - 1) {
+            if(count2 == GamePieceHelper.numberOfGamePieces()) {
                 count2 = 0;
             }
             Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
@@ -76,3 +75,6 @@ public class OptionsActivity extends AppCompatActivity {
         count2 = GamePieceHelper.imageResourceToCount(pieceData2);
     }
 }
+
+
+
