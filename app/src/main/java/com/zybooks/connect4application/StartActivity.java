@@ -14,8 +14,8 @@ public class StartActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        // change notification bar color
-        Miscellaneous.notificationBarColor(this);
+        // change notification bar color and action bar display
+        Miscellaneous.setNotificationBarColor(this);
 
         // play background music
         Intent intent = new Intent(this, BackgroundSoundService.class);

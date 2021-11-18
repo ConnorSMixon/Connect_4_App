@@ -1,7 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
     android:background="@drawable/gradient_background">
 
     <Button
@@ -14,10 +13,14 @@
         android:text="@string/reset" />
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
+        android:id="@+id/gameActivityBackArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="2.5"
+        android:scaleY="2.5"
+        android:layout_margin="10dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@drawable/arrow_back" />
 
     <TextView

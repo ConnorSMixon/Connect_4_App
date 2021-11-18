@@ -2,8 +2,6 @@ package com.zybooks.connect4application;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +34,11 @@ public class OptionsActivity extends AppCompatActivity {
         circulatingImage();
 
         // change color of notification bar
-        Miscellaneous.notificationBarColor(this);
+        Miscellaneous.setNotificationBarColor(this);
+
+        // on click listener for up button
+        ImageView upButton = findViewById(R.id.activityOptionsBackArrow);
+        Miscellaneous.previousActivity(upButton,this);
     }
 
     public void circulatingImage(){

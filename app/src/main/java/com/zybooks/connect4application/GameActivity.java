@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -60,23 +58,27 @@ public class GameActivity extends AppCompatActivity {
         Button resetButton = findViewById(R.id.reset_button);
         resetButton.setOnClickListener(view -> reset());
 
-        // changes color of piece turn indicator
+        // change color of piece turn indicator
         viewHolder = new ViewHolder();
         viewHolder.pieceTurnIndicatorImageView1 = (ImageView) findViewById(R.id.indicator_piece1);
         viewHolder.pieceTurnIndicatorImageView2 = (ImageView) findViewById(R.id.indicator_piece2);
         resourceForPieceIndicator();
 
-        // changes visibility of arrow turn indicator
+        // change visibility of arrow turn indicator
         viewHolder.arrowTurnIndicatorImageView1 = (ImageView) findViewById(R.id.turn_indicator_image_view1);
         viewHolder.arrowTurnIndicatorImageView2 = (ImageView) findViewById(R.id.turn_indicator_image_view2);
         visibilityForTurnIndicator();
 
-        // changes visibility of winner message
+        // change visibility of winner message
         viewHolder.winnerText = (TextView) findViewById(R.id.winner_text);
         viewHolder.winnerText.setVisibility(View.GONE);
 
         // change color or notification bar
-        Miscellaneous.notificationBarColor(this);
+        Miscellaneous.setNotificationBarColor(this);
+
+        // on click listener for up button
+        ImageView upButton = findViewById(R.id.gameActivityBackArrow);
+        Miscellaneous.previousActivity(upButton, this);
     }
 
     private void buildCells() {
