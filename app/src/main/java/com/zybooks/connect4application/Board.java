@@ -52,13 +52,17 @@ public class Board {
 
     public boolean checkForWin(int c, int r) {
         for (int col = 0; col < numCols; col++) {
-            if (isContiguous(turn, 0, 1, col, 0, 0) || isContiguous(turn, 1, 1, col, 0, 0) || isContiguous(turn, -1, 1, col, 0, 0)) {
+            if (isContiguous(turn, 0, 1, col, 0, 0) ||
+                    isContiguous(turn, 1, 1, col, 0, 0) ||
+                    isContiguous(turn, -1, 1, col, 0, 0)) {
                 hasWinner = true;
                 return true;
             }
         }
         for (int row = 0; row < numRows; row++) {
-            if (isContiguous(turn, 1, 0, 0, row, 0) || isContiguous(turn, 1, 1, 0, row, 0) || isContiguous(turn, -1, 1, numCols - 1, row, 0)) {
+            if (isContiguous(turn, 1, 0, 0, row, 0) ||
+                    isContiguous(turn, 1, 1, 0, row, 0) ||
+                    isContiguous(turn, -1, 1, numCols - 1, row, 0)) {
                 hasWinner = true;
                 return true;
             }

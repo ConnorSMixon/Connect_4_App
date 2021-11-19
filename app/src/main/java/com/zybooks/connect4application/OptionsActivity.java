@@ -1,44 +1,88 @@
 package com.zybooks.connect4application;
 
-import android.content.Intent;
-import android.os.Build;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+import com.zybooks.connect4application.utils.GamePieceHelper;
 
 public class OptionsActivity extends AppCompatActivity {
+    public static int count1 = 0;
+    public static int count2 = 0;
+
+    public static int pieceData1, pieceData2;
+    private ImageView imageView1, imageView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
+        imageView1 = findViewById(R.id.piece1_selector);
+        imageView2 = findViewById(R.id.piece2_selector);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            Window window = this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.black));
-        }
+        pieceData1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this);
+        pieceData2 = SavedData.loadInt(SavedData.PIECE_2_DATA, R.drawable.piece_yellow, this);
 
+        imageView1.setImageResource(pieceData1);
+        imageView2.setImageResource(pieceData2);
+
+        findDisplayedImage();
+        circulatingImage();
+
+        // change color of notification bar
+        Miscellaneous.setNotificationBarColor(this);
+
+        // on click listener for up button
+        ImageView upButton = findViewById(R.id.activityOptionsBackArrow);
+        Miscellaneous.previousActivity(upButton, this);
     }
 
-    public void onColorSelected(View view) {
-        int colorId = R.drawable.piece_red;
-        if (view.getId() == R.id.radio_red) {
-            colorId = R.color.red;
-        } else if (view.getId() == R.id.radio_orange) {
-            colorId = R.color.orange;
-        } else if (view.getId() == R.id.radio_green) {
-            colorId = R.color.teal;
-        }
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
-        finish();
+    public void circulatingImage(){
+        imageView1.setOnClickListener(view -> {
+            // increment count
+            count1 ++;
+            // check if reset is needed
+            if (count1 == GamePieceHelper.numberOfGamePieces()) {
+                count1 = 0;
+            }
+            // check for duplicates and resolve if needed
+            count1 = GamePieceHelper.checkForDuplicates(count1, count2);
+            // get the resource
+            int imageResource = GamePieceHelper.countToImageResource(count1);
+            // check if we need to reset the count.
 
+
+            Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
+            imageView1.setImageDrawable(drawable);
+            Animation.bounceAnimation(imageView1, this);
+
+            SavedData.saveInt(SavedData.PIECE_1_DATA, imageResource, this);
+        });
+
+        imageView2.setOnClickListener(view -> {
+            count2 ++;
+            if(count2 == GamePieceHelper.numberOfGamePieces()) {
+                count2 = 0;
+            }
+            count2 = GamePieceHelper.checkForDuplicates(count2, count1);
+            int imageResource = GamePieceHelper.countToImageResource(count2);
+            Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
+            imageView2.setImageDrawable(drawable);
+            Animation.bounceAnimation(imageView2, this);
+
+            SavedData.saveInt(SavedData.PIECE_2_DATA, imageResource, this);
+        });
+    }
+
+    public void findDisplayedImage() {
+        count1 = GamePieceHelper.imageResourceToCount(pieceData1);
+        count2 = GamePieceHelper.imageResourceToCount(pieceData2);
     }
 }
 
