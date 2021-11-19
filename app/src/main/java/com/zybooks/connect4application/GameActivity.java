@@ -2,17 +2,18 @@ package com.zybooks.connect4application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.zybooks.connect4application.utils.GamePieceHelper;
 
 
 public class GameActivity extends AppCompatActivity {
@@ -35,11 +36,11 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         // set piece color and text color according to sharedPreference from OptionsActivity
-        piece1 = Settings.loadData(OptionsActivity.viewKey1, OptionsActivity.imageResource1, this);
-        piece2 = Settings.loadData(OptionsActivity.viewKey2, OptionsActivity.imageResource2, this);
+        piece1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this);
+        piece2 = SavedData.loadInt(SavedData.PIECE_2_DATA, R.drawable.piece_yellow, this);
 
-        textColor1 = imageResourceToColor(piece1);
-        textColor2 = imageResourceToColor(piece2);
+        textColor1 = GamePieceHelper.imageResourceToColor(piece1);
+        textColor2 = GamePieceHelper.imageResourceToColor(piece2);
 
         // create board
         board = new Board(NUM_COLS, NUM_ROWS);
@@ -59,24 +60,27 @@ public class GameActivity extends AppCompatActivity {
         Button resetButton = findViewById(R.id.reset_button);
         resetButton.setOnClickListener(view -> reset());
 
-        // changes color of piece turn indicator
+        // change color of piece turn indicator
         viewHolder = new ViewHolder();
         viewHolder.pieceTurnIndicatorImageView1 = (ImageView) findViewById(R.id.indicator_piece1);
         viewHolder.pieceTurnIndicatorImageView2 = (ImageView) findViewById(R.id.indicator_piece2);
         resourceForPieceIndicator();
 
-        // changes visibility of arrow turn indicator
+        // change visibility of arrow turn indicator
         viewHolder.arrowTurnIndicatorImageView1 = (ImageView) findViewById(R.id.turn_indicator_image_view1);
         viewHolder.arrowTurnIndicatorImageView2 = (ImageView) findViewById(R.id.turn_indicator_image_view2);
         visibilityForTurnIndicator();
 
-        // changes visibility of winner message
+        // change visibility of winner message
         viewHolder.winnerText = (TextView) findViewById(R.id.winner_text);
         viewHolder.winnerText.setVisibility(View.GONE);
 
-        // miscellaneous tasks
         // change color or notification bar
-        Miscellaneous.notificationBarColor(this);
+        Miscellaneous.setNotificationBarColor(this);
+
+        // on click listener for up button
+        ImageView upButton = findViewById(R.id.gameActivityBackArrow);
+        Miscellaneous.previousActivity(upButton, this);
     }
 
     private void buildCells() {
@@ -102,10 +106,13 @@ public class GameActivity extends AppCompatActivity {
         float move = -(cell.getHeight() * row + cell.getHeight() + 15);
         cell.setY(move);
         cell.setImageResource(resourceForPiece());
+
         TranslateAnimation anim = new TranslateAnimation(0, 0, 0, Math.abs(move));
-        anim.setDuration(850);
+        anim.setInterpolator(new BounceInterpolator());
         anim.setFillAfter(true);
+        anim.setDuration(1100);
         cell.startAnimation(anim);
+
         board.occupyCell(col, row);
         if (board.checkForWin(col, row)) {
             win();
@@ -136,7 +143,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private int resourceForPiece() {
-        if (board.turn == board.turn.FIRST) {
+        if (board.turn == Board.Turn.FIRST) {
             return piece1;
         } else {
             return piece2;
@@ -149,7 +156,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void visibilityForTurnIndicator() {
-        if (board.turn == board.turn.FIRST) {
+        if (board.turn == Board.Turn.FIRST) {
             viewHolder.arrowTurnIndicatorImageView1.setVisibility(View.VISIBLE);
             viewHolder.arrowTurnIndicatorImageView2.setVisibility(View.INVISIBLE);
         } else {
@@ -168,23 +175,4 @@ public class GameActivity extends AppCompatActivity {
             }
         }
     }
-
-    private int imageResourceToColor(int piece) {
-        switch (piece) {
-            case R.drawable.piece_yellow:
-                return R.color.yellow;
-            case R.drawable.piece_orange:
-                return R.color.orange;
-            case R.drawable.piece_green:
-                return R.color.green;
-            case R.drawable.piece_blue:
-                return R.color.blue;
-            case R.drawable.piece_purple:
-                return R.color.purple;
-            case R.drawable.piece_red:
-            default:
-                return R.color.red;
-        }
-    }
 }
-
