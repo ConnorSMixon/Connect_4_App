@@ -24,16 +24,18 @@ public class StartActivity extends AppCompatActivity{
 
     // activity methods
     public void onPlayClick(View view) {
-
         Intent play = new Intent(this, GameActivity.class);
         startActivity(play);
+        overridePendingTransition(R.anim.enter_left, R.anim.exit_left);
     }
 
     public void onOptionsClick(View view) {
 
         Intent options = new Intent(this, OptionsActivity.class);
         startActivity(options);
+        Animation.activityTransition(R.anim.enter_left, R.anim.exit_left, this);
     }
+
     int isPaused = 0;
 
     @Override

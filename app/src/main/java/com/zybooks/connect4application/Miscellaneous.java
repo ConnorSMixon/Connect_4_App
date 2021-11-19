@@ -16,6 +16,7 @@ public class Miscellaneous {
     public static void previousActivity(ImageView imageView, Activity activity) {
         imageView.setOnClickListener(view -> {
             activity.finish();
+            Animation.activityTransition(R.anim.enter_right, R.anim.exit_right, activity);
         });
     }
 }

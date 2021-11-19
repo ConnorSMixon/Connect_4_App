@@ -2,6 +2,8 @@ package com.zybooks.connect4application;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,8 +26,8 @@ public class OptionsActivity extends AppCompatActivity {
         imageView1 = findViewById(R.id.piece1_selector);
         imageView2 = findViewById(R.id.piece2_selector);
 
-        pieceData1 = Settings.loadInt(Settings.PIECE_1_DATA, R.drawable.piece_red, this);
-        pieceData2 = Settings.loadInt(Settings.PIECE_2_DATA, R.drawable.piece_yellow, this);
+        pieceData1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this);
+        pieceData2 = SavedData.loadInt(SavedData.PIECE_2_DATA, R.drawable.piece_yellow, this);
 
         imageView1.setImageResource(pieceData1);
         imageView2.setImageResource(pieceData2);
@@ -58,8 +60,9 @@ public class OptionsActivity extends AppCompatActivity {
 
             Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
             imageView1.setImageDrawable(drawable);
+            Animation.bounceAnimation(imageView1, this);
 
-            Settings.saveInt(Settings.PIECE_1_DATA, imageResource, this);
+            SavedData.saveInt(SavedData.PIECE_1_DATA, imageResource, this);
         });
 
         imageView2.setOnClickListener(view -> {
@@ -71,8 +74,9 @@ public class OptionsActivity extends AppCompatActivity {
             int imageResource = GamePieceHelper.countToImageResource(count2);
             Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
             imageView2.setImageDrawable(drawable);
+            Animation.bounceAnimation(imageView2, this);
 
-            Settings.saveInt(Settings.PIECE_2_DATA, imageResource, this);
+            SavedData.saveInt(SavedData.PIECE_2_DATA, imageResource, this);
         });
     }
 

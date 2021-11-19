@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.ImageView;
 
-public class Settings {
+public class SavedData {
     public static String PIECE_1_DATA = "piece1";
     public static String PIECE_2_DATA = "piece2";
     public static String SHARED_PREFS = "connect_4_app_shared_prefs";

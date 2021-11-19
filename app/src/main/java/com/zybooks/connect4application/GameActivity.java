@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,8 +36,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         // set piece color and text color according to sharedPreference from OptionsActivity
-        piece1 = Settings.loadInt(Settings.PIECE_1_DATA, R.drawable.piece_red, this);
-        piece2 = Settings.loadInt(Settings.PIECE_2_DATA, R.drawable.piece_yellow, this);
+        piece1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this);
+        piece2 = SavedData.loadInt(SavedData.PIECE_2_DATA, R.drawable.piece_yellow, this);
 
         textColor1 = GamePieceHelper.imageResourceToColor(piece1);
         textColor2 = GamePieceHelper.imageResourceToColor(piece2);
@@ -104,10 +106,13 @@ public class GameActivity extends AppCompatActivity {
         float move = -(cell.getHeight() * row + cell.getHeight() + 15);
         cell.setY(move);
         cell.setImageResource(resourceForPiece());
+
         TranslateAnimation anim = new TranslateAnimation(0, 0, 0, Math.abs(move));
-        anim.setDuration(850);
+        anim.setInterpolator(new BounceInterpolator());
         anim.setFillAfter(true);
+        anim.setDuration(1100);
         cell.startAnimation(anim);
+
         board.occupyCell(col, row);
         if (board.checkForWin(col, row)) {
             win();
