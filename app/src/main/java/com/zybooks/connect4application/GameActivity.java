@@ -1,17 +1,17 @@
 package com.zybooks.connect4application;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.zybooks.connect4application.utils.GamePieceHelper;
 
@@ -59,6 +59,7 @@ public class GameActivity extends AppCompatActivity {
         });
         Button resetButton = findViewById(R.id.reset_button);
         resetButton.setOnClickListener(view -> reset());
+
 
         // change color of piece turn indicator
         viewHolder = new ViewHolder();
@@ -174,5 +175,11 @@ public class GameActivity extends AppCompatActivity {
                 cells[r][c].setImageResource(android.R.color.transparent);
             }
         }
+    }
+    public void onOptionsClick(View view) {
+
+        Intent options = new Intent(this, OptionsActivity.class);
+        startActivity(options);
+        Animation.activityTransition(R.anim.enter_left, R.anim.exit_left, this);
     }
 }

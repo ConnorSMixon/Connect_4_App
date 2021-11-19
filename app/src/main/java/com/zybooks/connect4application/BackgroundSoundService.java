@@ -1,10 +1,10 @@
 package com.zybooks.connect4application;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+
 import androidx.annotation.Nullable;
 public class BackgroundSoundService extends Service {
 
@@ -23,6 +23,7 @@ public class BackgroundSoundService extends Service {
         mediaPlayer = MediaPlayer.create(this, R.raw.background_music);
         mediaPlayer.setLooping(true); // Set looping
         mediaPlayer.setVolume(100, 100);
+        mediaPlayer.start();
     }
 
     public int onStartCommand(Intent intent, int flags, int startId) {

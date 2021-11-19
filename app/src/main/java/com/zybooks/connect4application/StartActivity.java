@@ -1,12 +1,17 @@
 package com.zybooks.connect4application;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class StartActivity extends AppCompatActivity{
+    MediaPlayer mediaPlayer;
+
+    public void play(View v){}
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
