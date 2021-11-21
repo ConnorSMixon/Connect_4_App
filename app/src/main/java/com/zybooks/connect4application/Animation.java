@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import androidx.fragment.app.Fragment;
+
 public class Animation implements android.view.animation.Interpolator{
     private double mAmplitude = 1;
     private double mFrequency = 10;
@@ -23,10 +25,6 @@ public class Animation implements android.view.animation.Interpolator{
         com.zybooks.connect4application.Animation interpolator = new com.zybooks.connect4application.Animation(.1, 20);
         myAnim.setInterpolator(interpolator);
         imageView.startAnimation(myAnim);
-    }
-
-    public static void activityTransition(int enter, int exit, Activity activity) {
-        activity.overridePendingTransition(enter, exit);
     }
 }
 

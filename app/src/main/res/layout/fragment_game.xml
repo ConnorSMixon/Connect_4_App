@@ -50,7 +50,7 @@
         android:paddingTop="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
-        tools:context=".GameActivity">
+        tools:context=".GameFragment">
 
         <include layout="@layout/piece_row" />
 
@@ -79,7 +79,7 @@
         android:paddingTop="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
-        tools:context=".GameActivity">
+        tools:context=".GameFragment">
 
         <include layout="@layout/row_board_top" />
 

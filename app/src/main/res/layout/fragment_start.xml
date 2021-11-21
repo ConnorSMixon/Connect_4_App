@@ -5,14 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartActivity"
+    tools:context=".StartFragment"
     android:background="@drawable/gradient_background">
-
-    <fragment
-        android:id="@+id/fragment_container_view_tag"
-        android:name="com.zybooks.connect4application.OptionsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/connect_4_logo"
@@ -27,7 +21,6 @@
 
     <ImageButton
         android:id="@+id/play_button"
-        android:onClick="onPlayClick"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:background="@drawable/button_play"
@@ -41,8 +34,6 @@
         android:id="@+id/options_button"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:onClick="onOptionsClick"
-        tools:ignore="onClick"
         android:background="@drawable/button_settings"
         app:layout_constraintEnd_toStartOf="@+id/play_button"
         app:layout_constraintTop_toBottomOf="@+id/play_button"/>

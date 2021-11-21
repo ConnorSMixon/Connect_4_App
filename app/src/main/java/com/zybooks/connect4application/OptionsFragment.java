@@ -1,10 +1,13 @@
 package com.zybooks.connect4application;
 
+import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +46,8 @@ public class OptionsFragment extends Fragment {
 
         // on click listener for up button
         ImageView upButton = parentView.findViewById(R.id.activityOptionsBackArrow);
-        Miscellaneous.previousActivity(upButton, this.requireActivity());
+        previousFragment(upButton);
+
 
         return parentView;
     }
@@ -88,5 +92,15 @@ public class OptionsFragment extends Fragment {
     public void findDisplayedImage() {
         count1 = GamePieceHelper.imageResourceToCount(pieceData1);
         count2 = GamePieceHelper.imageResourceToCount(pieceData2);
+    }
+
+    private void previousFragment(ImageView imageView) {
+        imageView.setOnClickListener(view -> {
+            FragmentManager fm = getParentFragmentManager();
+            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.enter_right, R.anim.exit_right, R.anim.enter_left, R.anim.exit_left);
+            fm.popBackStack();
+            ft.commit();
+        });
     }
 }

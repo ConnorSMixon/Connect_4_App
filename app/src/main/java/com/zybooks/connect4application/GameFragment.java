@@ -1,8 +1,14 @@
 package com.zybooks.connect4application;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +17,11 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.zybooks.connect4application.utils.GamePieceHelper;
 
+public class GameFragment extends Fragment {
 
-public class GameActivity extends AppCompatActivity {
     private ImageView[][] cells;
     private View boardView;
     private Board board;
@@ -30,20 +37,20 @@ public class GameActivity extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View parentView = inflater.inflate(R.layout.fragment_game, container, false);
 
         // set piece color and text color according to sharedPreference from OptionsActivity
-        piece1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this);
-        piece2 = SavedData.loadInt(SavedData.PIECE_2_DATA, R.drawable.piece_yellow, this);
+        piece1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this.requireActivity());
+        piece2 = SavedData.loadInt(SavedData.PIECE_2_DATA, R.drawable.piece_yellow, this.requireActivity());
 
         textColor1 = GamePieceHelper.imageResourceToColor(piece1);
         textColor2 = GamePieceHelper.imageResourceToColor(piece2);
 
         // create board
         board = new Board(NUM_COLS, NUM_ROWS);
-        boardView = findViewById(R.id.game_board);
+        boardView = parentView.findViewById(R.id.game_board);
         buildCells();
         boardView.setOnTouchListener((view, motionEvent) -> {
             switch (motionEvent.getAction()) {
@@ -56,30 +63,32 @@ public class GameActivity extends AppCompatActivity {
             }
             return true;
         });
-        Button resetButton = findViewById(R.id.reset_button);
+        Button resetButton = parentView.findViewById(R.id.reset_button);
         resetButton.setOnClickListener(view -> reset());
 
         // change color of piece turn indicator
-        viewHolder = new ViewHolder();
-        viewHolder.pieceTurnIndicatorImageView1 = findViewById(R.id.indicator_piece1);
-        viewHolder.pieceTurnIndicatorImageView2 = findViewById(R.id.indicator_piece2);
+        viewHolder = new GameFragment.ViewHolder();
+        viewHolder.pieceTurnIndicatorImageView1 = parentView.findViewById(R.id.indicator_piece1);
+        viewHolder.pieceTurnIndicatorImageView2 = parentView.findViewById(R.id.indicator_piece2);
         resourceForPieceIndicator();
 
         // change visibility of arrow turn indicator
-        viewHolder.arrowTurnIndicatorImageView1 = findViewById(R.id.turn_indicator_image_view1);
-        viewHolder.arrowTurnIndicatorImageView2 = findViewById(R.id.turn_indicator_image_view2);
+        viewHolder.arrowTurnIndicatorImageView1 = parentView.findViewById(R.id.turn_indicator_image_view1);
+        viewHolder.arrowTurnIndicatorImageView2 = parentView.findViewById(R.id.turn_indicator_image_view2);
         visibilityForTurnIndicator();
 
         // change visibility of winner message
-        viewHolder.winnerText = findViewById(R.id.winner_text);
+        viewHolder.winnerText = parentView.findViewById(R.id.winner_text);
         viewHolder.winnerText.setVisibility(View.GONE);
 
         // change color or notification bar
-        Miscellaneous.setNotificationBarColor(this);
+        Miscellaneous.setNotificationBarColor(this.requireActivity());
 
         // on click listener for up button
-        ImageView upButton = findViewById(R.id.gameActivityBackArrow);
-        Miscellaneous.previousActivity(upButton, this);
+        ImageView upButton = parentView.findViewById(R.id.gameActivityBackArrow);
+        previousFragment(upButton);
+
+        return parentView;
     }
 
     private void buildCells() {
@@ -115,7 +124,7 @@ public class GameActivity extends AppCompatActivity {
         anim.setDuration(1100);
         cell.startAnimation(anim);
 
-        board.occupyCell(col, row, this);
+        board.occupyCell(col, row, this.requireActivity());
 
         if (board.checkForWin()) {
             win();
@@ -177,5 +186,15 @@ public class GameActivity extends AppCompatActivity {
                 cells[r][c].setImageResource(android.R.color.transparent);
             }
         }
+    }
+
+    private void previousFragment(ImageView imageView) {
+        imageView.setOnClickListener(view -> {
+            FragmentManager fm = getParentFragmentManager();
+            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.enter_right, R.anim.exit_right, R.anim.enter_left, R.anim.exit_left);
+            fm.popBackStack();
+            ft.commit();
+        });
     }
 }
