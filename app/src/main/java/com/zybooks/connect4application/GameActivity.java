@@ -1,18 +1,16 @@
 package com.zybooks.connect4application;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.zybooks.connect4application.utils.GamePieceHelper;
 
 
@@ -30,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
                 pieceTurnIndicatorImageView1, pieceTurnIndicatorImageView2;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,17 +61,17 @@ public class GameActivity extends AppCompatActivity {
 
         // change color of piece turn indicator
         viewHolder = new ViewHolder();
-        viewHolder.pieceTurnIndicatorImageView1 = (ImageView) findViewById(R.id.indicator_piece1);
-        viewHolder.pieceTurnIndicatorImageView2 = (ImageView) findViewById(R.id.indicator_piece2);
+        viewHolder.pieceTurnIndicatorImageView1 = findViewById(R.id.indicator_piece1);
+        viewHolder.pieceTurnIndicatorImageView2 = findViewById(R.id.indicator_piece2);
         resourceForPieceIndicator();
 
         // change visibility of arrow turn indicator
-        viewHolder.arrowTurnIndicatorImageView1 = (ImageView) findViewById(R.id.turn_indicator_image_view1);
-        viewHolder.arrowTurnIndicatorImageView2 = (ImageView) findViewById(R.id.turn_indicator_image_view2);
+        viewHolder.arrowTurnIndicatorImageView1 = findViewById(R.id.turn_indicator_image_view1);
+        viewHolder.arrowTurnIndicatorImageView2 = findViewById(R.id.turn_indicator_image_view2);
         visibilityForTurnIndicator();
 
         // change visibility of winner message
-        viewHolder.winnerText = (TextView) findViewById(R.id.winner_text);
+        viewHolder.winnerText = findViewById(R.id.winner_text);
         viewHolder.winnerText.setVisibility(View.GONE);
 
         // change color or notification bar
@@ -99,11 +98,14 @@ public class GameActivity extends AppCompatActivity {
     private void drop(int col) {
         if (board.hasWinner)
             return;
+
         int row = board.lastAvailableRow(col);
         if (row == -1)
             return;
+
         final ImageView cell = cells[row][col];
-        float move = -(cell.getHeight() * row + cell.getHeight() + 15);
+
+        float move = -(cell.getHeight() * row + cell.getHeight() + 100);
         cell.setY(move);
         cell.setImageResource(resourceForPiece());
 
@@ -113,8 +115,9 @@ public class GameActivity extends AppCompatActivity {
         anim.setDuration(1100);
         cell.startAnimation(anim);
 
-        board.occupyCell(col, row);
-        if (board.checkForWin(col, row)) {
+        board.occupyCell(col, row, this);
+
+        if (board.checkForWin()) {
             win();
         } else {
             changeTurn();

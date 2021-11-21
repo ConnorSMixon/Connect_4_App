@@ -4,7 +4,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.ImageView;
 
 public class SavedData {
     public static String PIECE_1_DATA = "piece1";

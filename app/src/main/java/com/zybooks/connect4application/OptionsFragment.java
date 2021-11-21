@@ -2,16 +2,18 @@ package com.zybooks.connect4application;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.zybooks.connect4application.utils.GamePieceHelper;
 
-public class OptionsActivity extends AppCompatActivity {
+public class OptionsFragment extends Fragment {
     public static int count1 = 0;
     public static int count2 = 0;
 
@@ -19,15 +21,16 @@ public class OptionsActivity extends AppCompatActivity {
     private ImageView imageView1, imageView2;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_options);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        imageView1 = findViewById(R.id.piece1_selector);
-        imageView2 = findViewById(R.id.piece2_selector);
+        // Inflate the layout for this.requireActivity() fragment
+        View parentView = inflater.inflate(R.layout.fragment_options, container, false);
 
-        pieceData1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this);
-        pieceData2 = SavedData.loadInt(SavedData.PIECE_2_DATA, R.drawable.piece_yellow, this);
+        imageView1 = parentView.findViewById(R.id.piece1_selector);
+        imageView2 = parentView.findViewById(R.id.piece2_selector);
+
+        pieceData1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this.requireActivity());
+        pieceData2 = SavedData.loadInt(SavedData.PIECE_2_DATA, R.drawable.piece_yellow, this.requireActivity());
 
         imageView1.setImageResource(pieceData1);
         imageView2.setImageResource(pieceData2);
@@ -36,11 +39,13 @@ public class OptionsActivity extends AppCompatActivity {
         circulatingImage();
 
         // change color of notification bar
-        Miscellaneous.setNotificationBarColor(this);
+        Miscellaneous.setNotificationBarColor(this.requireActivity());
 
         // on click listener for up button
-        ImageView upButton = findViewById(R.id.activityOptionsBackArrow);
-        Miscellaneous.previousActivity(upButton, this);
+        ImageView upButton = parentView.findViewById(R.id.activityOptionsBackArrow);
+        Miscellaneous.previousActivity(upButton, this.requireActivity());
+
+        return parentView;
     }
 
     public void circulatingImage(){
@@ -58,11 +63,11 @@ public class OptionsActivity extends AppCompatActivity {
             // check if we need to reset the count.
 
 
-            Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
+            Drawable drawable = ContextCompat.getDrawable(this.requireActivity(), imageResource);
             imageView1.setImageDrawable(drawable);
-            Animation.bounceAnimation(imageView1, this);
+            Animation.bounceAnimation(imageView1, this.requireActivity());
 
-            SavedData.saveInt(SavedData.PIECE_1_DATA, imageResource, this);
+            SavedData.saveInt(SavedData.PIECE_1_DATA, imageResource, this.requireActivity());
         });
 
         imageView2.setOnClickListener(view -> {
@@ -72,11 +77,11 @@ public class OptionsActivity extends AppCompatActivity {
             }
             count2 = GamePieceHelper.checkForDuplicates(count2, count1);
             int imageResource = GamePieceHelper.countToImageResource(count2);
-            Drawable drawable = ContextCompat.getDrawable(OptionsActivity.this, imageResource);
+            Drawable drawable = ContextCompat.getDrawable(this.requireActivity(), imageResource);
             imageView2.setImageDrawable(drawable);
-            Animation.bounceAnimation(imageView2, this);
+            Animation.bounceAnimation(imageView2, this.requireActivity());
 
-            SavedData.saveInt(SavedData.PIECE_2_DATA, imageResource, this);
+            SavedData.saveInt(SavedData.PIECE_2_DATA, imageResource, this.requireActivity());
         });
     }
 
@@ -85,6 +90,3 @@ public class OptionsActivity extends AppCompatActivity {
         count2 = GamePieceHelper.imageResourceToCount(pieceData2);
     }
 }
-
-
-
