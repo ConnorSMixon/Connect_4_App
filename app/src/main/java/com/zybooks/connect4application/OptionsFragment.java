@@ -3,17 +3,16 @@ package com.zybooks.connect4application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.zybooks.connect4application.utils.GamePieceHelper;
 
@@ -49,6 +48,9 @@ public class OptionsFragment extends Fragment {
 
         // on click listener for up button
         ImageView upButton = parentView.findViewById(R.id.activityOptionsBackArrow);
+        upButton.setOnClickListener(view -> {
+            SFXSound.playSFX(this.requireActivity(),R.raw.click2);
+        });
         previousFragment(upButton);
 
         // links background music checkbox to background music class
@@ -62,6 +64,7 @@ public class OptionsFragment extends Fragment {
 
     public void circulatingImage(){
         imageView1.setOnClickListener(view -> {
+            SFXSound.playSFX(this.requireActivity(),R.raw.pop);
             // increment count
             count1 ++;
             // check if reset is needed
@@ -83,6 +86,7 @@ public class OptionsFragment extends Fragment {
         });
 
         imageView2.setOnClickListener(view -> {
+            SFXSound.playSFX(this.requireActivity(),R.raw.pop);
             count2 ++;
             if(count2 == GamePieceHelper.numberOfGamePieces()) {
                 count2 = 0;

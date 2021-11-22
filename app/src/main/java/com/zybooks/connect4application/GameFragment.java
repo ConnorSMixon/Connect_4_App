@@ -1,23 +1,20 @@
 package com.zybooks.connect4application;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.zybooks.connect4application.utils.GamePieceHelper;
 
@@ -65,7 +62,11 @@ public class GameFragment extends Fragment {
             return true;
         });
         Button resetButton = parentView.findViewById(R.id.reset_button);
-        resetButton.setOnClickListener(view -> reset());
+        resetButton.setOnClickListener(view -> {
+            reset();
+            SFXSound.playSFX(this.requireActivity(), R.raw.click2);
+        });
+
 
         // change color of piece turn indicator
         viewHolder = new GameFragment.ViewHolder();

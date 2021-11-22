@@ -1,17 +1,14 @@
 package com.zybooks.connect4application;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class StartFragment extends Fragment {
 
@@ -22,7 +19,13 @@ public class StartFragment extends Fragment {
         View parentView = inflater.inflate(R.layout.fragment_start, container, false);
 
         ImageButton playButton = (ImageButton) parentView.findViewById(R.id.play_button);
+        playButton.setOnClickListener(view -> {
+            SFXSound.playSFX(this.requireActivity(),R.raw.click2);
+        });
         ImageButton optionsButton = (ImageButton) parentView.findViewById(R.id.options_button);
+        optionsButton.setOnClickListener(view -> {
+            SFXSound.playSFX(this.requireActivity(),R.raw.click2);
+        });
 
         openFragmentOnClick(playButton, GameFragment.class, this.requireActivity());
         openFragmentOnClick(optionsButton, OptionsFragment.class, this.requireActivity());
