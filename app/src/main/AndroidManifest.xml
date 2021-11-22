@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Connect4Application">
         <activity
-            android:name=".StartActivity"
+            android:name=".HostActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -19,17 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".GameActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".OptionsActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
-        </activity>
-        <service android:name=".BackgroundSoundService"/>
+        <service android:name=".MusicSoundService"/>
     </application>
 
 </manifest>
