@@ -5,7 +5,8 @@ import android.media.MediaPlayer;
 
 public class SFXSound {
     public static void playSFX(Context context, int sound) {
-        final MediaPlayer sfx = MediaPlayer.create(context, sound);
+        MediaPlayer sfx = MediaPlayer.create(context, sound);
+        sfx.setVolume(1,1);
         sfx.start();
     }
 }
