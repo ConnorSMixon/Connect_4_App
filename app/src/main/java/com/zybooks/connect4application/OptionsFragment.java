@@ -1,6 +1,6 @@
 package com.zybooks.connect4application;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 
 import com.zybooks.connect4application.utils.GamePieceHelper;
@@ -19,15 +20,17 @@ import com.zybooks.connect4application.utils.GamePieceHelper;
 public class OptionsFragment extends Fragment {
     public static int count1 = 0;
     public static int count2 = 0;
-
     public static int pieceData1, pieceData2;
+    public static boolean checked = true;
+
     private ImageView imageView1, imageView2;
+    private static View parentView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this.requireActivity() fragment
-        View parentView = inflater.inflate(R.layout.fragment_options, container, false);
+        parentView = inflater.inflate(R.layout.fragment_options, container, false);
 
         imageView1 = parentView.findViewById(R.id.piece1_selector);
         imageView2 = parentView.findViewById(R.id.piece2_selector);
@@ -48,6 +51,11 @@ public class OptionsFragment extends Fragment {
         ImageView upButton = parentView.findViewById(R.id.activityOptionsBackArrow);
         previousFragment(upButton);
 
+        // links background music checkbox to background music class
+        boolean value = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this.requireActivity());
+        CheckBox musicCheckBox = parentView.findViewById(R.id.checkbox_music);
+        musicCheckBox.setChecked(value);
+        toggleBackgroundMusic(musicCheckBox, this.requireActivity());
 
         return parentView;
     }
@@ -102,5 +110,21 @@ public class OptionsFragment extends Fragment {
             fm.popBackStack();
             ft.commit();
         });
+    }
+
+    private void toggleBackgroundMusic(CheckBox checkBox, Context context){
+         checkBox.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 if (checkBox.isChecked() && MusicSoundService.isPaused) {
+                     MusicSoundService.onResume();
+                     checked = true;
+                 } else {
+                     MusicSoundService.onPause();
+                     checked = false;
+                 }
+                 SavedData.saveBoolean(SavedData.CHECKBOX_MUSIC, checked, context);
+             }
+         });
     }
 }

@@ -5,8 +5,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
 
 public class HostActivity extends AppCompatActivity {
 
@@ -17,12 +15,16 @@ public class HostActivity extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
+        // sets StartFragment as default fragment
         fragmentTransaction.add(R.id.fragment_container, new StartFragment());
         fragmentTransaction.commit();
 
         // play background music
-        Intent intent = new Intent(this, BackgroundSoundService.class);
-        startService(intent);
+        boolean checked = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this);
+        if(checked) {
+            Intent intent = new Intent(this, MusicSoundService.class);
+            startService(intent);
+        }
     }
 
     int isPaused = 0;
@@ -32,7 +34,7 @@ public class HostActivity extends AppCompatActivity {
         super.onPause();
         isPaused ++;
 
-        BackgroundSoundService.onPause();
+        MusicSoundService.onPause();
     }
 
     @Override
@@ -41,7 +43,7 @@ public class HostActivity extends AppCompatActivity {
         isPaused ++;
 
         if (isPaused > 1) {
-            BackgroundSoundService.onResume();
+            MusicSoundService.onResume();
         }
     }
 }

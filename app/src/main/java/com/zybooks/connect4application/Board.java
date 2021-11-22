@@ -40,7 +40,7 @@ public class Board {
         return -1;
     }
 
-    public void occupyCell(int col, int row, Context context){
+    public void occupyCell(int col, int row){
         cells[col][row].setPlayer(turn);
     }
 

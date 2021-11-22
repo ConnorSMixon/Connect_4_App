@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -124,7 +125,8 @@ public class GameFragment extends Fragment {
         anim.setDuration(1100);
         cell.startAnimation(anim);
 
-        board.occupyCell(col, row, this.requireActivity());
+        cell.animate().alpha(1f).setDuration(0);
+        board.occupyCell(col, row);
 
         if (board.checkForWin()) {
             win();
@@ -137,6 +139,7 @@ public class GameFragment extends Fragment {
         int color = board.turn == Board.Turn.FIRST ? getResources().getColor(textColor1) :
                 getResources().getColor(textColor2);
 
+        viewHolder.winnerText.animate().alpha(1f).setDuration(0);
         viewHolder.winnerText.setTextColor(color);
         viewHolder.winnerText.setVisibility(View.VISIBLE);
     }
@@ -179,11 +182,12 @@ public class GameFragment extends Fragment {
 
     private void reset() {
         board.reset();
-        viewHolder.winnerText.setVisibility(View.GONE);
+        viewHolder.winnerText.animate().alpha(0f).setDuration(1000);
         visibilityForTurnIndicator();
         for (int r = 0; r < NUM_ROWS; r++) {
             for (int c = 0; c < NUM_COLS; c++) {
-                cells[r][c].setImageResource(android.R.color.transparent);
+                ImageView cell = cells[r][c];
+                cell.animate().alpha(0f).setDuration(1000);
             }
         }
     }

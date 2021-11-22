@@ -8,10 +8,9 @@
 
     <string name="player_1">Player 1</string>
     <string name="player_2">Player 2</string>
+    <string name="sfx">SFX</string>
 
     // shared preferences keys
     <string name="viewKey1">com.zybooks.connect4application.viewKey1</string>
     <string name="viewKey2">com.zybooks.connect4application.viewKey2</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
