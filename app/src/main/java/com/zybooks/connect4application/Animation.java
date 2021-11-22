@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
-public class Animation implements android.view.animation.Interpolator{
+public class Animation extends android.view.animation.Animation implements android.view.animation.Interpolator{
     private double mAmplitude = 1;
     private double mFrequency = 10;
 
