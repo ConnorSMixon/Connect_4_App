@@ -1,6 +1,7 @@
 package com.zybooks.connect4application;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -55,9 +56,9 @@ public class OptionsFragment extends Fragment {
 
         // links background music checkbox to background music class
         boolean value = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this.requireActivity());
-        CheckBox musicCheckBox = parentView.findViewById(R.id.checkbox_music);
-        musicCheckBox.setChecked(value);
-        toggleBackgroundMusic(musicCheckBox, this.requireActivity());
+        CheckBox musicCheckbox = parentView.findViewById(R.id.checkbox_music);
+        musicCheckbox.setChecked(value);
+        toggleBackgroundMusic(musicCheckbox, this.requireActivity());
 
         return parentView;
     }
@@ -120,12 +121,19 @@ public class OptionsFragment extends Fragment {
          checkBox.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
+
                  if (checkBox.isChecked() && MusicSoundService.isPaused) {
+                     // if checkbox is checked at some point after app launch
                      MusicSoundService.onResume();
                      checked = true;
-                 } else {
+                 } else if (!checkBox.isChecked() && !MusicSoundService.isPaused){
+                     // if checkbox is unchecked at some point after app launch
                      MusicSoundService.onPause();
                      checked = false;
+                 } else if (checkBox.isChecked()) {
+                     // if checkbox is checked on app launch
+                     Intent intent = new Intent(context, MusicSoundService.class);
+                     context.startService(intent);
                  }
                  SavedData.saveBoolean(SavedData.CHECKBOX_MUSIC, checked, context);
              }
