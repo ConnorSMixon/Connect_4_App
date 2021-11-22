@@ -21,8 +21,8 @@ public class StartFragment extends Fragment {
         // Inflate the layout for this fragment
         View parentView = inflater.inflate(R.layout.fragment_start, container, false);
 
-        ImageButton playButton = (ImageButton) parentView.findViewById(R.id.play_button);
-        ImageButton optionsButton = (ImageButton) parentView.findViewById(R.id.options_button);
+        ImageButton playButton = parentView.findViewById(R.id.play_button);
+        ImageButton optionsButton = parentView.findViewById(R.id.options_button);
 
         openFragmentOnClick(playButton, GameFragment.class, this.requireActivity());
         openFragmentOnClick(optionsButton, OptionsFragment.class, this.requireActivity());

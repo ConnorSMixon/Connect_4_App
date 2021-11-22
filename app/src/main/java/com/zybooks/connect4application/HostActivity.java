@@ -21,8 +21,9 @@ public class HostActivity extends AppCompatActivity {
 
         // play background music
         boolean checked = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this);
+        Intent intent = new Intent(this, MusicSoundService.class);
+
         if(checked) {
-            Intent intent = new Intent(this, MusicSoundService.class);
             startService(intent);
         }
     }
