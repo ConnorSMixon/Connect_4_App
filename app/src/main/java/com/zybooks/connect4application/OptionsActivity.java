@@ -1,9 +1,8 @@
 package com.zybooks.connect4application;
 
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +40,8 @@ public class OptionsActivity extends AppCompatActivity {
         // on click listener for up button
         ImageView upButton = findViewById(R.id.activityOptionsBackArrow);
         Miscellaneous.previousActivity(upButton, this);
+
+        final MediaPlayer popsound = MediaPlayer.create(this, R.raw.pop);
     }
 
     public void circulatingImage(){

@@ -1,17 +1,12 @@
 package com.zybooks.connect4application;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class StartActivity extends AppCompatActivity{
-    MediaPlayer mediaPlayer;
-
-    public void play(View v){}
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +16,10 @@ public class StartActivity extends AppCompatActivity{
 
         // change notification bar color and action bar display
         Miscellaneous.setNotificationBarColor(this);
+
+
+
+
 
         // play background music
         Intent intent = new Intent(this, BackgroundSoundService.class);
