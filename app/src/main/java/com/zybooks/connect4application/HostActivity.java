@@ -43,7 +43,7 @@ public class HostActivity extends AppCompatActivity {
         super.onResume();
         isPaused ++;
 
-        if (isPaused > 1) {
+        if (isPaused > 1 && OptionsFragment.checked) {
             MusicSoundService.onResume();
         }
     }

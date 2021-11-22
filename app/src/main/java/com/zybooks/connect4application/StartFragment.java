@@ -41,7 +41,7 @@ public class StartFragment extends Fragment {
 
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 ft.setCustomAnimations(R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right);
-                ft.replace(R.id.fragment_container, fragment, null);
+                ft.add(R.id.fragment_container, fragment, null);
                 ft.addToBackStack(null);
                 ft.commit();
             }

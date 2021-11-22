@@ -117,13 +117,17 @@ public class OptionsFragment extends Fragment {
          checkBox.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
+
                  if (checkBox.isChecked() && MusicSoundService.isPaused) {
+                     // if checkbox is checked at some point after app launch
                      MusicSoundService.onResume();
                      checked = true;
                  } else if (!checkBox.isChecked() && !MusicSoundService.isPaused){
+                     // if checkbox is unchecked at some point after app launch
                      MusicSoundService.onPause();
                      checked = false;
-                 } else if (checkBox.isChecked()){
+                 } else if (checkBox.isChecked()) {
+                     // if checkbox is checked on app launch
                      Intent intent = new Intent(context, MusicSoundService.class);
                      context.startService(intent);
                  }
