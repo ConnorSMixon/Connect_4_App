@@ -1,10 +1,12 @@
 package com.zybooks.connect4application;
 
+import android.content.Context;
+
 public class Board {
     private int numCols;
     private int numRows;
     public boolean hasWinner;
-    public Cell[][] cells;
+    public static Cell[][] cells;
 
     public enum Turn {
         FIRST, SECOND
@@ -50,7 +52,7 @@ public class Board {
         }
     }
 
-    public boolean checkForWin(int c, int r) {
+    public boolean checkForWin() {
         for (int col = 0; col < numCols; col++) {
             if (isContiguous(turn, 0, 1, col, 0, 0) ||
                     isContiguous(turn, 1, 1, col, 0, 0) ||

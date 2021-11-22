@@ -11,6 +11,7 @@
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_bottom_left.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_bottom_middle.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_middle.xml" value="0.3385416666666667" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_top_left.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_top_right.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/check_mark.xml" value="0.3385416666666667" />
@@ -43,15 +44,20 @@
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/font/title_font.xml" value="0.33611111111111114" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_game.xml" value="0.31743589743589745" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_help.xml" value="0.3055555555555556" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_host.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_options.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_start.xml" value="0.28250591016548465" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/activity_start.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/board_row.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/bottom_board.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/bottom_board_row.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/fragment_game.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/fragment_options.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/fragment_start.xml" value="0.12048192771084337" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/front_board_row.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/middle_board_row.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/piece_row.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/row_board_bottom.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/top_board_row.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/menu/game.xml" value="0.17552083333333332" />
       </map>
