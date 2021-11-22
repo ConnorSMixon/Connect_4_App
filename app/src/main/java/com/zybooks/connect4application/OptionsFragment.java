@@ -73,8 +73,6 @@ public class OptionsFragment extends Fragment {
             count1 = GamePieceHelper.checkForDuplicates(count1, count2);
             // get the resource
             int imageResource = GamePieceHelper.countToImageResource(count1);
-            // check if we need to reset the count.
-
 
             Drawable drawable = ContextCompat.getDrawable(this.requireActivity(), imageResource);
             imageView1.setImageDrawable(drawable);
@@ -90,6 +88,7 @@ public class OptionsFragment extends Fragment {
             }
             count2 = GamePieceHelper.checkForDuplicates(count2, count1);
             int imageResource = GamePieceHelper.countToImageResource(count2);
+
             Drawable drawable = ContextCompat.getDrawable(this.requireActivity(), imageResource);
             imageView2.setImageDrawable(drawable);
             Animation.bounceAnimation(imageView2, this.requireActivity());

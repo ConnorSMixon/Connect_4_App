@@ -15,6 +15,8 @@
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_bottom_left.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_bottom_middle.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_bottom_right.xml" value="0.3385416666666667" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_middle.xml" value="0.3385416666666667" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_top_left.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/cell_frame_top_right.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/check_mark.xml" value="0.3385416666666667" />
@@ -25,6 +27,7 @@
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.31666666666666665" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/ic_untitled_drawing.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/indicator_arrow.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/layout_rounded_corners.xml" value="0.3385416666666667" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/piece_blue.xml" value="0.25277777777777777" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/piece_green.xml" value="0.3277777777777778" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/drawable/piece_one.xml" value="0.1" />
@@ -52,9 +55,13 @@
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/board_row.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/bottom_board.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/bottom_board_row.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/fragment_options.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/front_board_row.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/middle_board_row.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/piece_row.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/row_board_bottom.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/row_board_middle.xml" value="0.3223958333333333" />
+        <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/row_board_top.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/layout/top_board_row.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/johnn/AndroidStudioProjects/Connect_4_App/app/src/main/res/menu/game.xml" value="0.17552083333333332" />
       </map>

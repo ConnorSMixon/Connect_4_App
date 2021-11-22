@@ -65,7 +65,10 @@ public class GameFragment extends Fragment {
             return true;
         });
         Button resetButton = parentView.findViewById(R.id.reset_button);
-        resetButton.setOnClickListener(view -> reset());
+        resetButton.setOnClickListener(view -> {
+            reset();
+            SFXSound.playSFX(this.requireActivity(), R.raw.click2);
+        });
 
         // change color of piece turn indicator
         viewHolder = new GameFragment.ViewHolder();
