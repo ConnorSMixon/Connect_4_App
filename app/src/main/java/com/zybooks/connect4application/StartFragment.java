@@ -37,7 +37,7 @@ public class StartFragment extends Fragment {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SFXSound.playSFX(context, R.raw.click_sound);
+                SFXSound.playSFX(context, R.raw.click2);
 
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 ft.setCustomAnimations(R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right);
