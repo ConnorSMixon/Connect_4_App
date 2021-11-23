@@ -25,12 +25,15 @@ public class OptionsFragment extends Fragment {
 
     private ImageView imageView1, imageView2;
     private static View parentView;
+    private SFXSoundService sfx;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this.requireActivity() fragment
         parentView = inflater.inflate(R.layout.fragment_options, container, false);
+
+        sfx = new SFXSoundService(this.requireActivity());
 
         imageView1 = parentView.findViewById(R.id.piece1_selector);
         imageView2 = parentView.findViewById(R.id.piece2_selector);
@@ -50,7 +53,7 @@ public class OptionsFragment extends Fragment {
         // on click listener for up button
         ImageView upButton = parentView.findViewById(R.id.activityOptionsBackArrow);
         upButton.setOnClickListener(view -> {
-            SFXSound.playSFX(this.requireActivity(),R.raw.click2);
+            sfx.playSFX(SFXSoundService.sfxPop);
         });
         previousFragment(upButton);
 
@@ -65,7 +68,7 @@ public class OptionsFragment extends Fragment {
 
     public void circulatingImage(){
         imageView1.setOnClickListener(view -> {
-            SFXSound.playSFX(this.requireActivity(),R.raw.pop);
+            sfx.playSFX(SFXSoundService.sfxPop);
             // increment count
             count1 ++;
             // check if reset is needed
@@ -85,7 +88,7 @@ public class OptionsFragment extends Fragment {
         });
 
         imageView2.setOnClickListener(view -> {
-            SFXSound.playSFX(this.requireActivity(),R.raw.pop);
+            sfx.playSFX(SFXSoundService.sfxPop);
             count2 ++;
             if(count2 == GamePieceHelper.numberOfGamePieces()) {
                 count2 = 0;

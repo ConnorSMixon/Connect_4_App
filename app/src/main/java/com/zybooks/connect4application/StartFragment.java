@@ -13,12 +13,15 @@ import android.widget.ImageButton;
 
 public class StartFragment extends Fragment {
 
+    private SFXSoundService sfx;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View parentView = inflater.inflate(R.layout.fragment_start, container, false);
+
+        sfx = new SFXSoundService(this.requireActivity());
 
         ImageButton playButton = (ImageButton) parentView.findViewById(R.id.play_button);
         ImageButton optionsButton = (ImageButton) parentView.findViewById(R.id.options_button);
@@ -40,7 +43,7 @@ public class StartFragment extends Fragment {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SFXSound.playSFX(context, R.raw.click2);
+                sfx.playSFX(SFXSoundService.sfxClick);
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 ft.setCustomAnimations(anim1, anim2, anim3, anim4);
                 ft.add(R.id.fragment_container, fragment, null);
