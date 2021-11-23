@@ -12,6 +12,17 @@
         android:fontFamily="@font/chopsic"
         android:text="@string/reset" />
 
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/chopsic"
+        android:onClick="onOptionsClick"
+        android:text="settings" />
+
     <ImageButton
         android:id="@+id/gameActivityBackArrow"
         android:layout_width="wrap_content"
