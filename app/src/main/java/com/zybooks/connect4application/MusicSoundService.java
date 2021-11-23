@@ -46,6 +46,7 @@ public class MusicSoundService extends Service {
     public static void onResume() {
         musicMediaPlayer.seekTo(length);
         musicMediaPlayer.start();
+        isPaused = false;
     }
 }
 

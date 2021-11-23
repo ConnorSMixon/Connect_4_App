@@ -1,7 +1,6 @@
 package com.zybooks.connect4application;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -27,6 +25,7 @@ public class GameFragment extends Fragment {
     private View boardView;
     private Board board;
     private ViewHolder viewHolder;
+    private SFXSoundService sfx;
     private final int NUM_ROWS = 6, NUM_COLS = 7;
     private int piece1, piece2, textColor1, textColor2;
 
@@ -41,6 +40,8 @@ public class GameFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View parentView = inflater.inflate(R.layout.fragment_game, container, false);
+
+        sfx = new SFXSoundService(this.requireActivity());
 
         // set piece color and text color according to sharedPreference from OptionsActivity
         piece1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this.requireActivity());
@@ -65,7 +66,10 @@ public class GameFragment extends Fragment {
             return true;
         });
         Button resetButton = parentView.findViewById(R.id.reset_button);
-        resetButton.setOnClickListener(view -> reset());
+        resetButton.setOnClickListener(view -> {
+            reset();
+            sfx.playSFX(SFXSoundService.sfxClick);
+        });
 
         // change color of piece turn indicator
         viewHolder = new GameFragment.ViewHolder();
