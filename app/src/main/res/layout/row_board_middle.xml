@@ -9,44 +9,44 @@
         android:layout_weight=".17"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/cell_frame_middle"/>
+        android:src="@drawable/cell_frame_bottom_middle"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_weight=".17"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/cell_frame_middle"/>
+        android:src="@drawable/cell_frame_bottom_middle"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_weight=".17"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/cell_frame_middle"/>
+        android:src="@drawable/cell_frame_bottom_middle"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_weight=".17"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/cell_frame_middle"/>
+        android:src="@drawable/cell_frame_bottom_middle"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_weight=".17"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/cell_frame_middle"/>
+        android:src="@drawable/cell_frame_bottom_middle"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_weight=".17"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/cell_frame_middle"/>
+        android:src="@drawable/cell_frame_bottom_middle"/>
 
     <ImageView
         android:layout_width="0dp"
         android:layout_weight=".17"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/cell_frame_middle" />
+        android:src="@drawable/cell_frame_bottom_middle" />
 </LinearLayout>
 
 
