@@ -32,6 +32,8 @@ public class StartFragment extends Fragment implements Animation.AnimationListen
 
         ImageButton playButton = (ImageButton) parentView.findViewById(R.id.play_button);
         ImageButton optionsButton = (ImageButton) parentView.findViewById(R.id.options_button);
+
+        //Animations for buttons (Inflation)
         Animation playAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up);
         playButton.startAnimation(playAnimation);
         Animation optionsAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.rotating_gear);
