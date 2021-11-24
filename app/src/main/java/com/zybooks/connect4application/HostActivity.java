@@ -19,7 +19,6 @@ public class HostActivity extends AppCompatActivity implements SharedPreferences
         setContentView(R.layout.activity_host);
 
         // constructor call
-        new MusicSoundService(this);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
@@ -31,37 +30,42 @@ public class HostActivity extends AppCompatActivity implements SharedPreferences
         checked = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this);
         if (checked && !MusicSoundService.onStart) {
             // if checkbox is checked by default on app launch
-            MusicSoundService.playBackgroundMusic();
+            Intent intent = new Intent(this, MusicSoundService.class);
+            startService(intent);
         }
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
         checked = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this);
-        if (checked && !MusicSoundService.onStart) {
-            // if checkbox is checked before sound has started
-            MusicSoundService.playBackgroundMusic();
-        } else if (checked && MusicSoundService.onStart){
-            // if checkbox is checked after sound has started
-            MusicSoundService.resumeBackgroundMusic();
-        } else if (!checked && MusicSoundService.onStart) {
-            // is checkbox is unchecked after sound has started
-            MusicSoundService.pauseBackgroundMusic();
+        if (s.equals(SavedData.CHECKBOX_MUSIC)) {
+            if (checked && !MusicSoundService.onStart) {
+                // if checkbox is checked before sound has started
+                Intent intent = new Intent(this, MusicSoundService.class);
+                startService(intent);
+            } else if (checked && MusicSoundService.onStart) {
+                // if checkbox is checked after sound has started
+                MusicSoundService.onResume();
+            } else if (!checked && MusicSoundService.onStart) {
+                // is checkbox is unchecked after sound has started
+                MusicSoundService.onPause();
+            }
         }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        MusicSoundService.pauseBackgroundMusic();
+        if (checked && MusicSoundService.onStart) {
+            MusicSoundService.onPause();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        if (checked) {
-            MusicSoundService.resumeBackgroundMusic();
+        if (checked && MusicSoundService.onStart) {
+            MusicSoundService.onResume();
         }
     }
 

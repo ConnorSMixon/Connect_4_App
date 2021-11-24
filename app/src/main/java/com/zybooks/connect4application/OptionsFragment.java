@@ -17,23 +17,22 @@ import androidx.fragment.app.FragmentTransaction;
 import com.zybooks.connect4application.utils.GamePieceHelper;
 
 public class OptionsFragment extends Fragment {
-    public static int count1 = 0;
-    public static int count2 = 0;
+    public static int pieceCount1 = 0, pieceCount2 = 0;
     public static int pieceData1, pieceData2;
+    public static boolean musicChecked = true, sfxChecked = true;
+    public static CheckBox musicCheckbox;
 
-    private boolean musicCheckedState;
     private ImageView imageView1, imageView2;
-    private SFXSoundService sfx;
-    private CheckBox musicCheckbox;
+    private View parentView;
+    private SFXSound sfx;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this.requireActivity() fragment
-        View parentView = inflater.inflate(R.layout.fragment_options, container, false);
+        parentView = inflater.inflate(R.layout.fragment_options, container, false);
 
-        // constructor call
-        sfx = new SFXSoundService(this.requireActivity());
+        sfx = new SFXSound(this.requireActivity());
 
         imageView1 = parentView.findViewById(R.id.piece1_selector);
         imageView2 = parentView.findViewById(R.id.piece2_selector);
@@ -44,41 +43,45 @@ public class OptionsFragment extends Fragment {
         imageView1.setImageResource(pieceData1);
         imageView2.setImageResource(pieceData2);
 
+        // logic for piece selectors
         findDisplayedImage();
         circulatingImage();
 
-        // change color of notification bar
-        Miscellaneous.setNotificationBarColor(this.requireActivity());
-
         // on click listener for up button
         ImageView upButton = parentView.findViewById(R.id.activityOptionsBackArrow);
-        upButton.setOnClickListener(view -> {
-            sfx.playSFX(SFXSoundService.sfxPop);
-        });
         previousFragment(upButton);
 
         // links background music checkbox to background music class
-        boolean value = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this.requireActivity());
+        boolean musicCheckboxVal = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this.requireActivity());
         musicCheckbox = parentView.findViewById(R.id.checkbox_music);
-        musicCheckbox.setChecked(value);
+        musicCheckbox.setChecked(musicCheckboxVal);
         toggleBackgroundMusic(this.requireActivity());
+
+        // links sfx checkbox to sfx sounds
+        boolean sfxCheckboxVal = SavedData.loadBoolean(SavedData.CHECKBOX_SFX, true, this.requireActivity());
+        CheckBox sfxCheckbox = parentView.findViewById(R.id.checkbox_sfx);
+        sfxCheckbox.setChecked(sfxCheckboxVal);
+        toggleSFX(sfxCheckbox, this.requireActivity());
+
+        // change color of notification bar
+        Miscellaneous.setNotificationBarColor(this.requireActivity());
 
         return parentView;
     }
 
     public void circulatingImage(){
         imageView1.setOnClickListener(view -> {
-            sfx.playSFX(SFXSoundService.sfxPop);
+            sfx.playSFX(SFXSound.sfxPop, SFXSound.sfxPopCount, this.requireActivity());
             // increment count
-            count1 ++;
+            pieceCount1++;
             // check if reset is needed
-            if (count1 == GamePieceHelper.numberOfGamePieces()) {
-                count1 = 0;
+            if (pieceCount1 == GamePieceHelper.numberOfGamePieces()) {
+                pieceCount1 = 0;
             }
             // check for duplicates and resolve if needed
-            count1 = GamePieceHelper.checkForDuplicates(count1, count2);
+            pieceCount1 = GamePieceHelper.checkForDuplicates(pieceCount1, pieceCount2);
             // get the resource
-            int imageResource = GamePieceHelper.countToImageResource(count1);
+            int imageResource = GamePieceHelper.countToImageResource(pieceCount1);
 
             Drawable drawable = ContextCompat.getDrawable(this.requireActivity(), imageResource);
             imageView1.setImageDrawable(drawable);
@@ -88,13 +91,13 @@ public class OptionsFragment extends Fragment {
         });
 
         imageView2.setOnClickListener(view -> {
-            sfx.playSFX(SFXSoundService.sfxPop);
-            count2 ++;
-            if(count2 == GamePieceHelper.numberOfGamePieces()) {
-                count2 = 0;
+            sfx.playSFX(SFXSound.sfxPop, SFXSound.sfxPopCount, this.requireActivity());
+            pieceCount2 ++;
+            if(pieceCount2 == GamePieceHelper.numberOfGamePieces()) {
+                pieceCount2 = 0;
             }
-            count2 = GamePieceHelper.checkForDuplicates(count2, count1);
-            int imageResource = GamePieceHelper.countToImageResource(count2);
+            pieceCount2 = GamePieceHelper.checkForDuplicates(pieceCount2, pieceCount1);
+            int imageResource = GamePieceHelper.countToImageResource(pieceCount2);
 
             Drawable drawable = ContextCompat.getDrawable(this.requireActivity(), imageResource);
             imageView2.setImageDrawable(drawable);
@@ -105,12 +108,13 @@ public class OptionsFragment extends Fragment {
     }
 
     public void findDisplayedImage() {
-        count1 = GamePieceHelper.imageResourceToCount(pieceData1);
-        count2 = GamePieceHelper.imageResourceToCount(pieceData2);
+        pieceCount1 = GamePieceHelper.imageResourceToCount(pieceData1);
+        pieceCount2 = GamePieceHelper.imageResourceToCount(pieceData2);
     }
 
     private void previousFragment(ImageView imageView) {
         imageView.setOnClickListener(view -> {
+            sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
             FragmentManager fm = getParentFragmentManager();
             FragmentTransaction ft = getParentFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.enter_right, R.anim.exit_right, R.anim.enter_left, R.anim.exit_left);
@@ -120,12 +124,22 @@ public class OptionsFragment extends Fragment {
     }
 
     private void toggleBackgroundMusic(Context context) {
-         musicCheckbox.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 musicCheckedState = musicCheckbox.isChecked();
-                 SavedData.saveBoolean(SavedData.CHECKBOX_MUSIC, musicCheckedState, context);
-             }
-         });
+        musicCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                musicChecked = musicCheckbox.isChecked();
+                SavedData.saveBoolean(SavedData.CHECKBOX_MUSIC, musicChecked, context);
+            }
+        });
+    }
+
+    private void toggleSFX(CheckBox checkBox, Context context) {
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sfxChecked = checkBox.isChecked();
+                SavedData.saveBoolean(SavedData.CHECKBOX_SFX, sfxChecked, context);
+            }
+        });
     }
 }

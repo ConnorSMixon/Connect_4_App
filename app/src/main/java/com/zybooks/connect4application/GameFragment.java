@@ -25,7 +25,7 @@ public class GameFragment extends Fragment {
     private View boardView;
     private Board board;
     private ViewHolder viewHolder;
-    private SFXSoundService sfx;
+    private SFXSound sfx;
     private final int NUM_ROWS = 6, NUM_COLS = 7;
     private int piece1, piece2, textColor1, textColor2;
 
@@ -41,7 +41,7 @@ public class GameFragment extends Fragment {
         // Inflate the layout for this fragment
         View parentView = inflater.inflate(R.layout.fragment_game, container, false);
 
-        sfx = new SFXSoundService(this.requireActivity());
+        sfx = new SFXSound(this.requireActivity());
 
         // set piece color and text color according to sharedPreference from OptionsActivity
         piece1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this.requireActivity());
@@ -68,7 +68,7 @@ public class GameFragment extends Fragment {
         Button resetButton = parentView.findViewById(R.id.reset_button);
         resetButton.setOnClickListener(view -> {
             reset();
-            sfx.playSFX(SFXSoundService.sfxClick);
+            sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
         });
 
         // change color of piece turn indicator

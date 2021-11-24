@@ -1,33 +1,54 @@
 package com.zybooks.connect4application;
 
+import android.app.Service;
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.IBinder;
 
-public class MusicSoundService {
+import androidx.annotation.Nullable;
 
-    public static MediaPlayer musicMediaPlayer;
+import java.security.Provider;
+
+public class MusicSoundService extends Service {
+
+    public static MediaPlayer mediaPlayer;
     public static int length;
-    public static boolean onStart;
+    public static boolean onStart = false;
 
-    MusicSoundService(Context context) {
-        musicMediaPlayer = MediaPlayer.create(context, R.raw.background_music);
-        musicMediaPlayer.setLooping(true);
-        musicMediaPlayer.setVolume(.5f, .5f);
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mediaPlayer = MediaPlayer.create(this, R.raw.background_music);
+        mediaPlayer.setLooping(true); // Set looping
+        mediaPlayer.setVolume(100, 100);
     }
 
-    public static void playBackgroundMusic() {
-        musicMediaPlayer.start();
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        mediaPlayer.start();
         onStart = true;
+        return startId;
     }
 
-    public static void pauseBackgroundMusic() {
-        musicMediaPlayer.pause();
-        length = musicMediaPlayer.getCurrentPosition();
+    @Override
+    public void onDestroy() {
+        mediaPlayer.stop();
+        mediaPlayer.release();
     }
 
-    public static void resumeBackgroundMusic() {
-        musicMediaPlayer.start();
-        musicMediaPlayer.seekTo(length);
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    public static void onPause() {
+        mediaPlayer.pause();
+        length = mediaPlayer.getCurrentPosition();
+    }
+
+    public static void onResume() {
+        mediaPlayer.seekTo(length);
+        mediaPlayer.start();
     }
 }
-
