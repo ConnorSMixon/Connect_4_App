@@ -38,4 +38,14 @@ public class SavedData {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         return sharedPreferences.getBoolean(string, defaultValue);
     }
+
+    public static void registerBoolean(Context context, SharedPreferences.OnSharedPreferenceChangeListener listener) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        sharedPreferences.registerOnSharedPreferenceChangeListener(listener);
+    }
+
+    public static void unregisterBoolean(Context context, SharedPreferences.OnSharedPreferenceChangeListener listener) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener);
+    }
 }

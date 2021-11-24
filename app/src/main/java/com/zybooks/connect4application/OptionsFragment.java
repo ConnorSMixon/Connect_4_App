@@ -1,7 +1,6 @@
 package com.zybooks.connect4application;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,18 +20,19 @@ public class OptionsFragment extends Fragment {
     public static int count1 = 0;
     public static int count2 = 0;
     public static int pieceData1, pieceData2;
-    public static boolean checked = true;
 
+    private boolean musicCheckedState;
     private ImageView imageView1, imageView2;
-    private static View parentView;
     private SFXSoundService sfx;
+    private CheckBox musicCheckbox;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this.requireActivity() fragment
-        parentView = inflater.inflate(R.layout.fragment_options, container, false);
+        View parentView = inflater.inflate(R.layout.fragment_options, container, false);
 
+        // constructor call
         sfx = new SFXSoundService(this.requireActivity());
 
         imageView1 = parentView.findViewById(R.id.piece1_selector);
@@ -59,9 +59,9 @@ public class OptionsFragment extends Fragment {
 
         // links background music checkbox to background music class
         boolean value = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this.requireActivity());
-        CheckBox musicCheckbox = parentView.findViewById(R.id.checkbox_music);
+        musicCheckbox = parentView.findViewById(R.id.checkbox_music);
         musicCheckbox.setChecked(value);
-        toggleBackgroundMusic(musicCheckbox, this.requireActivity());
+        toggleBackgroundMusic(this.requireActivity());
 
         return parentView;
     }
@@ -119,25 +119,12 @@ public class OptionsFragment extends Fragment {
         });
     }
 
-    private void toggleBackgroundMusic(CheckBox checkBox, Context context){
-         checkBox.setOnClickListener(new View.OnClickListener() {
+    private void toggleBackgroundMusic(Context context) {
+         musicCheckbox.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-
-                 if (checkBox.isChecked() && MusicSoundService.isPaused) {
-                     // if checkbox is checked at some point after app launch
-                     MusicSoundService.onResume();
-                     checked = true;
-                 } else if (!checkBox.isChecked() && !MusicSoundService.isPaused){
-                     // if checkbox is unchecked at some point after app launch
-                     MusicSoundService.onPause();
-                     checked = false;
-                 } else if (checkBox.isChecked()) {
-                     // if checkbox is checked on app launch
-                     Intent intent = new Intent(context, MusicSoundService.class);
-                     context.startService(intent);
-                 }
-                 SavedData.saveBoolean(SavedData.CHECKBOX_MUSIC, checked, context);
+                 musicCheckedState = musicCheckbox.isChecked();
+                 SavedData.saveBoolean(SavedData.CHECKBOX_MUSIC, musicCheckedState, context);
              }
          });
     }

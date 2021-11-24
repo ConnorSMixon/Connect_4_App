@@ -15,7 +15,7 @@ public class SFXSoundService {
         sfxClick.setVolume(.5f, .5f);
     }
 
-    public static void playSFX(MediaPlayer sfx) {
+    public void playSFX(MediaPlayer sfx) {
         if (count == 0) {
             sfx.start();
             count ++;
