@@ -3,6 +3,7 @@ package com.zybooks.connect4application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,17 +21,16 @@ public class OptionsFragment extends Fragment {
     public static int pieceCount1 = 0, pieceCount2 = 0;
     public static int pieceData1, pieceData2;
     public static boolean musicChecked = true, sfxChecked = true;
-    public static CheckBox musicCheckbox;
+    public CheckBox musicCheckbox;
 
     private ImageView imageView1, imageView2;
-    private View parentView;
     private SFXSound sfx;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this.requireActivity() fragment
-        parentView = inflater.inflate(R.layout.fragment_options, container, false);
+        View parentView = inflater.inflate(R.layout.fragment_options, container, false);
 
         sfx = new SFXSound(this.requireActivity());
 
@@ -49,7 +49,9 @@ public class OptionsFragment extends Fragment {
 
         // on click listener for up button
         ImageView upButton = parentView.findViewById(R.id.activityOptionsBackArrow);
-        previousFragment(upButton);
+        upButton.setOnClickListener(view -> {
+            previousFragment();
+        });
 
         // links background music checkbox to background music class
         boolean musicCheckboxVal = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this.requireActivity());
@@ -112,34 +114,25 @@ public class OptionsFragment extends Fragment {
         pieceCount2 = GamePieceHelper.imageResourceToCount(pieceData2);
     }
 
-    private void previousFragment(ImageView imageView) {
-        imageView.setOnClickListener(view -> {
-            sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
-            FragmentManager fm = getParentFragmentManager();
-            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-            ft.setCustomAnimations(R.anim.enter_right, R.anim.exit_right, R.anim.enter_left, R.anim.exit_left);
-            fm.popBackStack();
-            ft.commit();
-        });
+    private void previousFragment() {
+        sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
+        FragmentManager fm = getParentFragmentManager();
+        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+        fm.popBackStack();
+        ft.commit();
     }
 
     private void toggleBackgroundMusic(Context context) {
-        musicCheckbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                musicChecked = musicCheckbox.isChecked();
-                SavedData.saveBoolean(SavedData.CHECKBOX_MUSIC, musicChecked, context);
-            }
+        musicCheckbox.setOnClickListener(view -> {
+            musicChecked = musicCheckbox.isChecked();
+            SavedData.saveBoolean(SavedData.CHECKBOX_MUSIC, musicChecked, context);
         });
     }
 
     private void toggleSFX(CheckBox checkBox, Context context) {
-        checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sfxChecked = checkBox.isChecked();
-                SavedData.saveBoolean(SavedData.CHECKBOX_SFX, sfxChecked, context);
-            }
+        checkBox.setOnClickListener(view -> {
+            sfxChecked = checkBox.isChecked();
+            SavedData.saveBoolean(SavedData.CHECKBOX_SFX, sfxChecked, context);
         });
     }
 }

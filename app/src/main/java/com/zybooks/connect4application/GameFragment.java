@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,7 +53,7 @@ public class GameFragment extends Fragment {
         // create board
         board = new Board(NUM_COLS, NUM_ROWS);
         boardView = parentView.findViewById(R.id.game_board);
-        buildCells();
+        loadBoard();
         boardView.setOnTouchListener((view, motionEvent) -> {
             switch (motionEvent.getAction()) {
                 case MotionEvent.ACTION_POINTER_UP:
@@ -64,11 +64,6 @@ public class GameFragment extends Fragment {
                 }
             }
             return true;
-        });
-        Button resetButton = parentView.findViewById(R.id.reset_button);
-        resetButton.setOnClickListener(view -> {
-            reset();
-            sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
         });
 
         // change color of piece turn indicator
@@ -86,27 +81,25 @@ public class GameFragment extends Fragment {
         viewHolder.winnerText = parentView.findViewById(R.id.winner_text);
         viewHolder.winnerText.setVisibility(View.GONE);
 
-        // change color or notification bar
-        Miscellaneous.setNotificationBarColor(this.requireActivity());
-
         // on click listener for up button
         ImageView upButton = parentView.findViewById(R.id.gameActivityBackArrow);
         previousFragment(upButton);
 
-        return parentView;
-    }
+        //on click listener for pause button
+        ImageView pauseButton = parentView.findViewById(R.id.pause_button);
+        pauseMenu(pauseButton);
 
-    private void buildCells() {
-        cells = new ImageView[NUM_ROWS][NUM_COLS];
-        for (int r = 0; r < NUM_ROWS; r++) {
-            ViewGroup row = (ViewGroup) ((ViewGroup) boardView).getChildAt(r);
-            row.setClipChildren(false);
-            for (int c = 0; c < NUM_COLS; c++) {
-                ImageView imageView = (ImageView) row.getChildAt(c);
-                imageView.setImageResource(android.R.color.transparent);
-                cells[r][c] = imageView;
-            }
-        }
+        // on click listener for reset button
+        ImageButton resetButton = parentView.findViewById(R.id.reset_button);
+        resetButton.setOnClickListener(view -> {
+            reset();
+            sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
+        });
+
+        // change color or notification bar
+        Miscellaneous.setNotificationBarColor(this.requireActivity());
+
+        return parentView;
     }
 
     private void drop(int col) {
@@ -122,13 +115,12 @@ public class GameFragment extends Fragment {
         float move = -(cell.getHeight() * row + cell.getHeight() + 100);
         cell.setY(move);
         cell.setImageResource(resourceForPiece());
-
+        saveBoard(row, col);
         TranslateAnimation anim = new TranslateAnimation(0, 0, 0, Math.abs(move));
         anim.setInterpolator(new BounceInterpolator());
         anim.setFillAfter(true);
         anim.setDuration(1100);
         cell.startAnimation(anim);
-
         cell.animate().alpha(1f).setDuration(0);
         board.occupyCell(col, row);
 
@@ -136,6 +128,50 @@ public class GameFragment extends Fragment {
             win();
         } else {
             changeTurn();
+        }
+    }
+
+    private void saveBoard(int row, int col) {
+        String boardValue;
+        if (cells[row][col].getDrawable().getConstantState() == getResources().getDrawable(piece1).getConstantState()) {
+            boardValue = "1";
+        } else if (cells[row][col].getDrawable().getConstantState() == getResources().getDrawable(piece2).getConstantState()) {
+            boardValue = "2";
+        } else {
+            boardValue = "0";
+        }
+        String key = row + Integer.toString(col);
+        SavedData.saveString(key, boardValue, this.requireActivity());
+    }
+
+    private void loadBoard() {
+        cells = new ImageView[NUM_ROWS][NUM_COLS];
+        for (int r = 0; r < NUM_ROWS; r++) {
+            ViewGroup row = (ViewGroup) ((ViewGroup) boardView).getChildAt(r);
+            row.setClipChildren(true);
+            for (int c = 0; c < NUM_COLS; c++) {
+                ImageView imageView = (ImageView) row.getChildAt(c);
+
+                String key = r + Integer.toString(c);
+                String value = SavedData.loadString(key, "0", this.requireActivity());
+
+                switch (value) {
+                    case "0":
+                        imageView.setImageResource(android.R.color.transparent);
+                        cells[r][c] = imageView;
+                        break;
+                    case "1":
+                        imageView.setImageResource(piece1);
+                        cells[r][c] = imageView;
+                        board.occupyCell(c, r);
+                        break;
+                    case "2":
+                        imageView.setImageResource(piece2);
+                        cells[r][c] = imageView;
+                        board.occupyCell(c, r);
+                        break;
+                }
+            }
         }
     }
 
@@ -186,12 +222,14 @@ public class GameFragment extends Fragment {
 
     private void reset() {
         board.reset();
-        viewHolder.winnerText.animate().alpha(0f).setDuration(1000);
+        viewHolder.winnerText.animate().alpha(0f).setDuration(500);
         visibilityForTurnIndicator();
         for (int r = 0; r < NUM_ROWS; r++) {
             for (int c = 0; c < NUM_COLS; c++) {
                 ImageView cell = cells[r][c];
-                cell.animate().alpha(0f).setDuration(1000);
+                cell.animate().alpha(0f).setDuration(500);
+                String key = r + Integer.toString(c);
+                SavedData.saveString(key, "0", this.requireActivity());
             }
         }
     }
@@ -202,6 +240,16 @@ public class GameFragment extends Fragment {
             FragmentTransaction ft = getParentFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.enter_right, R.anim.exit_right, R.anim.enter_left, R.anim.exit_left);
             fm.popBackStack();
+            ft.commit();
+        });
+    }
+
+    private void pauseMenu(ImageView imageView) {
+        imageView.setOnClickListener(view -> {
+            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.pop_open, R.anim.pop_open, R.anim.pop_close, R.anim.pop_close);
+            ft.add(R.id.fragment_container, PauseFragment.class, null);
+            ft.addToBackStack(null);
             ft.commit();
         });
     }
