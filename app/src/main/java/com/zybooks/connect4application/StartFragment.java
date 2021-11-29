@@ -23,33 +23,29 @@ public class StartFragment extends Fragment {
 
         sfx = new SFXSound(this.requireActivity());
 
-        ImageButton playButton = (ImageButton) parentView.findViewById(R.id.play_button);
-        ImageButton optionsButton = (ImageButton) parentView.findViewById(R.id.options_button);
+        ImageButton playButton = parentView.findViewById(R.id.play_button);
+        ImageButton optionsButton = parentView.findViewById(R.id.options_button);
 
-        openFragmentOnClick(this.requireActivity(), playButton, GameFragment.class, R.anim.enter_left,
-                R.anim.exit_left, R.anim.enter_right, R.anim.exit_right);
-        openFragmentOnClick(this.requireActivity(), optionsButton, OptionsFragment.class, R.anim.pop_open,
-                R.anim.pop_open, R.anim.pop_close, R.anim.pop_close);
+        openFragmentOnClick(this.requireActivity(), R.id.fragment_container, playButton, GameFragment.class,
+                R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right);
+        openFragmentOnClick(this.requireActivity(), R.id.small_fragment_container, optionsButton,
+                OptionsFragment.class, R.anim.pop_open, R.anim.pop_open, R.anim.pop_close, R.anim.pop_close);
 
         // change color of notification bar
         Miscellaneous.setNotificationBarColor(this.requireActivity());
 
         return parentView;
-
     }
 
-    private void openFragmentOnClick(Context context, ImageButton imageButton, Class fragment, int anim1,
-                                     int anim2, int anim3, int anim4) {
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, context);
-                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                ft.setCustomAnimations(anim1, anim2, anim3, anim4);
-                ft.add(R.id.fragment_container, fragment, null);
-                ft.addToBackStack(null);
-                ft.commit();
-            }
+    private void openFragmentOnClick(Context context, int cont, ImageButton imageButton, Class fragment,
+                                     int anim1, int anim2, int anim3, int anim4) {
+        imageButton.setOnClickListener(view -> {
+            sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, context);
+            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+            ft.setCustomAnimations(anim1, anim2, anim3, anim4);
+            ft.add(cont, fragment, null);
+            ft.addToBackStack(null);
+            ft.commit();
         });
     }
 }

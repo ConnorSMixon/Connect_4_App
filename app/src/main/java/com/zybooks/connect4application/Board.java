@@ -1,10 +1,8 @@
 package com.zybooks.connect4application;
 
-import android.content.Context;
-
 public class Board {
-    private int numCols;
-    private int numRows;
+    private final int numCols;
+    private final int numRows;
     public boolean hasWinner;
     public static Cell[][] cells;
 

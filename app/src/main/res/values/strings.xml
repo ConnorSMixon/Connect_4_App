@@ -11,7 +11,7 @@
     <string name="player_2">Player 2</string>
     <string name="sfx">SFX</string>
 
-    // shared preferences keys
-    <string name="viewKey1">com.zybooks.connect4application.viewKey1</string>
-    <string name="viewKey2">com.zybooks.connect4application.viewKey2</string>
+    // Fragment tags
+    <string name="game_fragment_tag">game_fragment_tag</string>
+    <string name="options_fragment_tag">options_fragment_tag</string>
 </resources>
