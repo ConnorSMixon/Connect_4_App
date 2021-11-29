@@ -10,34 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Connect4Application">
         <activity
-            android:name=".StartActivity"
-            android:exported="true">
+            android:name=".HostActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".GameActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".HelpActivity"
-            android:exported="true"
-            ></activity>
-        <activity android:name=".OptionsActivity"
-            android:exported="true"
-            ></activity>
-        <activity
-            android:name=".NeedInfo"
-            android:exported="true"
-            ></activity>
-        <activity
-            android:name=".DontNeedInfo"
-            android:exported="true"
-            ></activity>
-        <service android:name=".BackgroundSoundService"/>
+        <service android:name=".MusicSoundService"/>
     </application>
 
 </manifest>

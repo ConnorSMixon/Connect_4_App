@@ -5,17 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+
 import androidx.annotation.Nullable;
-public class BackgroundSoundService extends Service {
+
+import java.security.Provider;
+
+public class MusicSoundService extends Service {
 
     public static MediaPlayer mediaPlayer;
     public static int length;
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
+    public static boolean onStart = false;
 
     @Override
     public void onCreate() {
@@ -27,6 +26,7 @@ public class BackgroundSoundService extends Service {
 
     public int onStartCommand(Intent intent, int flags, int startId) {
         mediaPlayer.start();
+        onStart = true;
         return startId;
     }
 
@@ -34,6 +34,12 @@ public class BackgroundSoundService extends Service {
     public void onDestroy() {
         mediaPlayer.stop();
         mediaPlayer.release();
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
     }
 
     public static void onPause() {
@@ -46,4 +52,3 @@ public class BackgroundSoundService extends Service {
         mediaPlayer.start();
     }
 }
-

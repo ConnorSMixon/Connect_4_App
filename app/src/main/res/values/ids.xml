@@ -5,4 +5,5 @@
     <item name="turn_indicator_image_view" type="id" />
     <item name="winner_text" type="id" />
     <item name="action_settings" type="id" />
+    <item name="btn_moving" type="id" />
 </resources>

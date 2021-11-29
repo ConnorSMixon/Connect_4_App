@@ -1,10 +1,10 @@
 package com.zybooks.connect4application;
 
 public class Board {
-    private int numCols;
-    private int numRows;
+    private final int numCols;
+    private final int numRows;
     public boolean hasWinner;
-    public Cell[][] cells;
+    public static Cell[][] cells;
 
     public enum Turn {
         FIRST, SECOND
@@ -49,15 +49,19 @@ public class Board {
         }
     }
 
-    public boolean checkForWin(int c, int r) {
+    public boolean checkForWin() {
         for (int col = 0; col < numCols; col++) {
-            if (isContiguous(turn, 0, 1, col, 0, 0) || isContiguous(turn, 1, 1, col, 0, 0) || isContiguous(turn, -1, 1, col, 0, 0)) {
+            if (isContiguous(turn, 0, 1, col, 0, 0) ||
+                    isContiguous(turn, 1, 1, col, 0, 0) ||
+                    isContiguous(turn, -1, 1, col, 0, 0)) {
                 hasWinner = true;
                 return true;
             }
         }
         for (int row = 0; row < numRows; row++) {
-            if (isContiguous(turn, 1, 0, 0, row, 0) || isContiguous(turn, 1, 1, 0, row, 0) || isContiguous(turn, -1, 1, numCols - 1, row, 0)) {
+            if (isContiguous(turn, 1, 0, 0, row, 0) ||
+                    isContiguous(turn, 1, 1, 0, row, 0) ||
+                    isContiguous(turn, -1, 1, numCols - 1, row, 0)) {
                 hasWinner = true;
                 return true;
             }
