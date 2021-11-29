@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.widget.ImageView;
 
 public class HostActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
 
