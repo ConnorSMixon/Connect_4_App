@@ -21,7 +21,7 @@ public class Animation extends android.view.animation.Animation implements andro
     }
 
     public static void bounceAnimation(ImageView imageView, Activity activity) {
-        final android.view.animation.Animation myAnim = AnimationUtils.loadAnimation(activity, R.anim.bounce);
+        final android.view.animation.Animation myAnim = AnimationUtils.loadAnimation(activity, R.anim.bounce_anim);
         com.zybooks.connect4application.Animation interpolator = new com.zybooks.connect4application.Animation(.1, 20);
         myAnim.setInterpolator(interpolator);
         imageView.startAnimation(myAnim);

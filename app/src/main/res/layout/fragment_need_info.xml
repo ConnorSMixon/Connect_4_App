@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NeedInfo"
+    tools:context=".FragmentNeedInfo"
     android:background="@drawable/gradient_background">
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="236dp"
         android:fontFamily="@font/chopsic"
-        android:text="Okay Mr.Smarty pants! Good Luck beating your friends!"
+        android:text="Connect 4 in a row and hand phone between turns"
         android:textAlignment="center"
         android:textSize="50dp"
         app:layout_constraintBaseline_toBottomOf="parent"
