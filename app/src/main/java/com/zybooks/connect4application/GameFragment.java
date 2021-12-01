@@ -26,7 +26,7 @@ public class GameFragment extends Fragment {
     private Board board;
     private ViewHolder viewHolder;
     private SFXSound sfx;
-    private final int NUM_ROWS = 6, NUM_COLS = 7;
+    public static final int NUM_ROWS = 6, NUM_COLS = 7;
     private int piece1, piece2, textColor1, textColor2;
 
     private static class ViewHolder {

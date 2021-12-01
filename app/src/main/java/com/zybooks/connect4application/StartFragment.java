@@ -19,7 +19,6 @@ import android.widget.ImageButton;
 public class StartFragment extends Fragment {
 
     private SFXSound sfx;
-    private boolean isClicked = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,19 +32,6 @@ public class StartFragment extends Fragment {
 
         ImageButton playButton = parentView.findViewById(R.id.play_button);
         ImageButton optionsButton = parentView.findViewById(R.id.options_button);
-
-
-        //without pause between animations (infinite does not work to get rid of pause in xml)
-        RotateAnimation rotate = new RotateAnimation(0, 180, android.view.animation.Animation.RELATIVE_TO_SELF, 0.5f, android.view.animation.Animation.RELATIVE_TO_SELF, 0.5f);
-        rotate.setDuration(2500);
-        rotate.setInterpolator(new LinearInterpolator());
-        rotate.setRepeatCount(android.view.animation.Animation.INFINITE);
-
-        //Animations for buttons (Inflation)
-        Animation playAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up);
-        playButton.startAnimation(playAnimation);
-        // for pause between animations: Animation optionsAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.rotating_gear);
-        optionsButton.startAnimation(rotate);
 
         openFragmentOnClick(this.requireActivity(), R.id.fragment_container, playButton, GameFragment.class,
                 R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right);
