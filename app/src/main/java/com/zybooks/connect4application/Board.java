@@ -41,7 +41,6 @@ public class Board {
     public void occupyCell(int col, int row){
         cells[col][row].setPlayer(turn);
     }
-
     public void toggleTurn() {
         if (turn == Turn.FIRST) {
             turn = Turn.SECOND;
