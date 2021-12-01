@@ -33,6 +33,7 @@ public class StartFragment extends Fragment {
 
         ImageButton playButton = parentView.findViewById(R.id.play_button);
         ImageButton optionsButton = parentView.findViewById(R.id.options_button);
+        ImageButton helpButton = parentView.findViewById(R.id.help_button);
 
 
         //without pause between animations (infinite does not work to get rid of pause in xml)
@@ -51,6 +52,8 @@ public class StartFragment extends Fragment {
                 R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right);
         openFragmentOnClick(this.requireActivity(), R.id.small_fragment_container, optionsButton,
                 OptionsFragment.class, R.anim.pop_open, R.anim.pop_open, R.anim.pop_close, R.anim.pop_close);
+        openFragmentOnClick(this.requireActivity(), R.id.fragment_container, helpButton,
+                HelpFragment.class, R.anim.enter_left,R.anim.exit_left,R.anim.enter_right, R.anim.exit_right);
 
         // change color of notification bar
         Miscellaneous.setNotificationBarColor(this.requireActivity());
