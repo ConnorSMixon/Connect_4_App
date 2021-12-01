@@ -66,5 +66,16 @@
         app:layout_constraintTop_toBottomOf="@id/help_more_information"
         tools:layout_editor_absoluteX="16dp" />
 
+    <FrameLayout
+        android:id="@+id/small_fragment_container_help"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".75"
+        app:layout_constraintHeight_percent=".5" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

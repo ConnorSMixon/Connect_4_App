@@ -1,6 +1,7 @@
 package com.zybooks.connect4application;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.ImageView;
 
 public class HostActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
@@ -27,6 +29,14 @@ public class HostActivity extends AppCompatActivity implements SharedPreferences
         fragmentTransaction.add(R.id.fragment_container, new StartFragment());
         fragmentTransaction.commit();
 
+        View outsideFragment = findViewById(R.id.fragment_container);
+        outsideFragment.setOnClickListener(view -> {
+            FragmentManager fm;
+            fm = getSupportFragmentManager();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            fm.popBackStack();
+            ft.commit();
+        });
         // load music checkbox value
         checked = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this);
         if (checked && !MusicSoundService.onStart) {
