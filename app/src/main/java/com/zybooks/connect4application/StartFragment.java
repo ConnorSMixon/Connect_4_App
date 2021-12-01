@@ -1,6 +1,7 @@
 package com.zybooks.connect4application;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,7 @@ import android.widget.ImageButton;
 public class StartFragment extends Fragment {
 
     private SFXSound sfx;
+    private boolean isClicked = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,8 +29,11 @@ public class StartFragment extends Fragment {
 
         sfx = new SFXSound(this.requireActivity());
 
+
+
         ImageButton playButton = parentView.findViewById(R.id.play_button);
         ImageButton optionsButton = parentView.findViewById(R.id.options_button);
+
 
         //without pause between animations (infinite does not work to get rid of pause in xml)
         RotateAnimation rotate = new RotateAnimation(0, 180, android.view.animation.Animation.RELATIVE_TO_SELF, 0.5f, android.view.animation.Animation.RELATIVE_TO_SELF, 0.5f);
@@ -52,7 +57,6 @@ public class StartFragment extends Fragment {
 
         return parentView;
     }
-
     private void openFragmentOnClick(Context context, int cont, ImageButton imageButton, Class fragment,
                                      int anim1, int anim2, int anim3, int anim4) {
         imageButton.setOnClickListener(view -> {
