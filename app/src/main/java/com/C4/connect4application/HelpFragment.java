@@ -1,22 +1,15 @@
-package com.zybooks.connect4application;
+package com.C4.connect4application;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 public class HelpFragment extends Fragment {
 
@@ -50,8 +43,6 @@ public class HelpFragment extends Fragment {
             }
         });
         // BUTTON ANIMATION NEED TO GET WORKING WITH FRAGMENTS
-        //Animation bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce_anim);
-        // needHelp.setOnClickListener(view -> needHelp.startAnimation(bounceAnimation));
 
         Miscellaneous.setNotificationBarColor(this.requireActivity());
         return parentView;

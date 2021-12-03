@@ -1,6 +1,5 @@
-package com.zybooks.connect4application;
+package com.C4.connect4application;
 
-import android.graphics.Path;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.zybooks.connect4application.utils.FragmentHelper;
+import com.C4.connect4application.utils.FragmentHelper;
 
 public class StartFragment extends Fragment {
 

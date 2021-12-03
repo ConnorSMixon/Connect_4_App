@@ -1,9 +1,8 @@
-package com.zybooks.connect4application;
+package com.C4.connect4application;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.zybooks.connect4application.utils.GamePieceHelper;
+import com.C4.connect4application.utils.GamePieceHelper;
 
 public class OptionsFragment extends Fragment {
     public static int pieceCount1 = 0, pieceCount2 = 0;
@@ -25,12 +24,13 @@ public class OptionsFragment extends Fragment {
 
     private ImageView imageView1, imageView2;
     private SFXSound sfx;
+    View parentView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this.requireActivity() fragment
-        View parentView = inflater.inflate(R.layout.fragment_options, container, false);
+         parentView = inflater.inflate(R.layout.fragment_options, container, false);
 
         sfx = new SFXSound(this.requireActivity());
         isInflated = true;

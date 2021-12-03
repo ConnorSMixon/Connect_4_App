@@ -1,8 +1,8 @@
-package com.zybooks.connect4application;
+package com.C4.connect4application;
 
 import android.app.Activity;
 import android.view.Window;
-import android.view.WindowManager;
+
 import androidx.fragment.app.Fragment;
 
 public class Miscellaneous extends Fragment {
