@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentNeedInfo"
-    android:background="@drawable/options_menu_layout">
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/fragment_layout">
 
     <TextView
         android:layout_width="wrap_content"

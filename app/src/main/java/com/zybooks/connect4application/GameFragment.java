@@ -26,8 +26,9 @@ public class GameFragment extends Fragment {
     private Board board;
     private ViewHolder viewHolder;
     private SFXSound sfx;
-    public static final int NUM_ROWS = 6, NUM_COLS = 7;
     private int piece1, piece2, textColor1, textColor2;
+    public static final int NUM_ROWS = 6, NUM_COLS = 7;
+    public static boolean isInflated = false;
 
     private static class ViewHolder {
         public TextView winnerText;
@@ -42,6 +43,7 @@ public class GameFragment extends Fragment {
         View parentView = inflater.inflate(R.layout.fragment_game, container, false);
 
         sfx = new SFXSound(this.requireActivity());
+        isInflated = true;
 
         // set piece color and text color according to sharedPreference from OptionsActivity
         piece1 = SavedData.loadInt(SavedData.PIECE_1_DATA, R.drawable.piece_red, this.requireActivity());
@@ -241,6 +243,7 @@ public class GameFragment extends Fragment {
             ft.setCustomAnimations(R.anim.enter_right, R.anim.exit_right, R.anim.enter_left, R.anim.exit_left);
             fm.popBackStack();
             ft.commit();
+            isInflated = false;
         });
     }
 
@@ -252,5 +255,11 @@ public class GameFragment extends Fragment {
             ft.addToBackStack(null);
             ft.commit();
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        isInflated = false;
     }
 }

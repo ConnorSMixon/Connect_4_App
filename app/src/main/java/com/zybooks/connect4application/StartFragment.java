@@ -1,7 +1,6 @@
 package com.zybooks.connect4application;
 
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.Path;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,15 +9,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
+
+import com.zybooks.connect4application.utils.FragmentHelper;
 
 public class StartFragment extends Fragment {
 
     private SFXSound sfx;
+    private Fragment frag;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,33 +26,38 @@ public class StartFragment extends Fragment {
 
         sfx = new SFXSound(this.requireActivity());
 
-
-
         ImageButton playButton = parentView.findViewById(R.id.play_button);
         ImageButton optionsButton = parentView.findViewById(R.id.options_button);
         ImageButton helpButton = parentView.findViewById(R.id.help_button);
 
-        openFragmentOnClick(this.requireActivity(), R.id.fragment_container, playButton, GameFragment.class,
-                R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right);
-        openFragmentOnClick(this.requireActivity(), R.id.small_fragment_container, optionsButton,
-                OptionsFragment.class, R.anim.pop_open, R.anim.pop_open, R.anim.pop_close, R.anim.pop_close);
-        openFragmentOnClick(this.requireActivity(), R.id.fragment_container, helpButton,
-                HelpFragment.class, R.anim.enter_left,R.anim.exit_left,R.anim.enter_right, R.anim.exit_right);
+        openLargeFragment(playButton, GameFragment.class, R.id.fragment_container);
+        openLargeFragment(helpButton, HelpFragment.class, R.id.fragment_container);
+        openSmallFragment(optionsButton, OptionsFragment.class, R.id.small_fragment_container);
+
 
         // change color of notification bar
         Miscellaneous.setNotificationBarColor(this.requireActivity());
 
         return parentView;
     }
-    private void openFragmentOnClick(Context context, int cont, ImageButton imageButton, Class fragment,
-                                     int anim1, int anim2, int anim3, int anim4) {
-        imageButton.setOnClickListener(view -> {
-            sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, context);
-            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-            ft.setCustomAnimations(anim1, anim2, anim3, anim4);
-            ft.add(cont, fragment, null);
-            ft.addToBackStack(null);
-            ft.commit();
+
+    private void openLargeFragment(ImageButton button, Class fragment, int container) {
+        button.setOnClickListener(view -> {
+            if(!GameFragment.isInflated && !OptionsFragment.isInflated && !HelpFragment.isInflated) {
+                sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                FragmentHelper.openLargeFragment(ft, fragment, container);
+            }
+        });
+    }
+
+    private void openSmallFragment(ImageButton button, Class fragment, int container) {
+        button.setOnClickListener(view -> {
+            if(!GameFragment.isInflated && !OptionsFragment.isInflated && !HelpFragment.isInflated) {
+                sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                FragmentHelper.openSmallFragment(ft, fragment, container);
+            }
         });
     }
 }

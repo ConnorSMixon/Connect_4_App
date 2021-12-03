@@ -1,6 +1,5 @@
 package com.zybooks.connect4application;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -9,14 +8,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class FragmentNeedInfo extends Fragment {
+
+    public static boolean isInflated = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // inflates parent view
         View parentView = inflater.inflate(R.layout.fragment_need_info, container, false);
 
+        isInflated = true;
+
         Miscellaneous.setNotificationBarColor(this.requireActivity());
         return parentView;
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        isInflated = false;
     }
 }
