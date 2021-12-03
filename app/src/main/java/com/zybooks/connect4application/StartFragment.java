@@ -19,7 +19,30 @@ import android.widget.ImageButton;
 public class StartFragment extends Fragment {
 
     private SFXSound sfx;
-    private boolean isClicked = true;
+    private ImageButton playButton;
+    private ImageButton optionsButton;
+    private ImageButton helpButton;
+
+
+    // initializes the buttons and sets them so it can be used outside methods.
+    public ImageButton getPlayButton() {
+        return playButton;
+    }
+    public void setPlayButton(ImageButton playButton) {
+        this.playButton = playButton;
+    }
+    public ImageButton getOptionsButton() {
+        return optionsButton;
+    }
+    public void setOptionsButton(ImageButton optionsButton) {
+        this.optionsButton = optionsButton;
+    }
+    public ImageButton getHelpButton() {
+        return optionsButton;
+    }
+    public void setHelpButton(ImageButton helpButton) {
+        this.helpButton = helpButton;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,9 +54,12 @@ public class StartFragment extends Fragment {
 
 
 
-        ImageButton playButton = parentView.findViewById(R.id.play_button);
-        ImageButton optionsButton = parentView.findViewById(R.id.options_button);
-        ImageButton helpButton = parentView.findViewById(R.id.help_button);
+        playButton = parentView.findViewById(R.id.play_button);
+        setPlayButton(playButton);
+        optionsButton = parentView.findViewById(R.id.options_button);
+        setOptionsButton(optionsButton);
+        helpButton = parentView.findViewById(R.id.help_button);
+        setHelpButton(helpButton);
 
 
         //without pause between animations (infinite does not work to get rid of pause in xml)
