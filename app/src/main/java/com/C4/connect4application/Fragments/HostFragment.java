@@ -1,4 +1,4 @@
-package com.zybooks.connect4application.Fragments;
+package com.C4.connect4application.Fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -9,9 +9,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import com.zybooks.connect4application.GameLogic.SavedData;
-import com.zybooks.connect4application.utils.MusicSoundService;
-import com.zybooks.connect4application.R;
+import com.C4.connect4application.GameLogic.SavedData;
+import com.C4.connect4application.utils.MusicSoundService;
+import com.C4.connect4application.R;
 
 public class HostFragment extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
 

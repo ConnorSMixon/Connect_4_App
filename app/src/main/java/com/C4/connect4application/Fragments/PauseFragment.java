@@ -1,4 +1,4 @@
-package com.zybooks.connect4application.Fragments;
+package com.C4.connect4application.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.zybooks.connect4application.GameLogic.SavedData;
-import com.zybooks.connect4application.R;
-import com.zybooks.connect4application.utils.SFXSound;
+import com.C4.connect4application.GameLogic.SavedData;
+import com.C4.connect4application.R;
+import com.C4.connect4application.utils.SFXSound;
 
 public class PauseFragment extends Fragment {
     public static boolean musicChecked = true, sfxChecked = true;

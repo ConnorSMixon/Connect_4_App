@@ -1,4 +1,4 @@
-package com.zybooks.connect4application.Fragments;
+package com.C4.connect4application.Fragments;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.zybooks.connect4application.R;
-import com.zybooks.connect4application.utils.Miscellaneous;
-import com.zybooks.connect4application.utils.SFXSound;
+import com.C4.connect4application.R;
+import com.C4.connect4application.utils.Miscellaneous;
+import com.C4.connect4application.utils.SFXSound;
 
 public class HelpFragment extends Fragment {
     private SFXSound sfx;

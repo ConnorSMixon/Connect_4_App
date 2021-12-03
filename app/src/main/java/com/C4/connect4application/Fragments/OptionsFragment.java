@@ -1,4 +1,4 @@
-package com.zybooks.connect4application.Fragments;
+package com.C4.connect4application.Fragments;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -14,12 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.zybooks.connect4application.GameLogic.SavedData;
-import com.zybooks.connect4application.R;
-import com.zybooks.connect4application.utils.Animation;
-import com.zybooks.connect4application.utils.GamePieceHelper;
-import com.zybooks.connect4application.utils.Miscellaneous;
-import com.zybooks.connect4application.utils.SFXSound;
+import com.C4.connect4application.GameLogic.SavedData;
+import com.C4.connect4application.R;
+import com.C4.connect4application.utils.Animation;
+import com.C4.connect4application.utils.GamePieceHelper;
+import com.C4.connect4application.utils.Miscellaneous;
+import com.C4.connect4application.utils.SFXSound;
 
 public class OptionsFragment extends Fragment {
     public static int pieceCount1 = 0, pieceCount2 = 0;

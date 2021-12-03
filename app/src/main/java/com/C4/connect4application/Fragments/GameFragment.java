@@ -1,4 +1,4 @@
-package com.zybooks.connect4application.Fragments;
+package com.C4.connect4application.Fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,12 +17,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zybooks.connect4application.GameLogic.Board;
-import com.zybooks.connect4application.GameLogic.SavedData;
-import com.zybooks.connect4application.R;
-import com.zybooks.connect4application.utils.GamePieceHelper;
-import com.zybooks.connect4application.utils.Miscellaneous;
-import com.zybooks.connect4application.utils.SFXSound;
+import com.C4.connect4application.GameLogic.Board;
+import com.C4.connect4application.GameLogic.SavedData;
+import com.C4.connect4application.R;
+import com.C4.connect4application.utils.GamePieceHelper;
+import com.C4.connect4application.utils.Miscellaneous;
+import com.C4.connect4application.utils.SFXSound;
 
 public class GameFragment extends Fragment {
 

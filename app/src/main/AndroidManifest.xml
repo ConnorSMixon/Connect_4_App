@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zybooks.connect4application">
+    package="com.C4.connect4application">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Connect4Application">
         <activity
-            android:name=".Fragments.HostFragment"
+            android:name="com.C4.connect4application.Fragments.HostFragment"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".utils.MusicSoundService"/>
+        <service android:name="com.C4.connect4application.utils.MusicSoundService"/>
     </application>
 
 </manifest>

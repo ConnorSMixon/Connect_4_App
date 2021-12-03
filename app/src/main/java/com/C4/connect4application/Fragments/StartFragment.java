@@ -1,4 +1,4 @@
-package com.zybooks.connect4application.Fragments;
+package com.C4.connect4application.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,12 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.zybooks.connect4application.Fragments.GameFragment;
-import com.zybooks.connect4application.Fragments.HelpFragment;
-import com.zybooks.connect4application.Fragments.OptionsFragment;
-import com.zybooks.connect4application.R;
-import com.zybooks.connect4application.utils.Miscellaneous;
-import com.zybooks.connect4application.utils.SFXSound;
+import com.C4.connect4application.R;
+import com.C4.connect4application.utils.Miscellaneous;
+import com.C4.connect4application.utils.SFXSound;
 
 public class StartFragment extends Fragment {
 

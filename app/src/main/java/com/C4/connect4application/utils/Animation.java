@@ -1,10 +1,10 @@
-package com.zybooks.connect4application.utils;
+package com.C4.connect4application.utils;
 
 import android.app.Activity;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.zybooks.connect4application.R;
+import com.C4.connect4application.R;
 
 public class Animation extends android.view.animation.Animation implements android.view.animation.Interpolator{
     private double mAmplitude = 1;
