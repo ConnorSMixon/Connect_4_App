@@ -1,14 +1,17 @@
-package com.zybooks.connect4application;
+package com.zybooks.connect4application.utils;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+
+import com.zybooks.connect4application.GameLogic.SavedData;
+import com.zybooks.connect4application.R;
 
 public class SFXSound {
 
     public static MediaPlayer sfxPop, sfxClick;
     public static int sfxPopCount, sfxClickCount;
 
-    SFXSound(Context context) {
+    public SFXSound(Context context) {
         sfxPop = MediaPlayer.create(context, R.raw.pop);
         sfxClick = MediaPlayer.create(context, R.raw.click);
         sfxPop.setVolume(.5f, .5f);

@@ -1,4 +1,4 @@
-package com.zybooks.connect4application;
+package com.zybooks.connect4application.Fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,7 +17,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zybooks.connect4application.GameLogic.Board;
+import com.zybooks.connect4application.GameLogic.SavedData;
+import com.zybooks.connect4application.R;
 import com.zybooks.connect4application.utils.GamePieceHelper;
+import com.zybooks.connect4application.utils.Miscellaneous;
+import com.zybooks.connect4application.utils.SFXSound;
 
 public class GameFragment extends Fragment {
 
@@ -146,35 +151,16 @@ public class GameFragment extends Fragment {
 
     private void loadBoard() {
         cells = new ImageView[NUM_ROWS][NUM_COLS];
-        for (int r = 0; r < NUM_ROWS; r++) {
+        for (int r=0; r<NUM_ROWS; r++) {
             ViewGroup row = (ViewGroup) ((ViewGroup) boardView).getChildAt(r);
-            row.setClipChildren(true);
-            for (int c = 0; c < NUM_COLS; c++) {
+            row.setClipChildren(false);
+            for (int c=0; c<NUM_COLS; c++) {
                 ImageView imageView = (ImageView) row.getChildAt(c);
-
-                String key = r + Integer.toString(c);
-                String value = SavedData.loadString(key, "0", this.requireActivity());
-
-                switch (value) {
-                    case "0":
-                        imageView.setImageResource(android.R.color.transparent);
-                        cells[r][c] = imageView;
-                        break;
-                    case "1":
-                        imageView.setImageResource(piece1);
-                        cells[r][c] = imageView;
-                        board.occupyCell(c, r);
-                        break;
-                    case "2":
-                        imageView.setImageResource(piece2);
-                        cells[r][c] = imageView;
-                        board.occupyCell(c, r);
-                        break;
-                }
+                imageView.setImageResource(android.R.color.transparent);
+                cells[r][c] = imageView;
             }
         }
     }
-
     private void win() {
         int color = board.turn == Board.Turn.FIRST ? getResources().getColor(textColor1) :
                 getResources().getColor(textColor2);

@@ -1,9 +1,11 @@
-package com.zybooks.connect4application;
+package com.zybooks.connect4application.utils;
 
 import android.app.Activity;
 import android.view.Window;
 import android.view.WindowManager;
 import androidx.fragment.app.Fragment;
+
+import com.zybooks.connect4application.R;
 
 public class Miscellaneous extends Fragment {
 

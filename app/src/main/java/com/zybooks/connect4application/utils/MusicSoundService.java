@@ -1,4 +1,4 @@
-package com.zybooks.connect4application;
+package com.zybooks.connect4application.utils;
 
 import android.app.Service;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
+
+import com.zybooks.connect4application.R;
 
 import java.security.Provider;
 

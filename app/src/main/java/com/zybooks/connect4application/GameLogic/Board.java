@@ -1,4 +1,4 @@
-package com.zybooks.connect4application;
+package com.zybooks.connect4application.GameLogic;
 
 public class Board {
     private final int numCols;

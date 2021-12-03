@@ -1,10 +1,10 @@
-package com.zybooks.connect4application;
+package com.zybooks.connect4application.utils;
 
 import android.app.Activity;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import androidx.fragment.app.Fragment;
+import com.zybooks.connect4application.R;
 
 public class Animation extends android.view.animation.Animation implements android.view.animation.Interpolator{
     private double mAmplitude = 1;
@@ -22,7 +22,7 @@ public class Animation extends android.view.animation.Animation implements andro
 
     public static void bounceAnimation(ImageView imageView, Activity activity) {
         final android.view.animation.Animation myAnim = AnimationUtils.loadAnimation(activity, R.anim.bounce_anim);
-        com.zybooks.connect4application.Animation interpolator = new com.zybooks.connect4application.Animation(.1, 20);
+        Animation interpolator = new Animation(.1, 20);
         myAnim.setInterpolator(interpolator);
         imageView.startAnimation(myAnim);
     }

@@ -1,4 +1,6 @@
-package com.zybooks.connect4application;
+package com.zybooks.connect4application.GameLogic;
+
+import com.zybooks.connect4application.GameLogic.Board;
 
 public class Cell {
     public boolean empty;

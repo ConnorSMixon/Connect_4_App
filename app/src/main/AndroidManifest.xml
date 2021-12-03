@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Connect4Application">
         <activity
-            android:name=".HostActivity"
+            android:name=".Fragments.HostFragment"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".MusicSoundService"/>
+        <service android:name=".utils.MusicSoundService"/>
     </application>
 
 </manifest>
