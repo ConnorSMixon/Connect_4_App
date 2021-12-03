@@ -1,7 +1,5 @@
 package com.zybooks.connect4application;
 
-import android.graphics.Path;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;

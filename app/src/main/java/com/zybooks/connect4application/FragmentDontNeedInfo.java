@@ -1,6 +1,5 @@
 package com.zybooks.connect4application;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
