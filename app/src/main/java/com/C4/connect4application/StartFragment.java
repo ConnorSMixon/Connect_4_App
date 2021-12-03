@@ -15,7 +15,6 @@ import com.C4.connect4application.utils.FragmentHelper;
 public class StartFragment extends Fragment {
 
     private SFXSound sfx;
-    private Fragment frag;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
