@@ -148,31 +148,13 @@ public class GameFragment extends Fragment {
 
     private void loadBoard() {
         cells = new ImageView[NUM_ROWS][NUM_COLS];
-        for (int r = 0; r < NUM_ROWS; r++) {
+        for (int r=0; r<NUM_ROWS; r++) {
             ViewGroup row = (ViewGroup) ((ViewGroup) boardView).getChildAt(r);
-            row.setClipChildren(true);
-            for (int c = 0; c < NUM_COLS; c++) {
+            row.setClipChildren(false);
+            for (int c=0; c<NUM_COLS; c++) {
                 ImageView imageView = (ImageView) row.getChildAt(c);
-
-                String key = r + Integer.toString(c);
-                String value = SavedData.loadString(key, "0", this.requireActivity());
-
-                switch (value) {
-                    case "0":
-                        imageView.setImageResource(android.R.color.transparent);
-                        cells[r][c] = imageView;
-                        break;
-                    case "1":
-                        imageView.setImageResource(piece1);
-                        cells[r][c] = imageView;
-                        board.occupyCell(c, r);
-                        break;
-                    case "2":
-                        imageView.setImageResource(piece2);
-                        cells[r][c] = imageView;
-                        board.occupyCell(c, r);
-                        break;
-                }
+                imageView.setImageResource(android.R.color.transparent);
+                cells[r][c] = imageView;
             }
         }
     }
