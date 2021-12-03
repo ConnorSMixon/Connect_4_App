@@ -11,7 +11,6 @@ public class SavedData {
     public static String PIECE_2_DATA = "piece2";
     public static String CHECKBOX_MUSIC = "CheckboxMusic";
     public static String CHECKBOX_SFX = "CheckboxSFX";
-    public static String PLAYER_TURN = "PlayerTurn";
 
     public static void saveInt(String key, int value, Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS1, MODE_PRIVATE);

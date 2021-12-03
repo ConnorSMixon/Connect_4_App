@@ -20,7 +20,7 @@ import com.zybooks.connect4application.utils.GamePieceHelper;
 public class OptionsFragment extends Fragment {
     public static int pieceCount1 = 0, pieceCount2 = 0;
     public static int pieceData1, pieceData2;
-    public static boolean musicChecked = true, sfxChecked = true;
+    public static boolean musicChecked = true, sfxChecked = true, isInflated = false;
     public CheckBox musicCheckbox;
 
     private ImageView imageView1, imageView2;
@@ -33,6 +33,7 @@ public class OptionsFragment extends Fragment {
         View parentView = inflater.inflate(R.layout.fragment_options, container, false);
 
         sfx = new SFXSound(this.requireActivity());
+        isInflated = true;
 
         imageView1 = parentView.findViewById(R.id.piece1_selector);
         imageView2 = parentView.findViewById(R.id.piece2_selector);
@@ -120,6 +121,7 @@ public class OptionsFragment extends Fragment {
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         fm.popBackStack();
         ft.commit();
+        isInflated = false;
     }
 
     private void toggleBackgroundMusic(Context context) {
@@ -134,5 +136,11 @@ public class OptionsFragment extends Fragment {
             sfxChecked = checkBox.isChecked();
             SavedData.saveBoolean(SavedData.CHECKBOX_SFX, sfxChecked, context);
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        isInflated = false;
     }
 }

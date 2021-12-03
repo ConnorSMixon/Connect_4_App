@@ -17,7 +17,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/options_menu_layout">
+        android:background="@drawable/fragment_layout">
 
         <ImageView
             android:id="@+id/activityOptionsBackArrow"

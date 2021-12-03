@@ -21,13 +21,12 @@
     app:layout_constraintHorizontal_bias="0"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    />
+    app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/questionMarkImage"
         android:name="questionMarkImage"
-        android:layout_width="600dp"
+        android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginTop="136dp"
         android:background="@drawable/ic_question_mark_button"
@@ -47,11 +46,10 @@
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintBaseline_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/no_help_needed"
@@ -63,6 +61,5 @@
         android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@id/help_more_information"
         tools:layout_editor_absoluteX="16dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

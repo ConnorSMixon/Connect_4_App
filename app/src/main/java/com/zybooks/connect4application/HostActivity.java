@@ -1,14 +1,13 @@
 package com.zybooks.connect4application;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.widget.ImageView;
+import android.view.View;
 
 public class HostActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
 
@@ -19,9 +18,16 @@ public class HostActivity extends AppCompatActivity implements SharedPreferences
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
-        // constructor call
-
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        // closes fragment if user touches outside of view
+        View outsideContainer = findViewById(R.id.fragment_container);
+        outsideContainer.setOnClickListener(view -> {
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            fm.popBackStack();
+            ft.commit();
+        });
 
         // sets StartFragment as default fragment
         fragmentTransaction.add(R.id.fragment_container, new StartFragment());
