@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
 
 import com.C4.connect4application.utils.FragmentHelper;
@@ -54,6 +56,14 @@ public class StartFragment extends Fragment {
         setOptionsButton(optionsButton);
         helpButton = parentView.findViewById(R.id.help_button);
         setHelpButton(helpButton);
+
+        //without pause between animations (infinite does not work to get rid of pause in xml)
+        RotateAnimation rotate = new RotateAnimation(0, 180, android.view.animation.Animation.RELATIVE_TO_SELF, 0.5f, android.view.animation.Animation.RELATIVE_TO_SELF, 0.5f);
+        rotate.setDuration(2500);
+        rotate.setInterpolator(new LinearInterpolator());
+        rotate.setRepeatCount(android.view.animation.Animation.INFINITE);
+
+        optionsButton.startAnimation(rotate);
 
         openLargeFragment(playButton, GameFragment.class, R.id.fragment_container);
         openLargeFragment(helpButton, HelpFragment.class, R.id.fragment_container);
