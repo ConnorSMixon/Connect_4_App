@@ -1,4 +1,4 @@
-package com.zybooks.connect4application;
+package com.C4.connect4application;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;

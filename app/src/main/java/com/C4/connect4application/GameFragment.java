@@ -1,4 +1,4 @@
-package com.zybooks.connect4application;
+package com.C4.connect4application;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zybooks.connect4application.utils.GamePieceHelper;
+import com.C4.connect4application.utils.GamePieceHelper;
 
 public class GameFragment extends Fragment {
 
@@ -55,7 +55,7 @@ public class GameFragment extends Fragment {
         // create board
         board = new Board(NUM_COLS, NUM_ROWS);
         boardView = parentView.findViewById(R.id.game_board);
-        loadBoard();
+        buildCells();
         boardView.setOnTouchListener((view, motionEvent) -> {
             switch (motionEvent.getAction()) {
                 case MotionEvent.ACTION_POINTER_UP:
@@ -117,7 +117,6 @@ public class GameFragment extends Fragment {
         float move = -(cell.getHeight() * row + cell.getHeight() + 100);
         cell.setY(move);
         cell.setImageResource(resourceForPiece());
-        saveBoard(row, col);
         TranslateAnimation anim = new TranslateAnimation(0, 0, 0, Math.abs(move));
         anim.setInterpolator(new BounceInterpolator());
         anim.setFillAfter(true);
@@ -133,20 +132,7 @@ public class GameFragment extends Fragment {
         }
     }
 
-    private void saveBoard(int row, int col) {
-        String boardValue;
-        if (cells[row][col].getDrawable().getConstantState() == getResources().getDrawable(piece1).getConstantState()) {
-            boardValue = "1";
-        } else if (cells[row][col].getDrawable().getConstantState() == getResources().getDrawable(piece2).getConstantState()) {
-            boardValue = "2";
-        } else {
-            boardValue = "0";
-        }
-        String key = row + Integer.toString(col);
-        SavedData.saveString(key, boardValue, this.requireActivity());
-    }
-
-    private void loadBoard() {
+    private void buildCells() {
         cells = new ImageView[NUM_ROWS][NUM_COLS];
         for (int r=0; r<NUM_ROWS; r++) {
             ViewGroup row = (ViewGroup) ((ViewGroup) boardView).getChildAt(r);
@@ -213,7 +199,6 @@ public class GameFragment extends Fragment {
                 ImageView cell = cells[r][c];
                 cell.animate().alpha(0f).setDuration(500);
                 String key = r + Integer.toString(c);
-                SavedData.saveString(key, "0", this.requireActivity());
             }
         }
     }

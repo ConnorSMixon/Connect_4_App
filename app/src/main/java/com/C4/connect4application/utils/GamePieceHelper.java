@@ -1,9 +1,9 @@
-package com.zybooks.connect4application.utils;
+package com.C4.connect4application.utils;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 
-import com.zybooks.connect4application.R;
+import com.C4.connect4application.R;
 
 public class GamePieceHelper {
 

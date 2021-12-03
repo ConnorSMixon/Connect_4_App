@@ -1,4 +1,4 @@
-package com.zybooks.connect4application;
+package com.C4.connect4application;
 
 public class Board {
     private final int numCols;

@@ -1,4 +1,4 @@
-package com.zybooks.connect4application;
+package com.C4.connect4application;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -24,20 +24,6 @@ public class SavedData {
     public static int loadInt(String key, int defaultPiece, Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS1, MODE_PRIVATE);
         return sharedPreferences.getInt(key, defaultPiece);
-    }
-
-    public static void saveString(String key, String value, Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS1, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString(key, value);
-
-        editor.apply();
-    }
-
-    public static String loadString(String key, String defaultValue, Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS1, MODE_PRIVATE);
-        return sharedPreferences.getString(key, defaultValue);
     }
 
     public static void saveBoolean(String key, boolean value, Context context) {

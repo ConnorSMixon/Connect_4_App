@@ -1,4 +1,4 @@
-package com.zybooks.connect4application;
+package com.C4.connect4application;
 
 import android.os.Bundle;
 
@@ -12,7 +12,7 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
 
-import com.zybooks.connect4application.utils.FragmentHelper;
+import com.C4.connect4application.utils.FragmentHelper;
 
 public class StartFragment extends Fragment {
 
