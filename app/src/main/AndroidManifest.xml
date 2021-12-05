@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zybooks.connect4application">
+    package="com.C4.connect4application">
 
     <application
         android:allowBackup="true"
@@ -8,18 +8,19 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher_background"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Connect4Application">
+        android:theme="@style/Theme.Connect4Application"
+        >
         <activity
-            android:name=".HostActivity"
+            android:name="com.C4.connect4application.HostActivity"
             android:exported="true"
             android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".MusicSoundService"/>
+        <service android:name="com.C4.connect4application.MusicSoundService"/>
     </application>
 
 </manifest>

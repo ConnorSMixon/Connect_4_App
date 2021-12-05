@@ -1,4 +1,4 @@
-package com.zybooks.connect4application;
+package com.C4.connect4application;
 
 public class Board {
     private final int numCols;
@@ -41,7 +41,6 @@ public class Board {
     public void occupyCell(int col, int row){
         cells[col][row].setPlayer(turn);
     }
-
     public void toggleTurn() {
         if (turn == Turn.FIRST) {
             turn = Turn.SECOND;
