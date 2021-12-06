@@ -1,26 +1,21 @@
-package com.C4.connect4application;
+package com.C4.connect4application.fragments;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.C4.connect4application.utils.Miscellaneous;
+import com.C4.connect4application.R;
+import com.C4.connect4application.utils.SFXSound;
 import com.C4.connect4application.utils.FragmentHelper;
 
 public class HelpFragment extends Fragment {

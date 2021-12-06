@@ -1,4 +1,6 @@
-package com.C4.connect4application;
+package com.C4.connect4application.model;
+
+import com.C4.connect4application.model.Board;
 
 public class Cell {
     public boolean empty;

@@ -1,4 +1,4 @@
-package com.C4.connect4application;
+package com.C4.connect4application.fragments;
 
 import androidx.fragment.app.Fragment;
 
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.C4.connect4application.utils.Miscellaneous;
+import com.C4.connect4application.R;
 
 public class InfoFragment extends Fragment {
 

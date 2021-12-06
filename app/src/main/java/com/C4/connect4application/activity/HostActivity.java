@@ -1,13 +1,16 @@
-package com.C4.connect4application;
+package com.C4.connect4application.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+
+import com.C4.connect4application.R;
+import com.C4.connect4application.fragments.StartFragment;
+import com.C4.connect4application.utils.MusicSoundService;
+import com.C4.connect4application.utils.SavedData;
 
 public class HostActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
 

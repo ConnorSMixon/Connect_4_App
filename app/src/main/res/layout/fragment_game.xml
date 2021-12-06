@@ -70,7 +70,7 @@
         android:paddingTop="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
-        tools:context=".GameFragment">
+        tools:context=".fragments.GameFragment">
 
         <include layout="@layout/piece_row" />
 
@@ -100,7 +100,7 @@
         android:paddingTop="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
-        tools:context=".GameFragment">
+        tools:context=".fragments.GameFragment">
 
         <ImageView
             android:layout_width="match_parent"

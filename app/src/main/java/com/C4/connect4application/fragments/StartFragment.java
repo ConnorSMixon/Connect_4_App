@@ -1,6 +1,5 @@
-package com.C4.connect4application;
+package com.C4.connect4application.fragments;
 
-import android.graphics.Path;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.C4.connect4application.utils.Miscellaneous;
+import com.C4.connect4application.R;
+import com.C4.connect4application.utils.SFXSound;
 import com.C4.connect4application.utils.FragmentHelper;
 
 public class StartFragment extends Fragment {

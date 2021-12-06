@@ -1,4 +1,4 @@
-package com.C4.connect4application;
+package com.C4.connect4application.utils;
 
 import static android.content.Context.MODE_PRIVATE;
 

@@ -1,4 +1,4 @@
-package com.C4.connect4application;
+package com.C4.connect4application.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,10 +17,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.C4.connect4application.utils.GamePieceHelper;
-
-import java.math.RoundingMode;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.C4.connect4application.model.Board;
+import com.C4.connect4application.utils.Miscellaneous;
+import com.C4.connect4application.R;
+import com.C4.connect4application.utils.SFXSound;
+import com.C4.connect4application.utils.SavedData;
+import com.C4.connect4application.model.GamePieceHelper;
 
 public class GameFragment extends Fragment {
 
@@ -222,6 +224,7 @@ public class GameFragment extends Fragment {
     private void pauseMenu(ImageView imageView) {
         imageView.setOnClickListener(view -> {
             if (!PauseFragment.isInflated) {
+                sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 ft.setCustomAnimations(R.anim.pop_open, R.anim.pop_open, R.anim.pop_close, R.anim.pop_close);
                 ft.add(R.id.pause_fragment_container, PauseFragment.class, null);

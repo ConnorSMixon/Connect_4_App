@@ -1,8 +1,10 @@
-package com.C4.connect4application;
+package com.C4.connect4application.utils;
 
 import android.app.Activity;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import com.C4.connect4application.R;
 
 public class Animation extends android.view.animation.Animation implements android.view.animation.Interpolator{
     private final double mAmplitude;
@@ -20,7 +22,7 @@ public class Animation extends android.view.animation.Animation implements andro
 
     public static void bounceAnimation(ImageView imageView, Activity activity) {
         final android.view.animation.Animation myAnim = AnimationUtils.loadAnimation(activity, R.anim.ripple_pop);
-        com.C4.connect4application.Animation interpolator = new com.C4.connect4application.Animation(.1, 20);
+        Animation interpolator = new Animation(.1, 20);
         myAnim.setInterpolator(interpolator);
         imageView.startAnimation(myAnim);
     }

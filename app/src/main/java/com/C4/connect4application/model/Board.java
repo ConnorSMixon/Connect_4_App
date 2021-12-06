@@ -1,4 +1,4 @@
-package com.C4.connect4application;
+package com.C4.connect4application.model;
 
 public class Board {
     private final int numCols;

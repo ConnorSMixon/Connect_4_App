@@ -9,7 +9,7 @@
     android:focusable="true"
     android:background="@drawable/fragment_layout"
     android:padding="7dp"
-    tools:context=".PauseFragment">
+    tools:context=".fragments.PauseFragment">
 
     <ImageView
         android:layout_width="wrap_content"
