@@ -4,62 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HelpFragment"
     android:background="@drawable/gradient_background"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:theme="@style/Theme.Connect4Application"
+    tools:context=".HelpFragment">
 
+    <ImageButton
+        android:id="@+id/up_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/arrow_back"
+        app:layout_constraintHeight_percent=".07"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".15" />
 
     <TextView
         android:id="@+id/text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/help"
-        android:textSize="50dp"
         android:fontFamily="@font/chopsic"
+        android:text="@string/help"
         android:textAlignment="center"
-        app:layout_constraintBaseline_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/question_mark_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/up_button"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-    <ImageView
-        android:id="@+id/questionMarkImage"
+    <ImageButton
+        android:id="@+id/question_mark_button"
         android:name="questionMarkImage"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="@drawable/ic_question_mark_button"
-        app:layout_constraintBaseline_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/question_mark_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view" />
-
-    <Button
-        android:id="@+id/help_more_information"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="@color/theme1.blue"
-        android:text="I Need More Information"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBaseline_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/questionMarkImage" />
-
-    <Button
-        android:id="@+id/no_help_needed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="@color/theme1.blue"
-        android:text="I Don't Need Help!"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@id/help_more_information"
-        tools:layout_editor_absoluteX="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

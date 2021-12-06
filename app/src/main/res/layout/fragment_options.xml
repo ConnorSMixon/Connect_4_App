@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:tag="options"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,6 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:clickable="true"
     android:focusable="true"
+    android:theme="@style/Theme.Connect4Application"
     tools:context=".OptionsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,12 +17,14 @@
         android:background="@drawable/fragment_layout">
 
         <ImageView
-        android:id="@+id/activityOptionsBackArrow"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/arrow_back"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/activityOptionsBackArrow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/arrow_back"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHeight_percent=".14"
+            app:layout_constraintWidth_percent=".2"/>
 
         <ImageView
             android:id="@+id/music_image_indicator"

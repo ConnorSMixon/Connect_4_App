@@ -19,10 +19,13 @@ import android.widget.TextView;
 
 import com.C4.connect4application.utils.GamePieceHelper;
 
+import java.math.RoundingMode;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class GameFragment extends Fragment {
 
     private ImageView[][] cells;
-    private View boardView;
+    private View boardView, parentView;
     private Board board;
     private ViewHolder viewHolder;
     private SFXSound sfx;
@@ -40,7 +43,7 @@ public class GameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View parentView = inflater.inflate(R.layout.fragment_game, container, false);
+        parentView = inflater.inflate(R.layout.fragment_game, container, false);
 
         sfx = new SFXSound(this.requireActivity());
         isInflated = true;
@@ -57,19 +60,21 @@ public class GameFragment extends Fragment {
         boardView = parentView.findViewById(R.id.game_board);
         buildCells();
         boardView.setOnTouchListener((view, motionEvent) -> {
-            switch (motionEvent.getAction()) {
-                case MotionEvent.ACTION_POINTER_UP:
-                case MotionEvent.ACTION_UP: {
-                    int col = colAtX(motionEvent.getX());
-                    if (col != -1)
-                        drop(col);
+            if (!PauseFragment.isInflated) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_POINTER_UP:
+                    case MotionEvent.ACTION_UP: {
+                        int col = colAtX(motionEvent.getX());
+                        if (col != -1)
+                            drop(col);
+                    }
                 }
             }
-            return true;
+                return true;
         });
 
         // change color of piece turn indicator
-        viewHolder = new GameFragment.ViewHolder();
+        viewHolder = new ViewHolder();
         viewHolder.pieceTurnIndicatorImageView1 = parentView.findViewById(R.id.indicator_piece1);
         viewHolder.pieceTurnIndicatorImageView2 = parentView.findViewById(R.id.indicator_piece2);
         resourceForPieceIndicator();
@@ -205,9 +210,9 @@ public class GameFragment extends Fragment {
 
     private void previousFragment(ImageView imageView) {
         imageView.setOnClickListener(view -> {
+            sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
             FragmentManager fm = getParentFragmentManager();
             FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-            ft.setCustomAnimations(R.anim.enter_right, R.anim.exit_right, R.anim.enter_left, R.anim.exit_left);
             fm.popBackStack();
             ft.commit();
             isInflated = false;
@@ -216,11 +221,13 @@ public class GameFragment extends Fragment {
 
     private void pauseMenu(ImageView imageView) {
         imageView.setOnClickListener(view -> {
-            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-            ft.setCustomAnimations(R.anim.pop_open, R.anim.pop_open, R.anim.pop_close, R.anim.pop_close);
-            ft.add(R.id.fragment_container, PauseFragment.class, null);
-            ft.addToBackStack(null);
-            ft.commit();
+            if (!PauseFragment.isInflated) {
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                ft.setCustomAnimations(R.anim.pop_open, R.anim.pop_open, R.anim.pop_close, R.anim.pop_close);
+                ft.add(R.id.pause_fragment_container, PauseFragment.class, null);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
         });
     }
 

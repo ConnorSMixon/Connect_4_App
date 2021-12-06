@@ -24,13 +24,12 @@ public class OptionsFragment extends Fragment {
 
     private ImageView imageView1, imageView2;
     private SFXSound sfx;
-    View parentView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this.requireActivity() fragment
-         parentView = inflater.inflate(R.layout.fragment_options, container, false);
+        View parentView = inflater.inflate(R.layout.fragment_options, container, false);
 
         sfx = new SFXSound(this.requireActivity());
         isInflated = true;
@@ -50,9 +49,7 @@ public class OptionsFragment extends Fragment {
 
         // on click listener for up button
         ImageView upButton = parentView.findViewById(R.id.activityOptionsBackArrow);
-        upButton.setOnClickListener(view -> {
-            previousFragment();
-        });
+        upButton.setOnClickListener(view -> previousFragment());
 
         // links background music checkbox to background music class
         boolean musicCheckboxVal = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this.requireActivity());

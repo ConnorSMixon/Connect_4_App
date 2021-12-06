@@ -6,13 +6,13 @@
     <color name="theme3.white">#FDFDFF</color>
 
     // piece colors
+    <color name="red">#FF980202</color>
+    <color name="orange">#FFB26008</color>
     <color name="yellow">#FFBC8E03</color>
     <color name="green">#FF39751F</color>
+    <color name="blue">#FF215ABC</color>
     <color name="purple">#FF361E74</color>
-    <color name="blue">#62929E</color>
-    <color name="black">#393D3F</color>
-    <color name="white">#FDFDFF</color>
-    <color name="transparent">#0000</color>
-    <color name= "red">#990000</color>
-    <color name= "orange">#FF5722</color>
+
+    // text color
+    <color name="text.color">#BFFDFDFF</color>
 </resources>

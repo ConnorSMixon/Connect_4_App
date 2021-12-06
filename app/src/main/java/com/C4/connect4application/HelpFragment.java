@@ -4,12 +4,24 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import com.C4.connect4application.utils.FragmentHelper;
 
 public class HelpFragment extends Fragment {
 
@@ -23,41 +35,56 @@ public class HelpFragment extends Fragment {
 
         isInflated = true;
         sfx = new SFXSound(this.requireActivity());
-        final Button needHelp = parentView.findViewById(R.id.help_more_information);
-        final Button noHelp = parentView.findViewById(R.id.no_help_needed);
 
-        openFragmentOnClick(this.requireActivity(), needHelp, FragmentNeedInfo.class, R.id.small_fragment_container);
+        ImageButton helpButton = parentView.findViewById(R.id.question_mark_button);
+        ImageButton upButton = parentView.findViewById(R.id.up_button);
 
-        openFragmentOnClick(this.requireActivity(), noHelp, FragmentDontNeedInfo.class, R.id.small_fragment_container);
+        openFragmentOnClick(helpButton, InfoFragment.class, R.id.small_fragment_container);
 
-        // outside container for clicking out
+        // listener for clicking out of fragment popup
         parentView.setOnClickListener(view -> {
-            if (FragmentNeedInfo.isInflated || FragmentDontNeedInfo.isInflated) {
+            if (InfoFragment.isInflated) {
                 FragmentManager fm;
                 fm = getParentFragmentManager();
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 fm.popBackStack();
                 ft.commit();
-                FragmentNeedInfo.isInflated = false;
-                FragmentDontNeedInfo.isInflated = false;
+                InfoFragment.isInflated = false;
             }
         });
-        // BUTTON ANIMATION NEED TO GET WORKING WITH FRAGMENTS
 
+        // on click listener for up button
+        previousFragment(upButton);
+
+        // question mark animation
+        AlphaAnimation animation = new AlphaAnimation(.75f, 1f);
+        animation.setDuration(1000);
+        animation.setRepeatCount(Animation.INFINITE);
+        helpButton.startAnimation(animation);
+
+        // set notification bar color
         Miscellaneous.setNotificationBarColor(this.requireActivity());
+
         return parentView;
     }
 
-    private void openFragmentOnClick(Context context, Button Button, Class fragment, int container) {
+    private void openFragmentOnClick(ImageButton Button, Class fragment, int container) {
         Button.setOnClickListener(view -> {
-            if (!FragmentDontNeedInfo.isInflated && !FragmentNeedInfo.isInflated) {
-                sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, context);
+            if(!InfoFragment.isInflated) {
+                sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                ft.setCustomAnimations(R.anim.pop_open, R.anim.pop_open, R.anim.pop_close, R.anim.pop_close);
-                ft.add(container, fragment, null);
-                ft.addToBackStack(null);
-                ft.commit();
+                FragmentHelper.openSmallFragment(ft, fragment, container);
             }
+        });
+    }
+
+    private void previousFragment(ImageView imageView) {
+        imageView.setOnClickListener(view -> {
+            sfx.playSFX(SFXSound.sfxClick, SFXSound.sfxClickCount, this.requireActivity());
+            FragmentManager fm = getParentFragmentManager();
+            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+            fm.popBackStack();
+            ft.commit();
         });
     }
 

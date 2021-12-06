@@ -6,78 +6,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:clickable="true"
-    tools:context=".OptionsFragment">
+    android:focusable="true"
+    android:background="@drawable/fragment_layout"
+    android:padding="7dp"
+    tools:context=".PauseFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintWidth_percent=".5"
-        app:layout_constraintHeight_percent=".4"
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/volume_on"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/checkbox_music"
+        app:layout_constraintStart_toStartOf="@id/checkbox_music"
+        app:layout_constraintEnd_toEndOf="@id/checkbox_music"
+        app:layout_constraintVertical_bias=".9"/>
+    <CheckBox
+        android:id="@+id/checkbox_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:checked="true"
+        android:buttonTint="@color/theme3.white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias=".2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sfx"
+        android:fontFamily="@font/chopsic"
+        android:padding="7dp"
+        app:layout_constraintBottom_toTopOf="@id/checkbox_sfx"
+        app:layout_constraintStart_toStartOf="@id/checkbox_sfx"
+        app:layout_constraintEnd_toEndOf="@id/checkbox_sfx" />
+    <CheckBox
+        android:id="@+id/checkbox_sfx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:checked="true"
+        android:buttonTint="@color/theme3.white"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/fragment_layout">
-
-        <ImageView
-            android:id="@+id/activityOptionsBackArrow"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/arrow_back"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/volume_on"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/checkbox_music"
-            app:layout_constraintStart_toStartOf="@id/checkbox_music"
-            app:layout_constraintEnd_toEndOf="@id/checkbox_music"
-            app:layout_constraintVertical_bias=".9"/>
-        <CheckBox
-            android:id="@+id/checkbox_music"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:scaleX="2"
-            android:scaleY="2"
-            android:checked="true"
-            android:buttonTint="@color/theme3.white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_bias=".2"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoSizeTextType="uniform"
-            android:text="@string/sfx"
-            android:fontFamily="@font/chopsic"
-            android:padding="7dp"
-            app:layout_constraintBottom_toTopOf="@id/checkbox_sfx"
-            app:layout_constraintStart_toStartOf="@id/checkbox_sfx"
-            app:layout_constraintEnd_toEndOf="@id/checkbox_sfx" />
-        <CheckBox
-            android:id="@+id/checkbox_sfx"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:scaleX="2"
-            android:scaleY="2"
-            android:checked="true"
-            android:buttonTint="@color/theme3.white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_bias=".8"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias=".8"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

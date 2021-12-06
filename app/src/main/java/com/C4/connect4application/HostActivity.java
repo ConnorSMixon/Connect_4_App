@@ -20,15 +20,6 @@ public class HostActivity extends AppCompatActivity implements SharedPreferences
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-        // closes fragment if user touches outside of view
-        View outsideContainer = findViewById(R.id.fragment_container);
-        outsideContainer.setOnClickListener(view -> {
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            fm.popBackStack();
-            ft.commit();
-        });
-
         // sets StartFragment as default fragment
         fragmentTransaction.add(R.id.fragment_container, new StartFragment());
         fragmentTransaction.commit();

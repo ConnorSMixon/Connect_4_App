@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentDontNeedInfo extends Fragment {
+public class InfoFragment extends Fragment {
 
     public static boolean isInflated = false;
 
@@ -15,7 +15,7 @@ public class FragmentDontNeedInfo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // inflates parent view
-        View parentView = inflater.inflate(R.layout.fragment_dont_need_info, container, false);
+        View parentView = inflater.inflate(R.layout.fragment_info, container, false);
 
         isInflated = true;
 

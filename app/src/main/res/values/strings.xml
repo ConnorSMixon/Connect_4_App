@@ -43,5 +43,6 @@
     // Fragment tags
     <string name="game_fragment_tag">game_fragment_tag</string>
     <string name="options_fragment_tag">options_fragment_tag</string>
-    <string name="game_rules">Pick a column to drop game piece \n\n Switch between players after each piece is dropped \n\n Attempt to get four of the same color game piece in a row \n\n Must be either Horizontal, Vertical, or diagonally four in a row to win</string>
+    <string name="game_rules1"> Choose one of six pieces for player 1 and player 2</string>
+    <string name="game_rules2"> Pick a column to drop your game piece \n\n Switch between players after each piece is dropped \n\n Attempt to get four of the same color game piece in a row \n\n Must be either Horizontally, Vertically, or diagonally four in a row to win</string>
 </resources>

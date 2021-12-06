@@ -1,8 +1,10 @@
 package com.C4.connect4application;
 
+import android.graphics.Path;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
@@ -32,6 +34,17 @@ public class StartFragment extends Fragment {
         openLargeFragment(helpButton, HelpFragment.class, R.id.fragment_container);
         openSmallFragment(optionsButton, OptionsFragment.class, R.id.small_fragment_container);
 
+        // allow user to close popup fragment by touching outside of layout
+        parentView.setOnClickListener(view -> {
+            if (OptionsFragment.isInflated) {
+                FragmentManager fm;
+                fm = getParentFragmentManager();
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                fm.popBackStack();
+                ft.commit();
+                OptionsFragment.isInflated = false;
+            }
+        });
 
         // change color of notification bar
         Miscellaneous.setNotificationBarColor(this.requireActivity());

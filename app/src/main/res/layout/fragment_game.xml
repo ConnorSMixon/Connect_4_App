@@ -1,4 +1,7 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
@@ -7,37 +10,41 @@
 
     <ImageButton
         android:id="@+id/reset_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:backgroundTint="@android:color/transparent"
-        android:src="@drawable/refresh" />
+        android:src="@drawable/refresh"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent=".07"
+        app:layout_constraintWidth_percent=".15"/>
 
     <ImageButton
         android:id="@+id/pause_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:backgroundTint="@android:color/transparent"
-        android:src="@drawable/pause" />
+        android:src="@drawable/pause"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent=".07"
+        app:layout_constraintWidth_percent=".15"/>
 
     <ImageButton
         android:id="@+id/gameActivityBackArrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="2.5"
-        android:scaleY="2.5"
-        android:layout_margin="10dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/arrow_back" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/arrow_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHeight_percent=".07"
+        app:layout_constraintWidth_percent=".15"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/reset_button"
+        app:layout_constraintTop_toBottomOf="@id/pause_button"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16dp"
@@ -48,11 +55,14 @@
         android:gravity="center_horizontal"
         android:text="@string/winner_message"/>
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/game_board"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/reset_button"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/pause_button"
+        app:layout_constraintBottom_toBottomOf="@id/indicator_piece1"
+        app:layout_constraintVertical_bias=".35"
         android:clipChildren="false"
         android:gravity="center"
         android:orientation="vertical"
@@ -75,12 +85,14 @@
         <include layout="@layout/piece_row" />
     </LinearLayout>
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/game_board_front"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/reset_button"
-        android:background="@android:color/transparent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/pause_button"
+        app:layout_constraintBottom_toBottomOf="@id/indicator_piece1"
+        app:layout_constraintVertical_bias=".35"
         android:clipChildren="false"
         android:gravity="center"
         android:orientation="vertical"
@@ -90,51 +102,46 @@
         android:paddingBottom="16dp"
         tools:context=".GameFragment">
 
-        <include layout="@layout/row_board_top" />
-
-        <include layout="@layout/row_board_middle" />
-
-        <include layout="@layout/row_board_middle" />
-
-        <include layout="@layout/row_board_middle" />
-
-        <include layout="@layout/row_board_middle" />
-
-        <include layout="@layout/row_board_bottom" />
-    </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/game_board"/>
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/indicator_divider"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <ImageView
         android:id="@+id/turn_indicator_image_view1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/indicator_piece1"
-        android:layout_alignStart="@id/indicator_piece1"
-        android:layout_alignEnd="@id/indicator_piece1"
+        app:layout_constraintBottom_toTopOf="@id/indicator_piece1"
+        app:layout_constraintLeft_toLeftOf="@id/indicator_piece1"
+        app:layout_constraintRight_toRightOf="@id/indicator_piece1"
         android:src="@drawable/arrow_indicator" />
 
     <ImageView
         android:id="@+id/indicator_piece1"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
         android:src="@drawable/piece_red" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        android:layout_toStartOf="@id/indicator_divider"
-        android:layout_toEndOf="@id/indicator_piece1"
+        app:layout_constraintRight_toLeftOf="@id/indicator_divider"
+        app:layout_constraintLeft_toRightOf="@id/indicator_piece1"
+        app:layout_constraintTop_toTopOf="@id/indicator_piece1"
+        app:layout_constraintBottom_toBottomOf="@id/indicator_piece1"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/chopsic"
         android:text="@string/player_1"
@@ -146,28 +153,27 @@
         android:id="@+id/turn_indicator_image_view2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/indicator_piece2"
-        android:layout_alignStart="@id/indicator_piece2"
-        android:layout_alignEnd="@id/indicator_piece2"
+        app:layout_constraintBottom_toTopOf="@id/indicator_piece2"
+        app:layout_constraintLeft_toLeftOf="@id/indicator_piece2"
+        app:layout_constraintRight_toRightOf="@id/indicator_piece2"
         android:src="@drawable/arrow_indicator" />
 
     <ImageView
         android:id="@+id/indicator_piece2"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
         android:src="@drawable/piece_red" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        android:layout_toStartOf="@+id/indicator_piece2"
-        android:layout_toEndOf="@id/indicator_divider"
+        app:layout_constraintLeft_toRightOf="@id/indicator_divider"
+        app:layout_constraintRight_toLeftOf="@id/indicator_piece2"
+        app:layout_constraintTop_toTopOf="@id/indicator_piece2"
+        app:layout_constraintBottom_toBottomOf="@id/indicator_piece2"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/chopsic"
         android:text="@string/player_2"
@@ -175,4 +181,4 @@
         android:textColor="@color/theme2.black"
         android:textSize="25sp" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
