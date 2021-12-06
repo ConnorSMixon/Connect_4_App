@@ -1,4 +1,4 @@
-package com.C4.connect4application;
+package com.C4.connect4application.utils;
 
 import android.app.Service;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
+
+import com.C4.connect4application.R;
 
 public class MusicSoundService extends Service {
 

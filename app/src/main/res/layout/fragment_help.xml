@@ -8,7 +8,7 @@
     android:clickable="true"
     android:focusable="true"
     android:theme="@style/Theme.Connect4Application"
-    tools:context=".HelpFragment">
+    tools:context=".fragments.HelpFragment">
 
     <ImageButton
         android:id="@+id/up_button"

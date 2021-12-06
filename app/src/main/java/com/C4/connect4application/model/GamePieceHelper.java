@@ -1,4 +1,4 @@
-package com.C4.connect4application.utils;
+package com.C4.connect4application.model;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;

@@ -1,4 +1,4 @@
-package com.C4.connect4application;
+package com.C4.connect4application.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 import androidx.fragment.app.Fragment;
+
+import com.C4.connect4application.R;
+import com.C4.connect4application.utils.SFXSound;
+import com.C4.connect4application.utils.SavedData;
 
 public class PauseFragment extends Fragment {
     public static boolean musicChecked = true, sfxChecked = true, isInflated = false;

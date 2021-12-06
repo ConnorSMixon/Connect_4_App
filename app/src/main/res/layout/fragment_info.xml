@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".InfoFragment"
+    tools:context=".fragments.InfoFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
