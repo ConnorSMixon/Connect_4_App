@@ -42,6 +42,7 @@ public class StartFragment extends Fragment {
         this.helpButton = helpButton;
     }
 
+    // Inflates main menu and its buttons to activate the other components
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

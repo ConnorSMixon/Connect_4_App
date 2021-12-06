@@ -6,19 +6,21 @@ public class Board {
     public boolean hasWinner;
     public static Cell[][] cells;
 
+    // Creates a name for the Players Turns
     public enum Turn {
         FIRST, SECOND
     }
 
     public Turn turn;
 
+    // Creates the board and initializes the cells
     public Board(int cols, int rows) {
         numCols = cols;
         numRows = rows;
         cells = new Cell[cols][rows];
         reset();
     }
-
+    //Resets the Game to a new one
     public void reset() {
         hasWinner = false;
         turn = Turn.FIRST;
@@ -28,7 +30,7 @@ public class Board {
             }
         }
     }
-
+   // Checks for empty row
     public int lastAvailableRow(int col) {
         for (int row = numRows - 1; row >= 0; row--) {
             if(cells[col][row].empty) {
@@ -37,7 +39,7 @@ public class Board {
         }
         return -1;
     }
-
+    // Fills the cells with an objects of space
     public void occupyCell(int col, int row){
         cells[col][row].setPlayer(turn);
     }
@@ -48,7 +50,7 @@ public class Board {
             turn = Turn.FIRST;
         }
     }
-
+    //Checks for 4 in a row
     public boolean checkForWin() {
         for (int col = 0; col < numCols; col++) {
             if (isContiguous(turn, 0, 1, col, 0, 0) ||
@@ -68,7 +70,7 @@ public class Board {
         }
         return false;
     }
-
+    // Checks for the direction of the chips/cells
     private boolean isContiguous(Turn player, int dirX, int dirY, int col, int row, int count) {
         if (count >= 4) {
             return true;

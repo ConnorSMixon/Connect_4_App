@@ -36,6 +36,7 @@ public class GameFragment extends Fragment {
                 pieceTurnIndicatorImageView1, pieceTurnIndicatorImageView2;
     }
 
+    //Creates View of Game Board and inflates it
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,7 +104,7 @@ public class GameFragment extends Fragment {
 
         return parentView;
     }
-
+    // Drops Chips into cells with animations
     private void drop(int col) {
         if (board.hasWinner)
             return;
@@ -131,7 +132,7 @@ public class GameFragment extends Fragment {
             changeTurn();
         }
     }
-
+    //Builds the images of the cells
     private void buildCells() {
         cells = new ImageView[NUM_ROWS][NUM_COLS];
         for (int r=0; r<NUM_ROWS; r++) {
@@ -144,7 +145,7 @@ public class GameFragment extends Fragment {
             }
         }
     }
-
+    //Checks whether Winner text is visible
     private void win() {
         int color = board.turn == Board.Turn.FIRST ? getResources().getColor(textColor1) :
                 getResources().getColor(textColor2);
@@ -189,7 +190,7 @@ public class GameFragment extends Fragment {
             viewHolder.arrowTurnIndicatorImageView1.setVisibility(View.INVISIBLE);
         }
     }
-
+    //Resets animations for board
     private void reset() {
         board.reset();
         viewHolder.winnerText.animate().alpha(0f).setDuration(500);
