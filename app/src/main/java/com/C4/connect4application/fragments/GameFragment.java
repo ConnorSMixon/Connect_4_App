@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
@@ -27,7 +29,7 @@ import com.C4.connect4application.model.GamePieceHelper;
 public class GameFragment extends Fragment {
 
     private ImageView[][] cells;
-    private View boardView, parentView;
+    private View boardView;
     private Board board;
     private ViewHolder viewHolder;
     private SFXSound sfx;
@@ -45,7 +47,7 @@ public class GameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        parentView = inflater.inflate(R.layout.fragment_game, container, false);
+        View parentView = inflater.inflate(R.layout.fragment_game, container, false);
 
         sfx = new SFXSound(this.requireActivity());
         isInflated = true;
@@ -167,8 +169,8 @@ public class GameFragment extends Fragment {
     }
 
     private int colAtX(float x) {
-        float colWidth = cells[0][0].getWidth();
-        int col = (int) x / (int) colWidth;
+        float width = boardView.getWidth();
+        int col = (int) x / (int) (width/7);
         if (col < 0 || col > 6)
             return -1;
         return col;
@@ -205,7 +207,6 @@ public class GameFragment extends Fragment {
             for (int c = 0; c < NUM_COLS; c++) {
                 ImageView cell = cells[r][c];
                 cell.animate().alpha(0f).setDuration(500);
-                String key = r + Integer.toString(c);
             }
         }
     }
