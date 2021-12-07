@@ -1,6 +1,6 @@
 # Connect 4
 
-Connect 4 is an interactive game that where the purpose is to align 4 pieces in a row on a 6x7 gameboard.
+Connect 4 is a same_screen multiplayer game where the purpose is to align 4 pieces in a row on a 6x7 gameboard. Each player can choose between six colors for their piece.
 
 ## Installation
 
