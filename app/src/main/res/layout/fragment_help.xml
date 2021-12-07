@@ -12,13 +12,11 @@
 
     <ImageButton
         android:id="@+id/up_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="80dp"
+        android:layout_height="68dp"
         android:background="@drawable/arrow_back"
-        app:layout_constraintHeight_percent=".07"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".15" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_view"
