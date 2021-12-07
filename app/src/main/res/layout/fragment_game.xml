@@ -105,7 +105,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/game_board"/>
+            android:src="@drawable/game_board" />
     </RelativeLayout>
 
     <ImageView
@@ -131,23 +131,23 @@
         android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="2dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/piece_red" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_alignParentBottom="true"
         app:layout_constraintRight_toLeftOf="@id/indicator_divider"
         app:layout_constraintLeft_toRightOf="@id/indicator_piece1"
         app:layout_constraintTop_toTopOf="@id/indicator_piece1"
         app:layout_constraintBottom_toBottomOf="@id/indicator_piece1"
-        android:autoSizeTextType="uniform"
         android:fontFamily="@font/chopsic"
+        android:autoSizeTextType="uniform"
         android:text="@string/player_1"
         android:textAlignment="center"
-        android:textColor="@color/theme2.black"
-        android:textSize="25sp" />
+        android:textColor="@color/theme2.black" />
 
     <ImageView
         android:id="@+id/turn_indicator_image_view2"
@@ -164,21 +164,21 @@
         android:layout_height="25dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="2dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/piece_red" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintLeft_toRightOf="@id/indicator_divider"
         app:layout_constraintRight_toLeftOf="@id/indicator_piece2"
         app:layout_constraintTop_toTopOf="@id/indicator_piece2"
         app:layout_constraintBottom_toBottomOf="@id/indicator_piece2"
-        android:autoSizeTextType="uniform"
         android:fontFamily="@font/chopsic"
+        android:autoSizeTextType="uniform"
         android:text="@string/player_2"
         android:textAlignment="center"
-        android:textColor="@color/theme2.black"
-        android:textSize="25sp" />
+        android:textColor="@color/theme2.black"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
