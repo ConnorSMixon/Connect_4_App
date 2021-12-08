@@ -1,14 +1,19 @@
 package com.C4.connect4application.fragments;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -27,14 +32,15 @@ public class OptionsFragment extends Fragment {
     public static boolean musicChecked = true, sfxChecked = true, isInflated = false;
     public CheckBox musicCheckbox;
 
-    private ImageView imageView1, imageView2;
+    private ImageView imageView1, imageView2, musicIcon;
     private SFXSound sfx;
+    private View parentView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this.requireActivity() fragment
-        View parentView = inflater.inflate(R.layout.fragment_options, container, false);
+        parentView = inflater.inflate(R.layout.fragment_options, container, false);
 
         sfx = new SFXSound(this.requireActivity());
         isInflated = true;
@@ -58,6 +64,7 @@ public class OptionsFragment extends Fragment {
 
         // links background music checkbox to background music class
         boolean musicCheckboxVal = SavedData.loadBoolean(SavedData.CHECKBOX_MUSIC, true, this.requireActivity());
+        setCheckboxDrawable(musicCheckboxVal);
         musicCheckbox = parentView.findViewById(R.id.checkbox_music);
         musicCheckbox.setChecked(musicCheckboxVal);
         toggleBackgroundMusic(this.requireActivity());
@@ -129,6 +136,7 @@ public class OptionsFragment extends Fragment {
     private void toggleBackgroundMusic(Context context) {
         musicCheckbox.setOnClickListener(view -> {
             musicChecked = musicCheckbox.isChecked();
+            setCheckboxDrawable(musicChecked);
             SavedData.saveBoolean(SavedData.CHECKBOX_MUSIC, musicChecked, context);
         });
     }
@@ -138,6 +146,17 @@ public class OptionsFragment extends Fragment {
             sfxChecked = checkBox.isChecked();
             SavedData.saveBoolean(SavedData.CHECKBOX_SFX, sfxChecked, context);
         });
+    }
+
+    private void setCheckboxDrawable(boolean value) {
+        musicIcon = parentView.findViewById(R.id.music_image_indicator);
+        Drawable drawable;
+        if (value) {
+            drawable = ContextCompat.getDrawable(this.requireActivity(), R.drawable.volume_on);
+        } else {
+            drawable = ContextCompat.getDrawable(this.requireActivity(), R.drawable.volume_off);
+        }
+        musicIcon.setImageDrawable(drawable);
     }
 
     @Override

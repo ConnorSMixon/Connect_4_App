@@ -12,6 +12,7 @@
     tools:context=".fragments.PauseFragment">
 
     <ImageView
+        android:id="@+id/music_image_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/volume_on"
