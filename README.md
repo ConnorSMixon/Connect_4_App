@@ -12,7 +12,7 @@ Use the Match 4 apk file to install it on your phone or find it on the google pl
 
 ## Screenshots
 
-![Screenshot_2022-09-07-19-01-47-30_5a1b70452dd1ed87f05464317daa269f](https://user-images.githubusercontent.com/89669123/188998786-988b1285-f25c-4621-a236-3f6acf86ea56.jpg)
+|![Screenshot_2022-09-07-19-01-47-30_5a1b70452dd1ed87f05464317daa269f](https://user-images.githubusercontent.com/89669123/188998786-988b1285-f25c-4621-a236-3f6acf86ea56.jpg)|
 
 ![Screenshot_2022-09-07-19-01-53-57_5a1b70452dd1ed87f05464317daa269f](https://user-images.githubusercontent.com/89669123/188998792-adbf79c4-4e63-43f9-b169-4dd8e3033395.jpg)
 
