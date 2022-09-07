@@ -1,6 +1,6 @@
 ![feature-graphic](https://user-images.githubusercontent.com/89669123/188997982-308eac46-2977-4944-91e8-58f5632c7d27.png)
 
-# Match 4
+<h1 align="center">Match 4</h1>
 
 This is a single-device multiplayer board game based on Connect 4. The users place a piece 
 on the board until someone wins by connecting a row of four of their own pieces. This row of
