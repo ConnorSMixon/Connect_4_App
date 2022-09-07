@@ -12,7 +12,7 @@ four must be consecutive and can be horizontal, vertical, or diagonal.
 
 ## Installation
 
-Use the Match 4 apk file to install it on your phone or find it on the google play store.
+Find it on the <a href="https://play.google.com/store/apps/details?id=com.C4.match4application">PlayStore</a>.
 
 ## Screenshots
 
