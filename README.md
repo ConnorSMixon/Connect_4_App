@@ -8,7 +8,9 @@ on the board until someone wins by connecting a row of four of their own pieces.
 four must be consecutive and can be horizontal, vertical, or diagonal.
 </p>
 </div>
-
+<br/>
+<br/>
+<br/>
 
 ## Installation
 
