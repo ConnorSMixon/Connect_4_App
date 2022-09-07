@@ -9,8 +9,6 @@ four must be consecutive and can be horizontal, vertical, or diagonal.
 </p>
 </div>
 <br/>
-<br/>
-<br/>
 
 ## Installation
 
