@@ -12,7 +12,7 @@ four must be consecutive and can be horizontal, vertical, or diagonal.
 
 ## Installation
 
-<a href="https://play.google.com/store/apps/details?id=com.C4.match4application">![google-play-badge](https://user-images.githubusercontent.com/89669123/189005406-8166666b-8bf3-47c5-a81e-849cbd0f1f17.png =646x250)</a>
+<a href="https://play.google.com/store/apps/details?id=com.C4.match4application"><img src="https://user-images.githubusercontent.com/89669123/189005406-8166666b-8bf3-47c5-a81e-849cbd0f1f17.png" style="width:100px"/></a>
 
 ## Screenshots
 
