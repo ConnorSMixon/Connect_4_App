@@ -26,4 +26,4 @@ four must be consecutive and can be horizontal, vertical, or diagonal.
 
 ## Contributors
 
-Darrell Smith, Cal Coussan, Johnny Misley, Steven Mixon.
+Johnny Misley, Darrell Smith, Cal Coussan, Steven Mixon.
